@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="react-15.3.1/build/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="react-15.3.1/build/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="react-15.3.1/build/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<div id="content"></div>
+		<div id="commentAll"></div>
+		<div id="content2"></div>
+		<div id="example2"></div>
+		<script type="text/babel">
+			ReactDOM.render(
+				<div>
+					<h1>菜鸟教程</h1>
+					<h2>欢迎学习 React</h2>
+					<p data-myattribute="somevalue">这是一个很不错的 JavaScript 库!</p>
+				</div>, 
+				document.getElementById('example')
+			);
+
+			//组件//////////////////////////////////////////////////////////////
+			var CommentBox = React.createClass({
+				render: function() {
+					return (
+						<div className="commentBox">
+							Hello, world! I am a CommentBox.
+						</div>
+					); 
+				} 
+			}); 
+			ReactDOM.render(
+				<CommentBox />, 
+				document.getElementById('content')
+			);
+			
+			//组合组件//////////////////////////////////////////////////////////////
+			var CommentList = React.createClass({
+			  render: function() {
+			    return (
+			      <div className="commentList">
+			        Hello, world! I am a CommentList.
+			      </div>
+			    );
+			  }
+			});
+			var CommentForm = React.createClass({
+			  render: function() {
+			    return (
+			      <div className="commentForm">
+			        Hello, world! I am a CommentForm.
+			      </div>
+			    );
+			  }
+			});
+			var CommentAll = React.createClass({
+			  render: function() {
+			    return (
+			      <div className="commentBox">
+			        <h1>Comments</h1>
+			        <CommentList />
+			        <CommentForm />
+			      </div>
+			    );
+			  }
+			});
+			ReactDOM.render(
+				<CommentAll />, 
+				document.getElementById('commentAll')
+			);
+			
+			//////////////////////////////////////////////////////////////
+			var HelloWorld = React.createClass({
+			  render: function() {
+			    return (
+			      <p>
+			        Hello, <input type="text" placeholder="Your name here" />!
+			        It is {this.props.date.toTimeString()}
+			      </p>
+			    );
+			  }
+			});
+			
+			setInterval(function() {
+			  ReactDOM.render(
+			    <HelloWorld date={new Date()} />,
+			    document.getElementById('example2')
+			  );
+			}, 500);
+		</script>
+	</body>
+
+</html>

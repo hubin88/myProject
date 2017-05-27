@@ -1,0 +1,31 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<p><b>在输入框中输入一个姓名:</b></p>
+<form> 
+姓名: <input type="text" id="name" name="name">
+</form>
+<p>返回值: <span id="txtHint"></span></p>
+
+</body>
+<script src="jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$("#name").keyup(function(){
+	showHint($(this).val());
+});
+function showHint(str){
+	$.ajax({
+		type:"post",
+		url:"getname.php",
+		data:{
+			str:str
+		}
+	}).then(function(msg){
+		console.log(msg);
+		$("#txtHint").text(msg);
+	});
+}
+</script>
+</html>

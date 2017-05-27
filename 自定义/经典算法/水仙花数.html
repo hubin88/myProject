@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p>自幂数是指一个 n位数 ( n≥3 ),它的每个位上的数字的 n次幂之和等于它本身</p>
+		<pre>
+			一位自幂数：独身数
+			两位自幂数：没有
+			三位自幂数：水仙花数
+			四位自幂数：四叶玫瑰数
+			五位自幂数：五角星数
+			六位自幂数：六合数
+			七位自幂数：北斗七星数
+			八位自幂数：八仙数
+			九位自幂数：九九重阳数
+			十位自幂数：十全十美数
+		</pre>
+	</body>
+	<script type="text/javascript">
+	var a,b,c,d,e,f,g,h,i,j;
+		for (var n=100;n<10000000;n++) {
+			a=parseInt(n/1000000);//百万位
+			b=parseInt(n%1000000/100000);//十万位
+			c=parseInt(n%100000/10000);//万位
+			d=parseInt(n%10000/1000);//千位
+			e=parseInt(n%1000/100);//百位
+			f=parseInt(n%100/10);//十位
+			g=n%10;//个位
+			if (n<1000) {
+				if (n==Math.pow(e,3)+Math.pow(f,3)+Math.pow(g,3)) {
+					document.write("三位自幂数:"+n+"<br>");
+				}
+			}
+			if (n<10000) {
+				if (n==Math.pow(d,4)+Math.pow(e,4)+Math.pow(f,4)+Math.pow(g,4)) {
+					document.write("四位自幂数:"+n+"<br>");
+				}
+			}
+			if (n<100000) {
+				if(n==Math.pow(c,5)+Math.pow(d,5)+Math.pow(e,5)+Math.pow(f,5)+Math.pow(g,5)){
+					document.write("五位自幂数:"+n+"<br>");
+				}
+			}
+			if (n<1000000) {
+				if (n==Math.pow(b,6)+Math.pow(c,6)+Math.pow(d,6)+Math.pow(e,6)+Math.pow(f,6)+Math.pow(g,6)) {
+					document.write("六位自幂数:"+n+"<br>");
+				}
+			}
+			if (n<10000000) {
+				if (n==Math.pow(a,7)+Math.pow(b,7)+Math.pow(c,7)+Math.pow(d,7)+Math.pow(e,7)+Math.pow(f,7)+Math.pow(g,7)) {
+					document.write("七位自幂数:"+n+"<br>");
+				}
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.Box {
+				width: 500px;
+				position: relative;
+				margin: auto;
+				perspective:1000px;
+				perspective-origin: 80px 300px;
+				/*transform: scale(0.5);*/
+			}
+			
+			.cube {
+				position: relative;
+				width: 200px;
+				height: 300px;
+				margin: 300px auto;
+				transition: all 1s ease-in;
+				transform-style: preserve-3d;
+			}
+			
+			div.box {
+				position: relative;
+			}
+			
+			div.line {
+				background: red;
+				width: 200px;
+				height: 3px;
+				position: absolute;
+				transform: rotateZ(-45deg);
+				transform-origin:0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="Box">
+			<div class="cube">
+				<div class="box">
+					<div class="line"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(".box").eq(0).css("width",Math.SQRT2*200+"px");
+		$(".line").eq(0).clone().appendTo(".box").css({
+			"transform": "rotateZ(45deg)",
+			"transformOrigin": "0"
+		});
+		$(".line").eq(0).clone().appendTo(".box").css({
+			"transform": "rotateZ(45deg) translateY(-200px)",
+			"transformOrigin": "0"
+		});
+		$(".line").eq(0).clone().appendTo(".box").css({
+			"transform": "rotateZ(-45deg) translateY(200px)",
+		});
+		$(".box").eq(0).clone().appendTo(".cube").css({
+			"transform": "rotateX(90deg)",
+		})
+		$(".box").eq(0).clone().appendTo(".cube").css({
+			"transform": "rotateY(90deg)",
+		})
+	</script>
+	<script type="text/javascript">
+		var xAngle = 0,
+			yAngle = 0;
+		$(document).on('keydown', function(e) {
+			switch (e.keyCode) {
+				case 37: // left 
+					yAngle -= 45;
+					break;
+				case 38: // up 
+					xAngle += 45;
+					break;
+				case 39: // right 
+					yAngle += 45;
+					break;
+				case 40: // down 
+					xAngle -= 45;
+					break;
+			};
+			$(".cube").css("transform", "rotateX(" + xAngle + "deg) rotateY(" + yAngle + "deg)");
+		});
+	</script>
+</html>

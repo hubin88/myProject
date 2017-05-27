@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script src="../js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//$.ajax()操作完成后，如果使用的是低于1.5.0版本的jQuery，返回的是XHR对象，你没法进行链式操作；如果高于1.5.0版本，返回的是deferred对象，可以进行链式操作。
+		//可以看到，done()相当于success方法，fail()相当于error方法。采用链式写法以后，代码的可读性大大提高。
+		//		$.ajax("test.html").done(function() {
+		//			alert("哈哈，成功了！");
+		//		}).fail(function() {
+		//			alert("出错啦！");
+		//		}).done(function() {
+		//			alert("第二个回调函数！");
+		//		});
+		//deferred对象的另一大好处，就是它允许你为多个事件指定一个回调函数，这是传统写法做不到的。
+		//请看下面的代码，它用到了一个新的方法$.when()
+		//		$.when($.ajax("test1.html"), $.ajax("test2.html")).done(function() {
+		//			alert("哈哈，成功了！");
+		//		}).fail(function() {
+		//			alert("出错啦！");
+		//		});
+		//deferred对象的最大优点，就是它把这一套回调函数接口，从ajax操作扩展到了所有操作。也就是说，任何一个操作----不管是ajax操作还是本地操作，也不管是异步操作还是同步操作----都可以使用deferred对象的各种方法，指定回调函数。
+		//		var dtd = $.Deferred(); // 新建一个deferred对象
+		//		var wait = function(dtd) {　　　　
+		//			var tasks = function() {　　　　　　
+		//				alert("执行完毕！");　　　　　　
+		//				dtd.resolve(); // 改变deferred对象的执行状态
+		//			};　　　　
+		//			setTimeout(tasks, 3000);　　　　
+		//			return dtd;　　
+		//		};　
+		//		$.when(wait(dtd)).done(function() {
+		//			alert("哈哈，成功了！");
+		//		}).fail(function() {
+		//			alert("出错啦！");
+		//		});
+		//jQuery规定，deferred对象有三种执行状态----未完成，已完成和已失败。如果执行状态是"已完成"（resolved）,deferred对象立刻调用done()方法指定的回调函数；如果执行状态是"已失败"，调用fail()方法指定的回调函数；如果执行状态是"未完成"，则继续等待，或者调用progress()方法指定的回调函数
+		//有时为了省事，可以把done()和fail()合在一起写，这就是then()方法。
+		$.when($.ajax("test.html")).then(
+			function(data) {
+				alert(data);
+			},
+			function() {
+				alert("出错啦！")
+			});
+		//deferred.always(),这个方法也是用来指定回调函数的，它的作用是，不管调用的是deferred.resolve()还是deferred.reject()，最后总是执行。
+		$.ajax("test.html").always(function() {
+			alert("已执行！");
+		});
+	</script>
+
+</html>

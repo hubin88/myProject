@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<ol id="container"></ol>
+		<script type="text/template" id="person_template">
+			<% _.each(people, function(person) { %>
+			<li>
+				<%= person.name %>,
+				<%= person.age %>
+			</li>
+			<% }); %>
+		</script>
+	</body>
+	<script type="text/javascript">
+		//define Model
+		var Person = Backbone.Model.extend({
+			defaults: {
+				name: 'unknown',
+				age: 20
+			}
+		});
+
+		//define Collection
+		var PeopleCollection = Backbone.Collection.extend({
+			model: Person //like generic
+		});
+
+		//define View
+		var PeopleView = Backbone.View.extend({
+			el: '#container',
+			initialize: function(options) {
+				this.render();
+			},
+			render: function() {
+				var template = _.template($("#person_template").html());
+				var data = {
+					people: this.collection.toJSON()
+				};
+				this.$el.html(template(data)); //fill in data
+			}
+		});
+
+		//create collection instance
+		var persons = [{
+			name: 'Mohit Jain',
+			age: 23
+		}, {
+			name: 'Taroon Tyagi',
+			age: 25,
+		}];
+		var peopleCollection = new PeopleCollection(persons);
+		//create view and bind model
+		var peopleView = new PeopleView({
+			collection: peopleCollection
+		});
+	</script>
+
+</html>

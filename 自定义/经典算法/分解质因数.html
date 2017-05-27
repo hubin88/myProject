@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">将一个合数分解质因数</button>
+		<input type="text" name="txt" id="txt"/>
+	</body>
+	<script>
+		var flag=0;
+		document.getElementById("btn").onclick=function(){
+		var n=parseInt(document.getElementById("txt").value);
+			for (var i=2;i<=n;i++) {
+				if (n%i==0) {
+					flag++;
+					if(flag==1)
+						document.write(n+"="+i);
+					else
+						document.write("*"+i);
+					n/=i;
+					i--;
+				}
+			}
+			if (flag==1) {
+				document.write("为质数");
+			} else{
+				document.write("共有"+flag+"个质因数");
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div {
+			height: 200px;
+		}
+	</style>
+
+	<body>
+		<!--
+			object.scrollIntoView( [bAlignToTop]);
+			bAlignToTop 布尔型：true/false，默认参数不传则为true
+			true:对象的顶端与当前窗口的顶部对齐
+			false:对象的底端与当前窗口的顶部对齐
+		-->
+		<input type="button" id="button" value="点击我"/>
+		<div>1</div>
+		<div>2</div>
+		<div id="myobj">3</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+		<div>7</div>
+		<div>8</div>
+		<div>9</div>
+		<div>10</div>
+	</body>
+	<script type="text/javascript">
+	document.getElementById("button").onclick=function(){
+		document.getElementById("myobj").scrollIntoView();
+	}
+	</script>
+
+</html>

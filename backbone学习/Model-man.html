@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		(function($) {
+			var Man = window.Man = window.Man || {};
+			Man = Backbone.Model.extend({
+				initialize: function() {
+					alert('Hey, you create me!');
+					//初始化时绑定监听
+					this.on("change:name", function() {
+						var name = this.get("name");
+						alert("你改变了name属性为：" + name);
+					});
+					this.on("invalid", function(model, error) {
+						alert(error);
+					});
+				},
+				defaults: {
+					name: '张三',
+					age: '38'
+				},
+				validate: function(attributes) {
+					if(attributes.name == '') {
+						return "name不能为空！";
+					}
+				},
+				aboutMe: function() {
+					return '我叫' + this.get('name') + ',今年' + this.get('age') + '岁';
+				}
+			});
+			var man = new Man;
+			//			man.set({
+			//				name: 'the5fire',
+			//				age: '10'
+			//			}); //触发绑定的change事件，alert。
+			man.set({
+				name: ''
+			}, {
+				validate:true
+			}); //根据验证规则，弹出错误提示。
+			//			alert(man.get('name'));
+			//			alert(man.aboutMe());
+		})(jQuery);
+	</script>
+
+</html>

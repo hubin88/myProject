@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				display: block;
+				border: 1px solid #aaa;
+				margin: 10px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="" height=""></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var canvas = document.getElementById('myCanvas');
+			canvas.height = 600;
+			canvas.width = 600;
+			var context = canvas.getContext("2d");
+			var Radius = 100;
+			var Arc = {
+				x: Math.random() * (canvas.width - 2 * Radius) + Radius,
+				y: Math.random() * (canvas.height - 2 * Radius) + Radius,
+				vx: (Math.random() * 5 + 5) * Math.pow(-1, Math.floor(Math.random() * 2)),
+				vy: (Math.random() * 5 + 5) * Math.pow(-1, Math.floor(Math.random() * 2)),
+			};
+			setInterval(function() {
+				ball(context);
+				update(canvas.width, canvas.height);
+			}, 50);
+
+			function ball(context) {
+				context.clearRect(0, 0, canvas.width, canvas.height);
+				context.save();
+				context.beginPath();
+				context.fillStyle = "black";
+				context.fillRect(0, 0, canvas.width, canvas.height);
+				context.beginPath();
+				context.arc(Arc.x, Arc.y, Radius, 0, Math.PI * 2);
+				context.fillStyle = "white";
+				context.fill();
+				context.clip(); //把当前的绘图环境剪切为上面规划的封闭区域
+				context.font = "bold 150px Arial";
+				context.textAlign = "center";
+				context.textBaseline = "middle";
+				context.fillStyle = "#FF0000";
+				context.fillText("CANVAS", canvas.width / 2, canvas.height / 2);
+				context.restore();
+			}
+
+			function update(canvasWidth, canvasHeight) {
+				Arc.x += Arc.vx;
+				Arc.y += Arc.vy;
+				if (Arc.x - Radius <= 0) {
+					Arc.vx = -Arc.vx;
+					Arc.x = Radius;
+				}
+				if (Arc.x + Radius >= canvasWidth) {
+					Arc.vx = -Arc.vx;
+					Arc.x = canvasWidth - Radius;
+				}
+				if (Arc.y - Radius <= 0) {
+					Arc.vy = -Arc.vy;
+					Arc.y = Radius;
+				}
+				if (Arc.y + Radius >= canvasHeight) {
+					Arc.vy = -Arc.vy;
+					Arc.y = canvasHeight - Radius;
+				}
+			}
+		}
+	</script>
+
+</html>

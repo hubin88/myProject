@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/template" id="template">
+		<% _.each(datas,function(item){ %>
+			<div class="outer">
+				<%=item.name%>
+				<%=item.sex%>
+				<%=item.age%>
+			</div>
+		<% }); %>
+		<% for(var i=0,l=datas.length;i<l;i++){ %>
+			<div>
+				<%=datas[i].name%>
+				<%=datas[i].sex%>
+				<%=datas[i].age%>
+			</div>
+		<% }; %>
+	</script>
+	<script type="text/javascript">
+		var datas=[
+			{
+				name:"张三",
+				sex:"女",
+				age:25
+			},
+			{
+				name:"李四",
+				sex:"男",
+				age:28
+			},
+			{
+				name:"王五",
+				sex:"女",
+				age:24
+			},
+			{
+				name:"赵六",
+				sex:"男",
+				age:27
+			}
+		];
+	$("body").html(_.template($("#template").html(),datas));
+	</script>
+</html>

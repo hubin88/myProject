@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				display: block;
+				border: 1px solid #aaa;
+				margin: 10px auto;
+			}
+			#canvasWarp{
+				position: relative;
+			}
+			#controller{
+				background: rgba(0,0,100,0.5);
+				border-radius: 5px;
+				position: absolute;
+				left: 380px;
+				top: 10px;
+				padding: 10px;
+				color: white;
+			}
+			#controller span{
+				vertical-align: middle;
+			}
+			#title{
+				font-weight: bold;
+				margin: 5px;
+			}
+			#switch{
+				background: green;
+				border-radius: 3px;
+				padding: 5px 0;
+				font-size: 14px;
+				cursor: pointer;
+			}
+			#white,#black{
+				display: inline-block;
+				width: 30px;
+				height: 20px;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+			#white{
+				background: white;
+			}
+			#black{
+				background:black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="canvasWarp">
+			<canvas id="myCanvas" width="" height=""></canvas>
+			<div id="controller">
+				<div id="title">
+					Canvas绘图之旅
+				</div>
+				<span id="switch">停止运动</span>
+				<span id="white"></span>
+				<span id="black"></span>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var balls = [],
+				aBall;
+			var canvas = document.getElementById('myCanvas');
+			canvas.height = 600;
+			canvas.width = 600;
+			var context = canvas.getContext("2d");
+			var isMove = true;
+			var backColor="white";
+			//globalAlpha,不透明度。默认为1
+			context.globalAlpha = 0.8;
+			for (var i = 0; i < 100; i++) {
+				var R = Math.floor(Math.random() * 256);
+				var G = Math.floor(Math.random() * 256);
+				var B = Math.floor(Math.random() * 256);
+				var Radius = Math.random() * 20 + 20;
+				aBall = {
+					color: "rgb(" + R + "," + G + "," + B + ")",
+					radius: Radius,
+					x: Math.random() * (canvas.width - 2 * Radius) + Radius,
+					y: Math.random() * (canvas.height - 2 * Radius) + Radius,
+					vx: (Math.random() * 5 + 5) * Math.pow(-1, Math.floor(Math.random() * 2)),
+					vy: (Math.random() * 5 + 5) * Math.pow(-1, Math.floor(Math.random() * 2)),
+				};
+				balls[i] = aBall;
+			};
+			setInterval(function() {
+				draw(context);
+				if (isMove) {
+					update(canvas.width, canvas.height);
+				}
+			}, 50);
+			document.getElementById("switch").onclick=function(){
+				if(isMove){
+					isMove=false;
+					this.innerHTML="开始运动";
+				}else{
+					isMove=true;
+					this.innerHTML="停止运动";
+				}
+			};
+			document.getElementById("white").onclick=function(){
+				backColor="white";
+				return false;
+			};
+			document.getElementById("black").onclick=function(){
+				backColor="black";
+				return false;
+			};
+			function draw(context) {
+				context.clearRect(0, 0, canvas.width, canvas.height);
+				if (backColor=="black") {
+					context.fillStyle="black";
+					context.fillRect(0, 0, canvas.width, canvas.height);
+				}
+				for (var i = 0, l = balls.length; i < l; i++) {
+					//context.globalCompositeOperation="xor";
+					context.globalCompositeOperation = "lighter";
+					context.fillStyle = balls[i].color;
+					context.beginPath();
+					context.arc(balls[i].x, balls[i].y, balls[i].radius, 0, Math.PI * 2);
+					context.closePath();
+					context.fill();
+				}
+			}
+
+			function update(canvasWidth, canvasHeight) {
+				for (var i = 0, l = balls.length; i < l; i++) {
+					balls[i].x += balls[i].vx;
+					balls[i].y += balls[i].vy;
+					if (balls[i].x - balls[i].radius <= 0) {
+						balls[i].vx = -balls[i].vx;
+						balls[i].x = balls[i].radius;
+					}
+					if (balls[i].x + balls[i].radius >= canvasWidth) {
+						balls[i].vx = -balls[i].vx;
+						balls[i].x = canvasWidth - balls[i].radius;
+					}
+					if (balls[i].y - balls[i].radius <= 0) {
+						balls[i].vy = -balls[i].vy;
+						balls[i].y = balls[i].radius;
+					}
+					if (balls[i].y + balls[i].radius >= canvasHeight) {
+						balls[i].vy = -balls[i].vy;
+						balls[i].y = canvasHeight - balls[i].radius;
+					}
+				}
+			}
+		}
+	</script>
+
+</html>

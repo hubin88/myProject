@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+div{width:100px;height:100px;border-radius:100px; background:#F00;position:absolute;left:0;top:0;}
+</style>
+<script>
+onload=function()
+{
+	var oDiv=document.getElementsByTagName('div');
+	var speed,timer;
+	for(var i=0;i<oDiv.length;i++){
+			oDiv[i].speedx=20*Math.random();
+			oDiv[i].speedy=20*Math.random();
+			move(oDiv[i]);
+		}
+	function move(e)
+	{
+	timer=setInterval(function()
+		{
+		/*var l,h;
+		for(var m=0;m<oDiv.length;m++)
+			{
+			for(var n=0;n<oDiv.length;n++)
+				{
+					var l=Math.abs(oDiv[m].offsetLeft-oDiv[n].offsetLeft);
+					var h=Math.abs(oDiv[m].offsetTop-oDiv[n].offsetTop);
+				}		
+			}*/
+		 e.style.left=e.offsetLeft+e.speedx+"px";
+		 e.style.top=e.offsetTop+e.speedy+"px";
+		if(e.offsetLeft>=document.body.clientWidth-100)
+		{
+			e.speedx=-20*Math.random();toColor(e);toBorder(100*Math.random(),e);
+		};
+		if(e.offsetLeft<=0)
+		{
+			e.speedx=20*Math.random();toColor(e);toBorder(100*Math.random(),e);
+		};		
+		if(e.offsetTop>=700)
+		{
+			e.speedy=-20*Math.random();toColor(e);toBorder(100*Math.random(),e);
+		};	
+		if(e.offsetTop<=0)
+		{
+			e.speedy=20*Math.random();toColor(e);toBorder(100*Math.random(),e);
+		};
+		/*if(Math.pow(l,2)+Math.pow(h,2)<=4*Math.pow(100,2)
+		{
+			e.speedx=-20*Math.random();
+			e.speedy=-20*Math.random();
+		}*/
+		},30)
+	
+	}
+	function toColor(f)//变色
+	{		
+	 var system=16,color='#';
+	 for(var i=0;i<6;i++)
+	 color+=parseInt(Math.random()*system).toString(system);
+	 f.style.background=color;
+	}
+	function toBorder(speed,g)//变形
+	{
+	 g.style.borderRadius=speed+"px"
+	}
+}
+</script>
+</head>
+
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

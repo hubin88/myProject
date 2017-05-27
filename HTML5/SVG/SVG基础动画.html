@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body,
+			svg {
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 300px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<svg xmlns="http://www.w3.org/2000/svg">
+			<rect id="rectRed" x="100" y="100" width="100" height="50" fill="red"/>
+				<animate xlink:href="#rectRed" id="goright" attributeType="XML" attributeName="x" begin="0;goleft.end+1s" from="100" to="500" dur="1s" fill="freeze"/>
+				<animate xlink:href="#rectRed" id="goleft" attributeType="XML" attributeName="x" begin="goright.end+1s" from="500" to="100" dur="1s" fill="freeze"/>
+				<animate xlink:href="#rectRed" id="goleft" attributeType="XML" attributeName="fill" begin="0" to="green" dur="3s" fill="freeze"/>
+			<rect id="rectGreen" x="700" y="100" width="50" height="50" fill="green"/>
+				<animateTransform xlink:href="#rectGreen" attributeType="XML" attributeName="transform" type="rotate" begin="0s" dur="1s" from="0 725 125" to="30 725 125" fill="freeze" repeatCount="5"/>
+		</svg>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="-200 -200 400 400">
+			<rect id="rectBlue" x="-25" y="-25" width="50" height="50" fill="blue"/>
+				<animateMotion xlink:href="#rectBlue" path="M50 50L100 100A100 100 0 1 0 0 -100" begin="rectBlue.click" rotate="auto" dur="3s" fill="freeze"/>
+			<path d="M50 50L100 100A100 100 0 1 0 0 -100" stroke="black" fill="none" stroke-width="2" />
+			<rect x="-25" y="-25" width="50" height="50" fill="blue">
+				<animateMotion begin="1s" dur="3s" fill="freeze">
+					<mpath xlink:href="#path"></mpath>
+				</animateMotion>
+			</rect>
+			<path id="path" d="M-300 0 L-400 100" stroke="black" fill="none" stroke-width="2" />
+		</svg>
+	</body>
+
+</html>

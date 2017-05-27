@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		Array.prototype.intersect = function(b) {
+		  var flip = {};
+		  var res = [];
+		  for(var i=0; i< b.length; i++) flip[b[i]] = i;
+		  for(i=0; i<this.length; i++)
+		    if(flip[this[i]] != undefined) res.push(this[i]);
+		  return res;
+		}
+		var arr1=[1,2,3,4,5,5,"a","b","c"],arr2=[4,4,5,5,6,7,8,9,"c","a"];
+		document.write(arr1.intersect(arr2));
+		document.write("<br />")
+		document.write(arr2.intersect(arr1));
+	</script>
+</html>

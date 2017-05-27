@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#container {
+				display: flex;
+				margin: 50px auto 0;
+				width: 800px;
+				height: 500px;
+				border: solid 1px #ccc;
+				align-items: flex-end;
+				justify-content: space-around;
+			}
+			#container>div{
+				display: inline-block;
+				width: 20px;
+				font-size: 10px;
+				text-align: center;
+				margin: 0 2px;
+				background: red;
+				color: black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container">
+			<div style="height: 100px;"></div>
+		</div>
+	</body>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//获取2个数之间的随机整数
+		function getRandomNumber(lowValue, highValue) {
+			var choice = highValue - lowValue + 1;
+			return Math.floor(Math.random() * choice + lowValue);
+		}
+		var str="",H=$("#container").height();
+		for (var i=0;i<30;i++) {
+			var number=getRandomNumber(1,H);
+			str+="<div style=\"height:"+number+"px;\">"+number+"</div>";
+		}
+		$("#container").html(str);
+	</script>
+
+</html>

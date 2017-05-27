@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var s1="2";
+			var s2="z";
+			var b=false;
+			var o={ valueOf:function( ){return-1;}};
+			s1++;
+			s2++;
+			b++;
+			o--;
+			alert(s1);
+			alert(s2);
+			alert(b);
+			alert(o);
+			 var sum=function()
+			{
+			    return arguments[0]+arguments[1];
+			}
+			alert(sum(10,10));
+			function sayNum()
+			{
+				var num=666;
+				var sayAlert=function(){alert(num);}
+				num++;
+				return sayAlert;
+			}
+			var sayAlert=sayNum();
+			sayAlert();
+//			sayNum()();//这样调用也是可以的
+			function Person(name){
+				var name=name;
+				return function eat(food){
+					var eated=name+" eat "+food;
+					return function(dosomesting){
+						alert(eated+" "+dosomesting);
+					}
+				}
+			}
+			Person("cat")("mouse")("保护家园");
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

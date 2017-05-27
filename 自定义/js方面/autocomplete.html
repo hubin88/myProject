@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.active {
+				background: blue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="text" name="text" id="text" value="" />
+		<ul></ul>
+	</body>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var arr = ["wdqw", "egweg", "wefweft", "tert", "ert", "weqwe", "eqqwe", "qweqwe", "wqe", "wqeq", "dqdfef", "fgwegg", "regregu", "dwqdde", "fewggrg", "ggreg"];
+		var $index = 0;
+		$("input").on("keyup click", function(e) {
+			$("ul").show();
+			var value = $(this).val(),
+				text = '';
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i].indexOf(value) > -1) {
+					text += "<li>" + arr[i] + "</li>";
+				}
+			}
+			$("ul").html(text);
+			$("li").eq($index).addClass("active").siblings().removeClass("active");
+			$("li").on({
+				mouseover: function() {
+					$index = $(this).index();
+					$("li").eq($index).addClass("active").siblings().removeClass("active");
+				},
+				click: function() {
+					$("input").val($(this).text());
+					$("ul").hide();
+				}
+			});
+			switch (e.keyCode) {
+				case 38:
+					$index--;
+					if ($index < 0) {
+						$index = $("li").size() - 1;
+					}
+					$("li").eq($index).addClass("active").siblings().removeClass("active");
+					break;
+				case 40:
+					$index++;
+					if ($index > $("li").size() - 1) {
+						$index = 0;
+					}
+					$("li").eq($index).addClass("active").siblings().removeClass("active");
+					break;
+				case 13:
+					$("input").val($("li").eq($index).text());
+					$("ul").hide();
+					break;
+			}
+		});
+		$("input").on("blur", function() {
+			if ($.inArray($("input").val(), arr) == -1) {
+				arr.push($("input").val());
+			}
+		});
+	</script>
+
+</html>

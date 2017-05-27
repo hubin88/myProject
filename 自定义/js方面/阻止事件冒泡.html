@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+<style>
+	#div4{background: red;width: 400px;height: 400px;margin: 100px auto;}
+	#div3{background: green;width: 300px;height: 300px;}
+	#div2{background: blue;width: 200px;height: 200px;}
+	#div1{background: pink;width: 100px;height: 100px;}
+</style>
+<script src="jquery-1.11.2.min.js"></script>
+<script>
+$(function(){
+	$("#div1").click(function(){
+		alert("div1被点击了");
+	});
+	$("#div2").click(function(event){
+		alert("div2被点击了");
+		event.stopPropagation();
+	});
+	$("#div3").click(function(event){
+		event.preventDefault();
+		//return false;//阻止所有默认事件,此处相当于click事件被阻止
+		alert("div3被点击了");
+	});
+	$("#div4").click(function(){
+		alert("div4被点击了");
+	});
+})
+</script>
+	</head>
+	<body>
+		<div id="div4">
+			<div id="div3">
+				<div id="div2">
+					<div id="div1">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

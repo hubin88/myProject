@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/director.js" type="text/javascript" charset="utf-8"></script>
+		<script src="react-15.3.1/build/react-with-addons.js" type="text/javascript" charset="utf-8"></script>
+		<script src="react-15.3.1/build/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="react-15.3.1/build/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+	<script type="text/babel">
+	/**
+	 * 图书列表组件
+	 */
+	var Books = React.createClass({
+	  render: function() {
+	    return (
+	      <ul>
+	        <li key={1}><a href="#/books/book/1">活着</a></li>
+	        <li key={2}><a href="#/books/book/2">挪威的森林</a></li>
+	        <li key={3}><a href="#/books/book/3">从你的全世界走过</a></li>
+	      </ul>
+	    );
+	  }
+	});
+	/**
+	 * 单本图书组件
+	 */
+	var Book = React.createClass({
+	  render: function() {
+	    return (
+	      <article>
+	       <h1>这里是图书 {this.props.route} 为 的详情介绍</h1>
+	      </article>
+	    );
+	  }
+	});
+	/**
+	 * 电影列表组件
+	 */
+	var Movies = React.createClass({
+	  render: function() {
+	    return (
+	      <ul>
+	        <li key={1}><a href="#/movies/movie/1">煎饼侠</a></li>
+	        <li key={2}><a href="#/movies/movie/2">捉妖记</a></li>
+	        <li key={3}><a href="#/movies/movie/3">西游记之大圣归来</a></li>
+	      </ul>
+	    );
+	  }
+	});
+	
+	/**
+	 * 单部电影组件
+	 */
+	var Movie = React.createClass({
+	  render: function() {
+	    return (
+	      <article>
+	       <h1>这里是电影 {this.props.route} 为 的详情介绍</h1>
+	      </article>
+	    );
+	  }
+	});
+	
+	var Index = React.createClass({
+	  render: function() {
+	    return <h1>欢迎来到我的网站</h1>;
+	  }
+	});
+	//不用插件
+	/*var App = React.createClass({
+	  getInitialState:function() {
+	    return {
+	      route: window.location.hash.substr(1)
+	    }
+	  },
+	  componentDidMount:function() {
+	  	var _this=this;
+	    window.addEventListener('hashchange', function(){
+	      _this.setState({
+	        route: window.location.hash.substr(1)
+	      })
+	    })
+	  },
+	  render:function() {
+	    var Child;
+	    switch (this.state.route) {
+	      case '/books': Child = Books; break;
+	      case '/movies': Child = Movies; break;
+	      case '/books/book': Child = Book; break;
+	      case '/movies/movie': Child = Movie; break;
+	      default:      Child = Index;
+	    };
+	    return (
+	      <div>
+	        <h1>App</h1>
+	        <ul>
+	          <li><a href="#/movies">电影</a></li>
+	          <li><a href="#/books">图书</a></li>
+	        </ul>
+	        <Child/>
+	      </div>
+	    )
+	  }
+	});*/
+	//用路由插件
+	var App = React.createClass({
+	  getInitialState:function() {
+	    return {
+	      route: ""
+	    };
+	  },
+	  changeHandler:function(){
+	  	this.setState({
+	        route: window.location.hash.substr(1)
+	     });
+	  },
+	  componentDidMount:function() {
+	  	var _this=this;
+	    window.addEventListener('hashchange', function(){
+	    	_this.changeHandler();
+	    })
+	  },
+	  render:function() {
+	   var Child=Index,_this=this;
+	   var router = Router(
+		    {
+		    	"/books":function(){
+			    	Child = Books;
+		    	},
+		    	"/books/book/:id":function(id){
+		    		Child = Book;
+		    	},
+		    	"/movies":function(){
+		    		Child = Movies;
+		    	},
+		    	"/movies/movie/:id":function(id){
+		    		Child = Movie;
+		    	}
+		    }
+	    ).init();
+	    return (
+	      <div>
+	        <h1>App</h1>
+	        <ul>
+	          <li><a href="#/movies">电影</a></li>
+	          <li><a href="#/books">图书</a></li>
+	        </ul>
+	        <Child route={this.state.route}/>
+	      </div>
+	    )
+	  }
+	});
+	ReactDOM.render(<App />, document.getElementById('container'))
+	</script>
+</html>

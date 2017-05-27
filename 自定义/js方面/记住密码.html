@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		name:<input type="text" name="" id="name" value="" />
+		password:<input type="password" name="" id="pwd"/>
+		记住密码：<input type="checkbox" id="checkbox"/>
+		<input type="button" id="btn" value="登录" />
+	</body>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../自定义库/cummon.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		if (!isEmpty(getCookie("name"))) {
+			var visit=getCookie("name").split(",");
+			$("#name").val(visit[0]);
+			$("#pwd").val(visit[1]);
+			$("#checkbox").prop("checked",visit[2]);
+		}
+		$("#btn").click(function(){
+			if ($("#checkbox").prop("checked")==true) {
+				setCookie("name",[$("#name").val(),$("#pwd").val(),$("#checkbox").prop("checked")].join(","));
+			}
+			if ($("#checkbox").prop("checked")!=true) {
+				deleteCookie('name');
+			}
+		});
+	</script>
+
+</html>

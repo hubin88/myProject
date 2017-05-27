@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+div{float:left;margin:20px;}
+#div1{width:100px;height:100px;background:#F00;}
+#div2{width:200px;height:200px;background:#0F0;display:none;}
+</style>
+<script>
+onload=function(){
+	var oDiv1=document.getElementById('div1');	
+	var oDiv2=document.getElementById('div2');
+	var timer;
+	/*oDiv1.onmouseover=function(){
+		clearTimeout(timer);
+		oDiv2.style.display="block";
+		};
+	oDiv1.onmouseout=function(){
+		timer=setTimeout(function(){
+		oDiv2.style.display="none";},1000)
+		};
+	oDiv2.onmouseover=function(){
+		clearTimeout(timer);}; 
+	oDiv2.onmouseout=function(){
+		timer=setTimeout(function(){
+		oDiv2.style.display="none";},1000)
+		};*/
+	//下面是简写形式
+	oDiv1.onmouseover=oDiv2.onmouseover=function(){
+		clearTimeout(timer);
+		oDiv2.style.display="block";
+		};
+	oDiv1.onmouseout=oDiv2.onmouseout=function(){
+		timer=setTimeout(function(){
+		oDiv2.style.display="none";},1000)
+		};
+}
+</script>
+</head>
+			
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+</body>
+</html>

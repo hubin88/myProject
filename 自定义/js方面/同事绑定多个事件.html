@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.intro{
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<p>这是一段话</p>
+		<div id="">
+			另外一段话
+		</div>
+		<br/>
+		<div id="">
+			另外二段话
+		</div>
+	</body>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		//		多个事件绑定同一个函数
+			$("p").on("mouseover mouseout", function() {
+				$("p").toggleClass("intro");
+			});
+		//		多个事件绑定不同函数
+			$("div").on({
+				mouseover: function() {
+					$("body").css("background-color", "lightgray");
+				},
+				mouseout: function() {
+					$("body").css("background-color", "lightblue");
+				},
+				click: function() {
+					$("body").css("background-color", "yellow");
+				}
+			});
+		});
+	</script>
+
+</html>

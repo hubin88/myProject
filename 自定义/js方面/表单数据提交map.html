@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<form>
+			<input type="text" name="user" id="user" placeholder="用户名" />
+			<input type="tel" name="phone" id="phone" placeholder="电话" />
+			<input type="text" name="code" id="code" placeholder="验证码" />
+			<input type="email" name="email" id="email" placeholder="邮箱" />
+			<input type="password" name="pwd" id="pwd" placeholder="密码" />
+			<button id="submit">提交</button>
+		</form>
+	</body>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//map方法
+		$("#submit").click(function() {
+			var result = $("input").map(function() {
+				return ('"' + this.name + '":"' + this.value + '"');
+			}).get().join();
+			console.log(result);
+			var str = '{' + result + '}';
+			console.log(str);
+			var obj = JSON.parse(str);
+			console.log(obj);
+			var jsonStr = JSON.stringify(obj);
+			console.log(jsonStr);
+		});
+//		//$.fn.each方法
+//		$("#submit").click(function() {
+//			var results = [];
+//			$("input").each(function(index, data) {
+//				results.push('"' + this.name + '":"' + this.value + '"');
+//			});
+//			var str = '{' + results.join() + '}';
+//			console.log(str);
+//			var obj = JSON.parse(str);
+//			console.log(obj);
+//			var jsonStr = JSON.stringify(obj);
+//			console.log(jsonStr);
+//		});
+//		//$.each方法
+//		$("#submit").click(function() {
+//			var results = [];
+//			$.each($("input"), function(index, data) {
+//				results.push('"' + this.name + '":"' + this.value + '"');
+//			});
+//			var str = '{' + results.join() + '}';
+//			console.log(str);
+//			var obj = JSON.parse(str);
+//			console.log(obj);
+//			var jsonStr = JSON.stringify(obj);
+//			console.log(jsonStr);
+//		});
+	</script>
+
+</html>

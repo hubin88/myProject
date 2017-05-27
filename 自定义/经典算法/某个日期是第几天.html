@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p>判断今天是这一年的第几天</p>
+	</body>
+	<script type="text/javascript">
+		var sum = 0,
+				falg, year = new Date().getFullYear(),
+				month = new Date().getMonth()+1,
+				day = new Date().getDate();
+			var months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+			for (var i = 0; i < month - 1; i++) {
+				sum += months[i];
+			}
+			sum += day;
+			if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))
+				flag = 1;
+			else
+				flag = 0;
+			if (flag == 1 && month > 2)
+				sum++;
+			document.write(year + "年" + month + "月" + day + "日是该年中的第" + sum + "天");
+	</script>
+</html>

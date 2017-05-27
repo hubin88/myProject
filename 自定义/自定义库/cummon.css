@@ -1,0 +1,353 @@
+/*盒模型通用样式*/
+/*
+ 添加在父容器上的类
+ * */
+.boxflex {
+	display: -webkit-flex!important;
+	display: flex!important;
+}
+/*
+ flex-direction:row | row-reverse | column | column-reverse;属性决定主轴的方向（即项目的排列方向）
+ * */
+/*
+ 主轴为水平方向，起点在左端(默认)。
+ * */
+.direction-row{
+	-webkit-flex-direction:row;
+	flex-direction:row;
+}
+/*
+ 主轴为水平方向，起点在右端。
+ * */
+.direction-row-reverse{
+	-webkit-flex-direction:row-reverse;
+	flex-direction:row-reverse;
+}
+/*
+ 主轴为垂直方向，起点在上沿。
+ * */
+.direction-column{
+	-webkit-flex-direction:column;
+	flex-direction:column;
+}
+/*
+ 主轴为垂直方向，起点在下沿。
+ */
+.direction-column-reverse{
+	-webkit-flex-direction:column-reverse;
+	flex-direction:column-reverse;
+}
+/*
+ flex-wrap:nowrap | wrap | wrap-reverse;默认情况下，项目都排在一条线（又称"轴线"）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。
+ * */
+/*
+不换行（默认）。
+ * */
+.flex-warp-nowrap{
+	-webkit-flex-wrap:nowrap;
+	flex-wrap:nowrap;
+}
+/*
+ 换行，第一行在上方。
+ * */
+.flex-warp{
+	-webkit-flex-wrap:wrap;
+	flex-wrap:wrap;
+}
+/*
+换行，第一行在下方。
+ * */
+.flex-warp-reverse{
+	-webkit-flex-wrap:wrap-reverse;
+	flex-wrap:wrap-reverse;
+}
+/*
+ justify-content: flex-start | flex-end | center | space-between | space-around;属性定义了项目在主轴上的对齐方式。
+ * */
+/*
+左对齐（默认值）。
+ * */
+.justify-content-start{
+	-webkit-justify-content:flex-start;
+	justify-content:flex-start;
+}
+/*
+ 右对齐
+ * */
+.justify-content-end{
+	-webkit-justify-content:flex-end;
+	justify-content:flex-end;
+}
+/*
+ 居中
+ * */
+.justify-content-center{
+	-webkit-justify-content:center;
+	justify-content:center;
+}
+/*
+ 两端对齐，项目之间的间隔都相等
+ * */
+.justify-content-between{
+	-webkit-justify-content:space-between;
+	justify-content:space-between;
+}
+/*
+ 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+ * */
+.justify-content-around{
+	-webkit-justify-content:space-around;
+	justify-content:space-around;
+}
+/*
+ align-items: flex-start | flex-end | center | baseline | stretch;属性定义项目在交叉轴(与主轴垂直)上如何对齐。
+ * */
+/*
+交叉轴的起点对齐(top)。
+ * */
+.align-items-start{
+	-webkit-align-items:flex-start;
+	align-items:flex-start;
+}
+/*
+ 交叉轴的中点对齐(center)。
+ * */
+.align-items-center{
+	-webkit-align-items:center;
+	align-items:center;
+}
+/*
+ 交叉轴的终点对齐(bottom)。
+ * */
+.align-items-end{
+	-webkit-align-items:flex-end;
+	align-items:flex-end;
+}
+/*
+ 项目的第一行文字的基线对齐(baseline)。
+ * */
+.align-items-baseline{
+	-webkit-align-items:baseline;
+	align-items:baseline;
+}
+/*
+ 如果项目未设置高度或设为auto，将占满整个容器的高度（默认值）。
+ * */
+.align-items-stretch{
+	-webkit-align-items:strecth;
+	align-items:strecth;
+}
+/*
+ align-content: flex-start | flex-end | center | space-between | space-around | stretch;属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+ * */
+/*
+交叉轴的起点对齐(top)。
+ * */
+.align-content-start{
+	-webkit-align-content: flex-start;
+	align-content: flex-start;
+}
+/*
+ 交叉轴的中点对齐(center)。
+ * */
+.align-content-center{
+	-webkit-align-content: center;
+	align-content: center;
+}
+/*
+ 交叉轴的终点对齐(bottom)。
+ * */
+.align-content-end{
+	-webkit-align-content: flex-end;
+	align-content: flex-end;
+}
+/*
+ 与交叉轴两端对齐，轴线之间的间隔平均分布。
+ * */
+.align-content-between{
+	-webkit-align-content: space-between;
+	align-content: space-between;
+}
+/*
+ 每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+ * */
+.align-content-around{
+	-webkit-align-content: space-around;
+	align-content: space-around;
+}
+/*
+ 轴线占满整个交叉轴（默认值）。
+ * */
+.align-content-stretch{
+	-webkit-align-content: strecth;
+	align-content: strecth;
+}
+/*
+ 添加在项目上的类
+ * */
+/*
+align-self: auto | flex-start | flex-end | center | baseline | stretch;属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。该属性可能取6个值，除了auto，其他都与align-items属性完全一致。
+ * */
+.align-self-start{
+	-webkit-align-self: flex-start;
+	align-self: flex-start;
+}
+.align-self-center{
+	-webkit-align-self: center;
+	align-self: center;
+}
+.align-self-end{
+	-webkit-align-self: flex-end;
+	align-self: flex-end;
+}
+.align-self-baseline{
+	-webkit-align-self: baseline;
+	align-self: baseline;
+}
+.align-self-stretch{
+	-webkit-align-self: stretch;
+	align-self: stretch;
+}
+.flex_1 {
+	-webkit-flex: 1;
+	flex: 1;
+}
+.flex_2 {
+	-webkit-flex: 2;
+	flex: 2;
+}
+/*浮动*/
+
+.float_l{float: left;}
+.float_r{float: right;}
+
+/*清除浮动,添加在父级元素上*/
+.clearfloat:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfloat {
+	zoom: 1;
+}
+/* 去掉链接的虚线框 */
+a {
+	outline: none;
+	star: expression(this.onFocus=this.blur());
+}
+/*去除android浏览器下a/input等元素获得焦点时高亮边框*/
+a:focus,input:focus{ 
+    -webkit-tap-highlight-color:rgba(0,0,0,0); 
+    -webkit-user-modify:read-write-plaintext-only; 
+}
+
+/*pointer-events:auto——效果和没有定义pointer-events属性相同，鼠标不会穿透当前层。*/
+pointer-events:auto;
+/*pointer-events:none——元素不再是鼠标事件的目标，鼠标不再监听当前层而去监听下面的层中的元素。但是如果它的子元素设置了pointer-events为其它值，比如auto，鼠标还是会监听这个子元素的。*/
+pointer-events:none;
+
+/* 字母和单词换行设置，强制内容换行*/
+.break {
+	word-break: break-all;
+	word-wrap: break-word;
+}
+/* 字母和单词换行设置，强制内容不换行 */
+.nobreak {
+	word-break: keep-all;
+	word-wrap: normal;
+}
+
+/*文字内容超出当前容器宽度时，显示为省略号*/
+.ellipsis{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/*屏蔽双击选中文本*/
+.noselect{
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+}
+/*条件注释，在head标签前面加上*/
+/*<!--[if lt IE 7 ]><html class="ie6"><![endif]-->
+<!--[if IE 7 ]><html class="ie7"><![endif]-->
+<!--[if IE 8 ]><html class="ie8"><![endif]-->
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
+<!--STATUS OK -->*/
+/* 上三角 */
+.arrow-up {
+ width: 0;
+ height: 0;
+ border-left: 20px solid transparent;
+ border-right: 20px solid transparent;
+ border-bottom: 20px solid green;
+}
+ 
+/* 下三角 */
+.arrow-down {
+ width: 0;
+ height: 0;
+ border-left: 20px solid transparent;
+ border-right: 20px solid transparent;
+ border-top: 20px solid orange;
+}
+ 
+/* 右三角 */
+.arrow-right {
+ width: 0;
+ height: 0;
+ border-top: 20px solid transparent;
+ border-bottom: 20px solid transparent;
+ border-left: 20px solid blue;
+}
+ 
+/* 左三角 */
+.arrow-left {
+ width: 0;
+ height: 0;
+ border-top: 20px solid transparent;
+ border-bottom: 20px solid transparent;
+ border-right: 20px solid silver;
+}
+/* -----------------------  wait ------------------------ */
+
+.loading {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	background: url('Images/loading.gif') no-repeat center center;
+	background-size: 100%;
+	background-color: transparent;
+	left: 50%;
+	top: 50%;
+	z-index: 999;
+	display: none;
+}
+
+
+/* ----------------------- tipsMessage --------------------------- */
+
+.tips {
+	position: absolute;
+	top: 62px;
+	margin: 0 10px;
+	min-width: 120px;
+	padding: 5px 10px;
+	background-color: rgba(87, 84, 82, 0.9);
+	z-index: 9999;
+	border-radius: 5px;
+	border: 2px solid rgba(40, 40, 40, 0.8);
+}
+
+.tips .single {
+	line-height: 30px;
+	text-align: center;
+	color: white;
+}

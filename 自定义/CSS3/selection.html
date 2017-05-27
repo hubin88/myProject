@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			::selection{
+				background: red;
+				color:blue;
+			}
+			::-moz-selection{
+				background: red;
+				color:blue;
+			}
+			b:only-child{
+				color:orange;
+			}
+		</style>
+	</head>
+	<body>
+		<p><b>“::selection”</b>伪元素是用来匹配突出显示的文本。<span>浏览器默认情况下</span>，选择网站文本是深蓝的背景，白色的字体，
+有的设计要求不使用上图那种浏览器默认的突出文本效果，需要一个与众不同的效果，此时“::selection”伪元素就非常的实用。不过在Firefox浏览器还需要添加前缀。</p>
+		<p><b>“:only-child”</b>选择器选择的是父元素中只有一个子元素，而且只有唯一的一个子元素。也就是说，匹配的元素的父元素中仅有一个子元素，而且是一个唯一的子元素。</p>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+html,body,div,p,span,img{
+	margin: 0;
+	padding: 0;
+}
+img.lightBox-start{
+	width: 100px;
+	height: 100px;
+}
+#lightBox-mask{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(images/opacity.png) repeat left top;
+	z-index: 999;	
+}
+#lightBox-popUp{
+	display: none;
+	position: fixed;
+	left: 50%;
+	top: 0;
+	background-color: #fff;
+	z-index: 1000;
+}
+#lightBox-popUp .lightBox-pic-view{
+	position: relative;
+	border: solid 5px #fff;
+	border-radius: 3px;
+	overflow: hidden;
+	background: url(images/loading.gif) no-repeat center center;
+}
+#lightBox-popUp .lightBox-pic-view img{
+	display: block;
+}
+#lightBox-popUp .lightBox-pic-view .lightBox-btn{
+	position: absolute;
+	top: 0;
+	width: 30%;
+	height: 100%;
+	z-index: 1;
+	cursor: pointer;
+	background: url(images/transparent.png) repeat left top;/*兼容ＩＥ下没有背景的时候获取事件失效*/
+}
+#lightBox-popUp .lightBox-pic-view .lightBox-prev-btn{
+	left: 0;
+}
+#lightBox-popUp .lightBox-pic-view .lightBox-next-btn{
+	right: 0;
+}
+#lightBox-popUp .lightBox-pic-view .lightBox-prev-btn-show{
+	background: url(images/prev.png) no-repeat left center;
+}
+#lightBox-popUp .lightBox-pic-view .lightBox-next-btn-show{
+	background: url(images/next.png) no-repeat right center;
+}
+#lightBox-popUp .lightBox-pic-view .lightBox-pic-caption{
+	display: none;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: url(images/opacity.png) repeat left top;
+}
+#lightBox-popUp .lightBox-pic-view .lightBox-pic-caption .lightBox-caption-area{
+	padding: 10px 5px;
+	color: #fff;
+}
+#lightBox-popUp .lightBox-pic-view .lightBox-pic-caption .lightBox-caption-area .lightBox-pic-index{
+	color: #999;
+}
+#lightBox-popUp .lightBox-pic-view .lightBox-pic-caption .lightBox-btn-close{
+	position: absolute;
+	right: 5px;
+	top: 15px;
+	width: 27px;
+	height: 27px;
+	background: url(images/close.png) no-repeat center center;
+	z-index: 2;
+}

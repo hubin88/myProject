@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/director.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0
+			}
+			
+			body {
+				width: 100%;
+				height: 100%;
+				background: #3d72b8
+			}
+			
+			#baidunews {
+				width: 40px;
+				height: 40px;
+				background: red;
+				display: block;
+				margin: 50px;
+			}
+			
+			#tweibo {
+				width: 40px;
+				height: 40px;
+				background: green;
+				display: block;
+				margin: 50px;
+			}
+		</style>
+		<body>
+		<a href="#/baidunews" id="baidunews" title="百度新闻"></a>
+		<a href="#/time" id="tweibo" title="当前时间"></a>
+		<script>
+			//定义路由
+			var route = {
+				"/time": nowtime,
+				"/baidunews": [showframe, getbaidunew]
+			}
+			//初始化路由
+			var router = Router(route)
+			router.init();
+			//定义显示当前时间的回调函数
+			function nowtime() {
+				var now = new Date();
+				var y = now.getFullYear();
+				var m = now.getMonth() + 1;
+				var d = now.getDate();
+				var h = now.getHours();
+				var mi = now.getMinutes();
+				var s = now.getSeconds();
+				alert("现在时间\n" + y + "年" + m + "月" + d + "日 " + h + "时" + mi + "分" + s + "秒");
+
+			}
+			//定义显示浏览器框架的函数
+			function showframe() {
+				var f = document.createElement("div");
+				f.style.width = "985px";
+				f.style.height = "500px";
+				f.style.position = "absolute";
+				f.style.top = "50px";
+				f.style.left = "200px";
+				f.style.background = "white";
+				f.style.border = "2px solid #ccc";
+				//关闭按钮
+				var close = document.createElement("span");
+				close.style.position = "absolute";
+				close.style.right = "5px";
+				close.style.cursor = "pointer";
+				close.style.marginRight = "5px";
+				close.onclick = function() {
+					document.body.removeChild(f);
+				}
+				close.innerHTML = "X";
+				//加载站外的iframe
+				var win = document.createElement("iframe");
+				win.id = "myiframe";
+				win.frameBorder = 0;
+				win.style.width = "100%";
+				win.style.height = "100%";
+				f.appendChild(close);
+				f.appendChild(win);
+				document.body.appendChild(f);
+			}
+			//定义加载百度新闻网页的函数
+			function getbaidunew() {
+				document.getElementById("myiframe").src = "http://news.baidu.com/";
+			}
+		</script>
+		</body>
+</html>

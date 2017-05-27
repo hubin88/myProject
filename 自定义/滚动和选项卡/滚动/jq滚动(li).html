@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			div {
+				width: 300px;
+				height: 190px;
+				overflow: hidden;
+				margin: 50px auto;
+				position: relative;
+			}
+			
+			ul {
+				height: 190px;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			li {
+				width: 300px;
+				display: inline-block;
+				position: absolute;
+				top: 0;
+			}
+			img {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<ul>
+				<li><img src="1.jpg"></li>
+				<li><img src="2.jpg"></li>
+				<li><img src="3.jpg"></li>
+				<li><img src="4.jpg"></li>
+				<li><img src="5.jpg"></li>
+				<li><img src="6.jpg"></li>
+			</ul>
+		</div>
+	</body>
+	<script src="../../js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var l = $("li").length,speed=-5;
+		$("ul").width($("li").width() * l);
+		for (var i = 0; i < l; i++) {
+			$("li").eq(i).css('left', $("li").eq(i).width() * i);
+		}
+		function move() {
+			for (var i = 0; i < l; i++) {
+				$("li").eq(i).css('left', $("li").eq(i).position().left + speed);
+			}
+			if ($("li").first().position().left < -$("li").width()) {
+				$("li").first().css('left', $("li").width() * (l - 1)).appendTo($("ul"));
+			}
+		}
+		var timer = setInterval(move, 30);
+		$("div").hover(function() {
+			clearInterval(timer);
+		}, function() {
+			timer = setInterval(move, 30);
+		})
+	</script>
+
+</html>

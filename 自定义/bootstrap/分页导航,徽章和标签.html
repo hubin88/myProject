@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css" />
+	</head>
+
+	<body>
+		<ul class="pagination pagination-lg">
+			<li><a href="#">&laquo;第一页</a></li>
+			<li><a href="#">11</a></li>
+			<li><a href="#">12</a></li>
+			<li class="active"><a href="#">13</a></li>
+			<li><a href="#">14</a></li>
+			<li><a href="#">15</a></li>
+			<li class="disabled"><a href="#">最后一页&raquo;</a></li>
+		</ul>
+
+		<ul class="pagination">
+			<li><a href="#">&laquo;第一页</a></li>
+			<li><a href="#">11</a></li>
+			<li><a href="#">12</a></li>
+			<li class="active"><a href="#">13</a></li>
+			<li><a href="#">14</a></li>
+			<li><a href="#">15</a></li>
+			<li class="disabled"><a href="#">最后一页&raquo;</a></li>
+		</ul>
+		<ul class="pagination pagination-sm">
+			<li><a href="#">&laquo;第一页</a></li>
+			<li><a href="#">11</a></li>
+			<li><a href="#">12</a></li>
+			<li class="active"><a href="#">13</a></li>
+			<li><a href="#">14</a></li>
+			<li><a href="#">15</a></li>
+			<li class="disabled"><a href="#">最后一页&raquo;</a></li>
+		</ul>
+		<!--左右对齐-->
+		<ul class="pager">
+			<li class="previous"><a href="#">&laquo;上一页</a></li>
+			<li class="next"><a href="#">下一页&raquo;</a></li>
+		</ul>
+		<!--禁止状态-->
+		<ul class="pager">
+			<li class="disabled"><span>&laquo;上一页</span></li>
+			<li><a href="#">下一页&raquo;</a></li>
+		</ul>
+		<h3>Example heading <span class="label label-danger">New</span></h3>
+		<!--改变sup的top值可以调整位置-->
+		<h3>Example heading <sup style="top:-1em;"><span class="label label-danger">New</span></sup></h3>
+		<span class="label label-default">默认标签</span>
+		<span class="label label-primary">主要标签</span>
+		<span class="label label-success">成功标签</span>
+		<span class="label label-info">信息标签</span>
+		<span class="label label-warning">警告标签</span>
+		<span class="label label-danger">错误标签</span>
+		<!--徽章.badge-->
+		<div class="navbar navbar-default" role="navigation">
+			<div class="navbar-header">
+				<a href="##" class="navbar-brand">慕课网</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="##">网站首页</a></li>
+				<li><a href="##">系列教程<span class="badge">0</span></a></li>
+				<!--当没有内容的时候隐藏-->
+				<li><a href="##">名师介绍<span class="badge"></span></a></li>
+				<li><a href="##">成功案例<span class="badge pull-left">23</span></a></li>
+				<li><a href="##">关于我们<sub><span class="badge">50</span></sub></a></li>
+			</ul>
+		</div>
+		<!--nav-pills导航条勋章-->
+		<ul class="nav nav-pills">
+			<li class="active"><a href="#">Home <span class="badge">42</span></a></li>
+			<li><a href="#">Profile</a></li>
+			<li><a href="#">Messages <span class="badge">3</span></a></li>
+		</ul>
+		<br />
+		<ul class="nav nav-pills nav-stacked" style="max-width: 260px;">
+			<li class="active">
+				<a href="#">
+					<span class="badge pull-right">42</span> Home
+				</a>
+			</li>
+			<li><a href="#">Profile</a></li>
+			<li>
+				<a href="#">
+					<span class="badge pull-right">3</span> Messages
+				</a>
+			</li>
+		</ul>
+		<br />
+		<!--按钮勋章-->
+		<button class="btn btn-primary" type="button">
+			Messages <span class="badge">4</span>
+		</button>
+	</body>
+
+	<script src="bootstrap-3.3.5-dist/js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="bootstrap-3.3.5-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

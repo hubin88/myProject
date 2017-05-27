@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				position: relative;
+			}
+			div.rotate{
+				position: absolute;
+				left: -25px;
+				top: 75px;
+				background: green;
+				width: 50px;
+				height: 50px;
+				border-radius:50% ;
+				transform-origin: 125px 25px;
+			}
+			div#origin{
+				position: relative;
+				width: 200px;
+				height: 200px;
+				border-radius: 50%;
+				margin: 200px auto;
+				border: 1px solid black;
+			}
+			div.line{
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				height: 100px;
+				width: 200px;
+				height: 1px;
+				background: red;
+				transform-origin: 0 0;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="origin">
+			<div class="rotate"></div>
+			<div class="rotate"></div>
+			<div class="rotate"></div>
+			<div class="rotate"></div>
+			<div class="rotate"></div>
+			<div class="rotate"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+		</div>
+	</body>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		for (var i=0;i<$(".line").length;i++) {
+			$(".line").eq(i).css("transform","rotateZ("+i*60+"deg)");
+			$(".rotate").eq(i).css("transform","rotateZ("+i*60+"deg)");
+		} 
+	</script>
+</html>

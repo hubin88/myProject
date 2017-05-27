@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#experiment {
+				-webkit-perspective: 800px;
+				-moz-perspective: 800px;
+				-o-perspective: 800px;
+				perspective: 800px;
+				-webkit-perspective-origin: 50% 200px;
+				-moz-perspective-origin: 50% 200px;
+				-o-perspective-origin: 50% 200px;
+				perspective-origin: 50% 50%;
+			}
+			
+			#cube {
+				position: relative;
+				margin: 100px auto;
+				height: 400px;
+				width: 400px;
+				-webkit-transition: -webkit-transform 2s linear;
+				-moz-transition: -moz-transform 2s linear;
+				-o-transition: -o-transform 2s linear;
+				transition: transform 2s linear;
+				-webkit-transform-style: preserve-3d;
+				-moz-transform-style: preserve-3d;
+				-o-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			
+			.face {
+				border: 1px solid red;
+				position: absolute;
+				height: 360px;
+				width: 360px;
+				padding: 20px;
+				color: white;
+				font-size: 100px;
+				text-align: center;
+				line-height: 360px;
+				background-color: rgba(50, 50, 50,0.5);
+			}
+			
+			#cube .one {
+				-webkit-transform: rotateX(90deg) translateZ(200px);
+				-moz-transform: rotateX(90deg) translateZ(200px);
+				-o-transform: rotateX(90deg) translateZ(200px);
+				transform: rotateX(90deg) translateZ(200px);
+			}
+			
+			#cube .two {
+				-webkit-transform: translateZ(200px);
+				-moz-transform: translateZ(200px);
+				-o-transform: translateZ(200px);
+				transform: translateZ(200px);
+			}
+			
+			#cube .three {
+				-webkit-transform: rotateY(90deg) translateZ(200px);
+				-moz-transform: rotateY(90deg) translateZ(200px);
+				-o-transform: rotateY(90deg) translateZ(200px);
+				transform: rotateY(90deg) translateZ(200px);
+			}
+			
+			#cube .four {
+				-webkit-transform: rotateY(180deg) translateZ(200px);
+				-moz-transform: rotateY(180deg) translateZ(200px);
+				-o-transform: rotateY(180deg) translateZ(200px);
+				transform: rotateY(180deg) translateZ(200px);
+			}
+			
+			#cube .five {
+				-webkit-transform: rotateY(-90deg) translateZ(200px);
+				-moz-transform: rotateY(-90deg) translateZ(200px);
+				-o-transform: rotateY(-90deg) translateZ(200px);
+				transform: rotateY(-90deg) translateZ(200px);
+			}
+			
+			#cube .six {
+				-webkit-transform: rotateX(-90deg) translateZ(200px);
+				-moz-transform: rotateX(-90deg) translateZ(200px);
+				-o-transform: rotateX(-90deg) translateZ(200px);
+				transform: rotateX(-90deg) translateZ(200px);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="experiment">
+			<div id="cube">
+				<div class="face one">
+					上
+				</div>
+				<div class="face two">
+					前
+				</div>
+				<div class="face three">
+					右
+				</div>
+				<div class="face four">
+					后
+				</div>
+				<div class="face five">
+					左
+				</div>
+				<div class="face six">
+					下
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var xAngle = 0,
+			yAngle = 0,
+			zAngle = 0;
+		document.addEventListener('keydown', function(e) {
+			switch (e.keyCode) {
+				case 37: // left 
+					yAngle -= 90;
+					break;
+				case 38: // up 
+					xAngle += 90;
+					break;
+				case 39: // right 
+					yAngle += 90;
+					break;
+				case 40: // down 
+					xAngle -= 90;
+					break;
+				case 109:
+					zAngle += 90;
+					break;
+				case 107:
+					zAngle -= 90;
+					break;
+			};
+			document.getElementById("cube").style.transform = "rotateX(" + xAngle + "deg) rotateY(" + yAngle + "deg) rotateZ(" + zAngle + "deg)";
+		}, false);
+	</script>
+
+</html>

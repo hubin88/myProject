@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+	</body>
+	<script src="Js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Js/cummon.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Js/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		Ajax("http://66.66.66.52/BIService/BiServlet",
+			JSON.stringify({
+				"en": 0,
+				"cmd": {
+					"md": "01",
+					"fc": "001",
+					"uname": "13588888888",
+					"pwd": hex_md5("123456"),
+					"en": 1,
+					"pkey": "PC",
+					"ser": 1,
+					"bm": "1",
+					"ur": 1,
+					"urm": "1",
+					"ip": "123"
+				}
+			}),
+			function(msg) {
+				var token = msg.data.token;
+				document.write(token);
+				console.log(msg);
+			}
+		);
+	</script>
+
+</html>

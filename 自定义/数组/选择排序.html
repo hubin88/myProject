@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<script type="text/javascript">
+onload=function()
+{	var n=1;
+	function select_sort(arr)
+	{	
+		var len=arr.length;
+		for(var i=0;i<len;i++)
+		{
+			for(var j=i+1;j<len;j++)
+			{	
+				document.write(arr+"第"+n+++"次循环"+"<br>");
+				if(arr[i]>arr[j])
+				{	
+					var x=arr[i];
+					arr[i]=arr[j];
+					arr[j]=x;
+				}
+			}
+		}
+		return arr;
+	};
+	var arr=[132,542,646,465,469,16,12,16,13,13];
+	document.write(arr+"<br>");
+	select_sort(arr);
+}
+</script>
+</head>
+<body>
+	
+</body>
+</html>

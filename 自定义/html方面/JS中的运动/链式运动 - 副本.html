@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>无标题文档</title>
+		<style>
+			div {
+				width: 200px;
+				height: 200px;
+				border: #F00 solid 1px;
+				background: #0F0;
+				float: left;
+				margin: 20px;
+			}
+		</style>
+		<script src="../运动框架3.js"></script>
+		<script>
+			onload = function() {
+				var oDiv = document.getElementsByTagName('div');
+				oDiv[0].onmouseover = function() {
+					startMove(oDiv[0], {
+						width: 400,
+						height: 400,
+						opacity: 30,
+						borderRadius: 200
+					}, function() {
+						startMove(oDiv[1], {
+							width: 400,
+							height: 400,
+							opacity: 30,
+							borderRadius: 200
+						});
+					});
+				};
+				oDiv[0].onmouseout = function() {
+					startMove(oDiv[0], {
+						width: 200,
+						height: 200,
+						opacity: 100,
+						borderRadius: 0
+					}, function() {
+						startMove(oDiv[1], {
+							width: 200,
+							height: 200,
+							opacity: 100,
+							borderRadius: 0
+						});
+					});
+				};
+			}
+		</script>
+	</head>
+
+	<body>
+		<div></div>
+		<div></div>
+	</body>
+
+</html>

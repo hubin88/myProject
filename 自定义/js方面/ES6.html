@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+
+</html>
+<!--let-->
+<!--<script type="text/javascript">
+	{
+		let a = 10; //ES6新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。
+		var b = 5;
+	}
+	//	console.log(a); //出错，未定义
+	{
+		let a = [];
+		for(let i = 0; i < 10; i++) { //变量i是let声明的，当前的i只在本轮循环有效，所以每一次循环的i其实都是一个新的变量，所以最后输出的是6。
+			a[i] = function() {
+				console.log(i);
+			};
+		}
+		a[6](); // 6
+	} {
+		//		console.log(c);//let不像var那样会发生“变量提升”现象。所以，变量一定要在声明后使用，否则报错。
+		let c = 1;
+	}
+	var tmp = "hu"; {
+//		tmp = "bin"; //总之，在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”
+		let tmp;
+	}
+	
+	//let不允许在相同作用域内，重复声明同一个变量。不能在函数内部重新声明参数。
+	function hu() {
+		let a = 10;// 报错
+		var a = 1;
+	}
+	function bin(c,d) {
+		let a = 10;
+		let a = 1;// 报错
+		let c;// 报错
+		{
+			let d;//不报错
+		}
+	}
+	const PI=3.14;//const声明一个只读的常量。一旦声明，常量的值就不能改变。const一旦声明变量，就必须立即初始化，不能留到以后赋值。其他同let
+</script>-->
+<!--变量的解构赋值-->
+<script type="text/javascript">
+//本质上，这种写法属于“模式匹配”，只要等号两边的模式相同，左边的变量就会被赋予对应的值.如果解构不成功，变量的值就等于undefined。
+//数组解构赋值
+	var [a, b, c] = [1, 2, 3];
+	let [foo, [[bar], baz]] = [1, [[2], 3]];
+	foo // 1
+	bar // 2
+	baz // 3
+	console.log(foo,bar,baz)
+	let [, , third] = ["foo", "bar", "baz"];
+	third // "baz"
+
+	let [x, , y] = [1, 2, 3];
+	x // 1
+	y // 3
+
+	let [head, ...tail] = [1, 2, 3, 4];
+	head // 1
+	tail // [2, 3, 4]
+
+	let [d, e, ...f] = ['a'];
+	d // "a"
+	e // undefined
+	f // []
+	
+//	解构赋值允许指定默认值。
+	var [foo = true] = [];
+	foo // true
+
+	[x, y = 'b'] = ['a']; // x='a', y='b'
+	[x, y = 'b'] = ['a', undefined]; // x='a', y='b'
+	
+	var [x = 1] = [undefined];
+	x // 1
+
+	var [x = 1] = [null];
+	x // null
+	
+	function f() {
+	  console.log('aaa');
+	}
+	let [x = f()] = [1];//如果默认值是一个表达式，那么这个表达式是惰性求值的，即只有在用到的时候，才会求值。
+	x//1---上面代码中，因为x能取到值，所以函数f根本不会执行。
+//对象解构赋值
+	var { bar, foo } = { foo: "aaa", bar: "bbb" };
+	foo // "aaa"
+	bar // "bbb"
+	
+	var { baz } = { foo: "aaa", bar: "bbb" };
+	baz // undefined
+</script>

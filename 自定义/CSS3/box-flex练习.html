@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		 	*{border: none;}
+			#box{
+				height: 200px;
+				width: 800px;
+				background: red;
+				display: -moz-box;
+				display: -webkit-box;
+			}
+			.div1{
+				display: block;
+				height: 200px;
+				width: 100px;
+				background: green;
+			}
+			.div2{
+				display: block;
+				height: 200px;
+				-moz-box-flex: 1;
+				-webkit-box-flex: 1;
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<i class="div1">
+				第一个div
+			</i>
+			<input type="text" class="div2" name="" id="" value="这是输入框" />
+		</div>
+	</body>
+</html>

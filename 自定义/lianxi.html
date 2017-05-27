@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	//获取时间戳的 方法
+		var start=Date.now();
+		document.write(start+"<br>");
+		var s=new Date().getTime();
+		document.write(s+"<br>");
+		var t=new Date().valueOf();
+		document.write(t+"<br>");
+		var stop=+new Date(2016,5,16);
+		document.write(stop+"<br>");
+		document.write(new Date().toDateString()+"<br>");
+		document.write(new Date().toTimeString()+"<br>");
+		document.write(new Date().toUTCString()+"<br>");
+	//
+//	function sum(a,b){
+//		return a+b;
+//	}
+	var sum=function(a,b){
+		return a+b;
+	}
+	document.write(sum(10,10)+"<br>");
+	var anotherSum=sum;
+	document.write(anotherSum(10,10)+"<br>");
+	sum=null;
+	document.write(anotherSum(10,10)+"<br>");
+	</script>
+</html>

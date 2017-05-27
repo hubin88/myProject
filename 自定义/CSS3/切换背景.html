@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			html,body {
+			  height: 100%;
+			}
+			img.bg {
+			  height: 100%;
+			  width: 100%;
+			  position: fixed;
+			  top: 0;
+			  left: 50%;
+			  z-index:1;
+			  -webkit-transform: translateX(-50%);
+			  -moz-transform: translateX(-50%);
+			  -o-transform: translateX(-50%);
+			  -ms-transform: translateX(-50%);
+			}
+			.slider {
+			  position: absolute;
+			  width: 100%;
+			  text-align: center;
+			  z-index: 2;
+			  bottom: 100px;
+			}
+			.slider li {
+			  display: inline-block;
+			  width: 170px;
+			  height: 130px;
+			  margin-right: 10px;
+			}
+			.slider a {
+			  display: inline-block;
+			  width: 170px;
+			  padding-top: 70px;
+			  padding-bottom: 20px;
+			  position: relative;
+			  cursor: pointer;
+			  border: 2px solid #fff;
+			  border-radius: 5px;
+			  vertical-align: top;
+			  color: #fff;
+			  text-decoration: none;
+			  font-size: 22px;
+			  z-index: 1000;
+			  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.8),-2px -2px 1px rgba(0, 0, 0, 0.3),-3px -3px 1px rgba(0, 0, 0, 0.3);
+			}
+			li:nth-child(1) a {
+			  background-color: #02646e;
+			}
+			li:nth-child(2) a {
+			  background-color: #eb0837;
+			}
+			li:nth-child(3) a {
+			  background-color: #67b374;
+			}    
+			li:nth-child(4) a {
+			  background-color: #e6674a;
+			}    
+			li:nth-child(5) a {
+			  background-color: #e61061;
+			}
+			.slider a::after {
+			  content:"";
+			  display: block;
+			  height: 120px;
+			  width: 120px;
+			  border: 5px solid #fff;
+			  border-radius: 50%;
+			  position: absolute;
+			  left: 50%;
+			  margin-left: -60px;
+			  z-index: 2;
+			  top: -80px;
+			}
+			li:nth-child(1) a::after {
+			  background: url(1.jpg) no-repeat center;
+			}
+			li:nth-child(2) a::after {
+			  background: url(2.jpg) no-repeat center;
+			}
+			li:nth-child(3) a::after {
+			  background: url(3.jpg) no-repeat center;
+			}
+			li:nth-child(4) a::after {
+			  background: url(4.jpg) no-repeat center;
+			}
+			li:nth-child(5) a::after {
+			  background: url(5.jpg) no-repeat center;
+			}
+			.slider a::before {
+			  content:"";
+			  display: block;
+			  height: 120px;
+			  width: 120px;
+			  border: 5px solid #fff;
+			  border-radius: 50%;
+			  position: absolute;
+			  left: 50%;
+			  margin-left: -60px;
+			  z-index: 3;
+			  top: -80px;
+			  background: rgba(0,0,0,0.3);
+			}
+			.slider a:hover::before {
+			  opacity:0;
+			}
+			/*设置背景图片从左向右移入显示的动画效果*/
+            /* Slide Left */
+           @-webkit-keyframes "slideLeft"{
+           	from{left:-50%;}
+           	to{left:50%;}
+           }
+           @-moz-keyframes "slideLeft"{
+           	from{left:-50%;}
+           	to{left:50%;}
+           }
+           @-o-keyframes "slideLeft"{
+           	from{left:-50%;}
+           	to{left:50%;}
+           }
+           @-ms-keyframes "slideLeft"{
+           	from{left:-50%;}
+           	to{left:50%;}
+           }
+           @keyframes "slideLeft"{
+           	from{left:-50%;}
+           	to{left:50%;}
+           }
+            /*设置背景图像从底部向顶部移入的动画效果*/
+            /* Slide Bottom */
+           @-webkit-keyframes "slideBottom"{
+           	from{top:100%;}
+           	to{top:0;}
+           }
+		   @-moz-keyframes "slideBottom"{
+		   	from{top:100%;}
+		   	to{top:0;}
+		   }           
+		   @-o-keyframes "slideBottom"{
+		   	from{top:100%;}
+		   	to{top:0;}
+		   }           
+		   @-ms-keyframes "slideBottom"{
+			from{top:100%;}
+			to{top:0;}
+           }
+           @keyframes "slideBottom"{
+           	from{top:100%;}
+           	to{top:0;}
+           }
+           /*设置背景图片由小到大放大动画效果*/
+           /* Zoom In */
+          @-webkit-keyframes "zoomIn"{
+          	from{-webkit-transform: scale(0);}
+          	to{-webkit-transform: scale(2,1);}
+          }
+          @-moz-keyframes "zoomIn"{
+          	from{-moz-transform: scale(0.1);}
+          	to{-moz-transform: none;}
+          }
+          @-o-keyframes "zoomIn"{
+          	from{-o-transform: scale(0.1);}
+          	to{-o-transform: none;}
+          }
+          @-ms-keyframes "zoomIn"{
+          	from{-ms-transform: scale(0.1);}
+          	to{-ms-transform: none;}
+          }
+          @keyframes "zoomIn"{
+          	from{transform: scale(0.1);}
+          	to{transform: none;}
+          }
+          /*设置背景图像由大到小缩小动画效果*/
+          /* Zoom Out */
+          @-webkit-keyframes "zoomOut"{
+          	from{-webkit-transform: scale(2);}
+          	to{-webkit-transform: none;}
+          }
+          @-moz-keyframes "zoomOut"{
+          	from{-moz-transform: scale(2);}
+          	to{-moz-transform: none;}
+          }
+          @-o-keyframes "zoomOut"{
+          	from{-o-transform: scale(2);}
+          	to{-o-transform: none;}
+          }
+          @-ms-keyframes "zoomOut"{
+          	from{-ms-transform: scale(2);}
+          	to{-ms-transform: none;}
+          }
+          @keyframes "zoomOut"{
+          	from{transform: scale(2);}
+          	to{transform: none;}
+          }
+          /*背景图像旋转出现动画效果*/
+          /* Rotate */
+		@-webkit-keyframes "rotate"{
+			from{-webkit-transform: rotate(-360deg) scale(0.1);}
+			to{-webkit-transform:none;}
+		}
+		@-moz-keyframes "rotate"{
+			from{-moz-transform: rotate(-360deg) scale(0.1);}
+			to{-moz-transform:none;}
+		}  
+		@-o-keyframes "rotate"{
+			from{-o-transform: rotate(-360deg) scale(0.1);}
+			to{-o-transform:none;}
+		}  
+		@-ms-keyframes "rotate"{
+			from{-ms-transform: rotate(-360deg) scale(0.1);}
+			to{-ms-transform:none;}
+		}  
+		@keyframes "rotate"{
+			from{transform: rotate(-360deg) scale(0.1);}
+			to{transform:none;}
+		}  
+		/*设置背景图像不显示动画效果*/
+		@-webkit-keyframes "notTarget"{
+			from{z-index: 75;}
+			to{z-index: 75;}
+		}        
+		@-moz-keyframes "notTarget"{
+			from{z-index: 75;}
+			to{z-index: 75;}
+		}
+		@-o-keyframes "notTarget"{
+			from{z-index: 75;}
+			to{z-index: 75;}
+		}        
+		@-ms-keyframes "notTarget"{
+			from{z-index: 75;}
+			to{z-index: 75;}
+		}        
+		@keyframes "notTarget"{
+			from{z-index: 75;}
+			to{z-index: 75;}
+		}  
+		/*点击缩略图，切换背景图*/
+		
+        /*背景图从左向右出现*/
+		#bg1:target{
+			z-index: 100;
+	    	-webkit-animation-name: slideLeft;
+	    	-webkit-animation-duration: 1s;
+	    	-webkit-animation-iteration-count: 1;
+	    	-moz-animation-name: slideLeft;
+	    	-moz-animation-duration: 1s;
+	    	-moz-animation-iteration-count: 1;
+	    	-ms-animation-name: slideLeft;
+	    	-ms-animation-duration: 1s;
+	    	-ms-animation-iteration-count: 1;
+	    	-o-animation-name: slideLeft;
+	    	-o-animation-duration: 1s;
+	    	-o-animation-iteration-count: 1;
+	    	animation-name: slideLeft;
+	    	animation-duration: 1s;
+	    	animation-iteration-count: 1;
+		}
+		/*背景图从下向上出现*/
+		#bg2:target{
+			z-index: 100;
+        	-webkit-animation-name: slideBottom;
+        	-webkit-animation-duration: 1s;
+        	-webkit-animation-iteration-count: 1;
+        	-moz-animation-name: slideBottom;
+        	-moz-animation-duration: 1s;
+        	-moz-animation-iteration-count: 1;
+        	-ms-animation-name: slideBottom;
+        	-ms-animation-duration: 1s;
+        	-ms-animation-iteration-count: 1;
+        	-o-animation-name: slideBottom;
+        	-o-animation-duration: 1s;
+        	-o-animation-iteration-count: 1;
+            animation-name: slideBottom;
+        	animation-duration: 1s;
+        	animation-iteration-count: 1;
+		}
+		/*背景图由小到大出现*/
+        #bg3:target{
+        	z-index: 100;
+        	-webkit-animation-name: zoomIn;
+        	-webkit-animation-duration: 1s;
+        	-webkit-animation-iteration-count: 1;
+        	-moz-animation-name: zoomIn;
+        	-moz-animation-duration: 1s;
+        	-moz-animation-iteration-count: 1;
+        	-ms-animation-name: zoomIn;
+        	-ms-animation-duration: 1s;
+        	-ms-animation-iteration-count: 1;
+        	-o-animation-name: zoomIn;
+        	-o-animation-duration: 1s;
+        	-o-animation-iteration-count: 1;
+        	animation-name: zoomIn;
+        	animation-duration: 1s;
+        	animation-iteration-count: 1;
+        }
+            
+        /*背景图由大到小出现*/
+        #bg4:target{
+        	z-index: 100;
+        	-webkit-animation-name: zoomOut;
+        	-webkit-animation-duration: 1s;
+        	-webkit-animation-iteration-count: 1;
+        	-moz-animation-name: zoomOut;
+        	-moz-animation-duration: 1s;
+        	-moz-animation-iteration-count: 1;
+        	-ms-animation-name: zoomOut;
+        	-ms-animation-duration: 1s;
+        	-ms-animation-iteration-count: 1;
+        	-o-animation-name: zoomOut;
+        	-o-animation-duration: 1s;
+        	-o-animation-iteration-count: 1;
+        	animation-name: zoomOut;
+        	animation-duration: 1s;
+        	animation-iteration-count: 1;
+        }
+        
+        /*背景图旋转出现*/
+        #bg5:target{
+        	z-index: 100;
+        	-webkit-animation-name: rotate;
+        	-webkit-animation-duration: 1s;
+        	-webkit-animation-iteration-count: 1;
+        	-moz-animation-name: rotate;
+        	-moz-animation-duration: 1s;
+        	-moz-animation-iteration-count: 1;
+        	-ms-animation-name: rotate;
+        	-ms-animation-duration: 1s;
+        	-ms-animation-iteration-count: 1;
+        	-o-animation-name: rotate;
+        	-o-animation-duration: 1s;
+        	-o-animation-iteration-count: 1;
+        	animation-name: rotate;
+        	animation-duration: 1s;
+        	animation-iteration-count: 1;
+        }
+        /*设置不显示的背景图层级*/
+        /* Not Target */
+        
+        .bg:not(:target){
+        	-webkit-animation-name: notTarget;
+        	-webkit-animation-duration: 1s;
+        	-webkit-animation-iteration-count: 1;
+        	-moz-animation-name: notTarget;
+        	-moz-animation-duration: 1s;
+        	-moz-animation-iteration-count: 1;
+        	-ms-animation-name: notTarget;
+        	-ms-animation-duration: 1s;
+        	-ms-animation-iteration-count: 1;
+        	-o-animation-name: notTarget;
+        	-o-animation-duration: 1s;
+        	-o-animation-iteration-count: 1;
+        	animation-name: notTarget;
+        	animation-duration: 1s;
+        	animation-iteration-count: 1;
+        }
+		</style>
+	</head>
+
+	<body>
+		<div class="slider">
+			<ul class="clearfix">
+				<li><a href="#bg1">this is the first image</a></li>
+				<li><a href="#bg2">this is the second image</a></li>
+				<li><a href="#bg3">this is the third image</a></li>
+				<li><a href="#bg4">this is the fourth image</a></li>
+				<li><a href="#bg5">this is the fivth image</a></li>
+			</ul>
+			<img src="1.jpg" class="bg sildeLeft" id="bg1">
+			<img src="2.jpg" class="bg sildeBottom" id="bg2">
+			<img src="3.jpg" class="bg zoomIn" id="bg3">
+			<img src="4.jpg" class="bg zoomOut" id="bg4">
+			<img src="5.jpg" class="bg rotate" id="bg5">
+		</div>
+	</body>
+
+</html>

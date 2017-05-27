@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		//判断浏览器
+		alert(getBrowserType());
+
+		function getBrowserType() {
+			var UserAgent = navigator.userAgent.toLowerCase();
+			if (UserAgent.indexOf("msie") > -1) {
+				return "IE" + navigator.userAgent.match(/msie (\d+\.\d+)/i)[1];
+			} else if (UserAgent.indexOf("trident") > -1 && UserAgent.indexOf("rv") > -1) {
+				return "IE" + navigator.userAgent.match(/rv:(\d+\.\d+)/i)[1];
+			} else if (UserAgent.indexOf("firefox") > -1) {
+				return "Firefox";
+			} else if (UserAgent.indexOf("chrome") > -1) {
+				return "Chrome";
+			} else if (UserAgent.indexOf("safari") > -1) {
+				return "Safari";
+			} else if (UserAgent.indexOf("opera") > -1) {
+				return "Opera";
+			} else {
+				return "Unknow";
+			}
+		}
+		//判断设备
+		function getDevice() {
+			var UserAgent = navigator.userAgent.toLowerCase();
+			if (/ipad/.test(UserAgent)) {
+				return "Ipad";
+			} else if (/iphone os/.test(UserAgent)) {
+				return "Iphone";
+			} else if (/android/.test(UserAgent)) {
+				return "Android";
+			} else if (/windows ce/.test(UserAgent)) {
+				return "Windows CE";
+			} else if (/windows mobile/.test(UserAgent)) {
+				return "Windows Mobile";
+			} else if (/windows nt 5.0/.test(UserAgent)) {
+				return "Windows 2000";
+			} else if (/windows nt 5.1/.test(UserAgent)) {
+				return "Windows XP";
+			} else if (/windows nt 6.0/.test(UserAgent)) {
+				return "Windows Vista";
+			} else if (/windows nt 6.1/.test(UserAgent)) {
+				return "Windows 7";
+			} else if (/windows nt 6.2/.test(UserAgent)) {
+				return "Windows 8";
+			} else if (/windows nt 6.3/.test(UserAgent)) {
+				return "Windows 8.1";
+			} else {
+				return "Unknow";
+			}
+		}
+	</script>
+
+</html>

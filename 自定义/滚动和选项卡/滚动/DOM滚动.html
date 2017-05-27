@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+#btn{width:10%;margin:auto;margin-top:120px;}
+#div{width:1152px; height:180px;position:absolute;top:150px;left:100px;background-color:red;overflow:hidden;}
+ul{position:absolute;left:0;top:0;}
+li{float:left;width:288px;height:180px;list-style:none;}
+</style>
+<script>
+onload=function()
+{	var oUl=document.getElementsByTagName('ul')[0];
+	var oLi=document.getElementsByTagName('li');
+	var oBtn=document.getElementsByTagName('button');
+	var speed=4;
+	oUl.innerHTML+=oUl.innerHTML;
+	oUl.style.width=oLi[0].offsetWidth*oLi.length+"px";
+	function move()
+		{
+			if(oUl.offsetLeft<-oUl.offsetWidth/2)
+				{
+					oUl.style.left=0;
+				}
+			 if(oUl.offsetLeft>0)
+				{
+					oUl.style.left=-oUl.offsetWidth/2+"px";
+				}
+			oUl.style.left=oUl.offsetLeft+speed+"px";
+		};
+	 var timer=setInterval(move,30);
+	 oUl.onmouseover=function()
+	 {
+		clearInterval(timer); 
+	 };
+	 oUl.onmouseout=function()
+	 {
+		timer=setInterval(move,30); 
+	 };
+	 oBtn[0].onclick=function(){speed=-4};
+	 oBtn[1].onclick=function(){speed=4};
+}
+</script>
+</head>
+
+<body>
+<div id="btn">
+<button type="button">向左滚</button>
+<button type="button">向右滚</button>
+</div>
+<div id="div">
+	<ul>
+    	<li><img src="1.jpg"></li>
+        <li><img src="2.jpg"></li>
+        <li><img src="3.jpg"></li>
+        <li><img src="4.jpg"></li>
+        <li><img src="5.jpg"></li>
+        <li><img src="6.jpg"></li>
+        <li><img src="7.jpg"></li>
+        <li><img src="8.jpg"></li>
+    </ul>
+</div>
+</body>
+</html>

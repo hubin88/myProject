@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+onload=function()
+{	var oInt1=document.getElementById('txt1');
+	var oInt2=document.getElementById('txt2');
+	//oInt2.readOnly=true;
+	var x,n;
+	
+	var arr=new Array();
+	var oInt3=document.getElementById('txt3');
+	var oInt4=document.getElementById('txt4');
+	var oInt5=document.getElementById('txt5');
+	var oInt6=document.getElementById('txt6');
+	oInt1.onclick=function()
+	 {	oInt2.value=null;
+		x=prompt("请输入要排序的数字个数：","")
+		while(isNaN(x)||x.match(/\s+/)||x=='')
+		{alert("请输入数字");
+		x=prompt("请输入要排序的数字个数：","")
+		}
+		oInt2.value=x;
+	  } 
+	  oInt2.value='';
+	oInt3.onclick=function()
+	{	if(oInt2.value=='')
+				{alert('请先输入数字的个数');}
+		else {oInt4.value=null;
+		arr=new Array();
+		for(var i=0;i<x;i++)
+		{n=prompt("请输入要排序的数：","")
+			while(isNaN(n)||n.match(/\s+/)||n=='')
+			{alert("请输入数字");
+			 n=prompt("请输入要排序的数：","")
+			}
+			if(!n.match(/\d/))
+			{arr.push();}
+			else
+			{oInt4.value+=n+',';
+			 arr.push(n);}
+		}		
+	  	alert(arr);}
+	}
+	oInt4.value='';
+	oInt5.onclick=function()
+	{	if(oInt2.value=='')
+				{alert('请先输入数字的个数');}
+		else
+		{
+		arr.sort(function(j,k){return j-k});
+	oInt6.value=arr;
+		}
+	}
+	oInt6.value='';
+}
+</script>
+</head>
+
+<body>
+<input id="txt1" name="txt1" type="button" value="请点击">
+<input id="txt2" name="txt2" type="text" readonly="readonly">
+<input id="txt3" name="txt3" type="button" value="请输入" >
+<input id="txt4" name="txt4" type="text" readonly="readonly">
+<input id="txt5" name="txt5" type="button" value="排序" >
+<input id="txt6" name="txt6" type="text" readonly="readonly">
+</body>
+</html>

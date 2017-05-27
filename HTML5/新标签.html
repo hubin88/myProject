@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--<article> 标签规定独立的自包含内容。一篇文章应有其自身的意义，应该有可能独立于站点的其余部分对其进行分发。-->
+		<article>
+			<h1>Internet Explorer 9</h1>
+			<p>Windows Internet Explorer 9（简称 IE9）于 2011 年 3 月 14 日发布.....</p>
+		</article>
+		<!--<aside> 标签定义其所处内容之外的内容。aside 的内容应该与附近的内容相关。<aside> 的内容可用作文章的侧栏。-->
+		<aside>
+			<h4>Epcot Center</h4> The Epcot Center is a theme park in Disney World, Florida.
+		</aside>
+		<!--<audio> 标签定义声音，比如音乐或其他音频流。可以在开始标签和结束标签之间放置文本内容，这样老的浏览器就可以显示出不支持该标签的信息。-->
+		<audio src="media/Sleep Away.mp3" controls="controls" autoplay="autoplay" loop="loop" muted="muted" preload="auto">
+			您的浏览器不支持 audio 标签。
+		</audio>
+		<!--<source> 标签为媒介元素（比如 <video> 和 <audio>）定义媒介资源。
+		<source> 标签允许您规定可替换的视频/音频文件供浏览器根据它对媒体类型或者编解码器的支持进行选择。-->
+		<audio controls>
+			<source src="media/Sleep Away.mp3" type="audio/mp3"></source>
+			<source src="media/Sleep Away.ogg" type="audio/ogg"></source>
+		</audio>
+		<!-- bdi标签允许您设置一段文本，使其脱离其父元素的文本方向设置。在发布用户评论或其他您无法完全控制的内容时，该标签很有用。-->
+		<ul>
+			<li>Username
+				<bdi dir="ltr">Bill</bdi>:80 points</li>
+			<li>Username
+				<bdi dir="rtl">Bill</bdi>:80 points</li>
+			<li>Username
+				<bdi>Steve</bdi>:78 points</li>
+		</ul>
+		<!--canvas单独练习-->
+		<!--command 元素表示用户能够调用的命令。
+		<command> 标签可以定义命令按钮，比如单选按钮、复选框或按钮。
+		只有当 command 元素位于 menu 元素内时，该元素才是可见的。否则不会显示这个元素，但是可以用它规定键盘快捷键。
+		只有 Internet Explorer 9 （更早或更晚的版本都不支持）支持 <command> 标签。-->
+		<menu>
+			<command onclick="alert('Hello World')">
+				Click Me!
+			</command>
+		</menu>
+		<!--<datalist> 标签定义选项列表。请与 input 元素配合使用该元素，来定义 input 可能的值。
+		datalist 及其选项不会被显示出来，它仅仅是合法的输入值列表。
+		请使用 input 元素的 list 属性来绑定 datalist。-->
+		<input id="myCar" list="cars" />
+		<datalist id="cars">
+			<option value="BMW">
+				<option value="Ford">
+					<option value="Volvo">
+						<option value="BMW2">
+							<option value="Ford2">
+								<option value="Volvo2">
+		</datalist>
+		<!--
+		<details> 标签用于描述文档或文档某个部分的细节。
+		目前只有 Chrome 和 Safari 6 支持 <details> 标签。
+		与 <summary> 标签 配合使用可以为 details 定义标题。标题是可见的，用户点击标题时，会显示出 details。
+		<summary> 标签包含 details 元素的标题，"details" 元素用于描述有关文档或文档片段的详细信息。-->
+		<details open="open">
+			<summary>Copyright 2011.</summary>
+			<p>All pages and graphics on this web site are the property of W3School.</p>
+		</details>
+		<details>
+			<summary>Copyright 2011.</summary>
+			<p>All pages and graphics on this web site are the property of W3School.</p>
+		</details>
+		<!--<dialog> 标签定义对话框或窗口。目前只有 Chrome 和 Safari 6 支持 <dialog> 标签。-->
+		<table border="1">
+			<tr>
+				<th>一月
+					<dialog open="open">这是打开的对话窗口</dialog>
+				</th>
+				<th>二月</th>
+				<th>三月</th>
+			</tr>
+			<tr>
+				<td>31</td>
+				<td>28</td>
+				<td>31</td>
+			</tr>
+		</table>
+		<!--<embed> 标签定义嵌入的内容，比如插件。-->
+		<embed src="media/Sleep Away.mp3" height="80" width="300" />
+		<!--<figure> 标签规定独立的流内容（图像、图表、照片、代码等等）。
+		figure 元素的内容应该与主内容相关，但如果被删除，则不应对文档流产生影响。-->
+		<p>上海卢浦大桥是当今世界第一钢结构拱桥，是世界上跨度最大的拱形桥。<wbr>它也是世界上首座完全采用焊接工艺连接的大型拱桥（除合拢接口采用栓接外），现场焊接焊缝总长度达4万多米，接近上海市内环高架路的总长度。<wbr>卢浦大桥像澳大利亚悉尼的海湾大桥一样具有旅游观光的功能。</p>
+		<figure>
+			<figcaption>黄浦江上的的卢浦大桥</figcaption>
+			<img src="img/1.jpg" />
+		</figure>
+		<!--<footer> 标签定义文档或节的页脚。
+		<footer> 元素应当含有其包含元素的信息。
+		页脚通常包含文档的作者、版权信息、使用条款链接、联系信息等等。
+		您可以在一个文档中使用多个 <footer> 元素。-->
+		<footer>
+			<p>Posted by: W3School</p>
+			<p>Contact information:
+				<a href="mailto:someone@example.com">someone@example.com</a>.</p>
+		</footer>
+		<!--<header> 标签定义文档的页眉（介绍信息）。-->
+		<header>
+			<h1>Welcome to my homepage</h1>
+			<p>My name is Donald Duck</p>
+		</header>
+		<p>The rest of my home page...</p>
+		<!--<mark> 标签定义带有记号的文本。请在需要突出显示文本时使用 <mark> 标签。-->
+		<p>Do not forget to buy
+			<mark>milk</mark> today.</p>
+		<!--<meter> 标签定义已知范围或分数值内的标量测量。也被称为 gauge（尺度）。
+			optimum 属性规定的范围是被视为最佳值的度量值。
+		-->
+		<meter value="3" min="0" max="10">3/10</meter>
+		<meter value="0.6" optimum="0.5">60%</meter>
+		<meter min="0" low="40" high="90" max="100" value="95"></meter>
+		<meter min="0" low="40" high="90" max="100" value="65"></meter>
+		<meter min="0" low="40" high="90" max="100" value="35"></meter>
+		<!--<nav> 标签定义导航链接的部分。如果文档中有“前后”按钮，则应该把它放到 <nav> 元素中。-->
+		<nav>
+			<a href="#">Home</a>
+			<a href="#">Previous</a>
+			<a href="#">Next</a>
+		</nav>
+		<!--<output> 标签定义不同类型的输出，比如脚本的输出。-->
+		<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+			<input type="range" id="a" value="50">100 +
+			<input type="number" id="b" value="50"> =
+			<output name="x" for="a b"></output>
+		</form>
+		<form oninput="y.value=parseInt(a.value)+parseInt(b.value)">0
+			<input type="range" id="a" value="50">100 +0
+			<input type="range" id="b" value="50">100 =
+			<output name="y" for="a b"></output>
+		</form>
+		<!--<progress value="22" max="100"></progress>-->
+		<progress value="22" max="100"></progress>
+		<!--<section> 标签定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。-->
+		<section>
+			<h1>PRC</h1>
+			<p>The People's Republic of China was born in 1949...</p>
+		</section>
+		<!--<time> 标签不会在任何浏览器中呈现任何特殊效果。
+			<time> 标签定义公历的时间（24 小时制）或日期，时间和时区偏移是可选的。
+			该元素能够以机器可读的方式对日期和时间进行编码，这样，举例说，用户代理能够把生日提醒或排定的事件添加到用户日程表中，搜索引擎也能够生成更智能的搜索结果。-->
+		<p>我们在每天早上
+			<time>9:00</time> 开始营业。</p>
+		<p>我在
+			<time datetime="2008-02-14">情人节</time> 有个约会。</p>
+		<!--<video> 标签定义视频，比如电影片段或其他视频流。
+			可以在开始标签和结束标签之间放置文本内容，这样老的浏览器就可以显示出不支持该标签的信息。
+		-->
+		<video src="media/Wildlife.wmv" controls="controls" autoplay="autoplay" loop="loop" muted="muted" poster="img/1.jpg" preload="auto" width="400px" height="300">
+			您的浏览器不支持 video 标签。
+		</video><br>
+		<blink>闪烁文本</blink>
+		<cite>引用文本</cite>
+		<mark>高亮显示的文字</mark>
+		<marquee>滚动</marquee>
+		<time datetime="2016-12-20T14:00">2016-12-20T14:00</time>
+	</body>
+
+</html>

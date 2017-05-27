@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			span:before {
+				content: "#";
+				color: red;
+			}
+			span:after {
+				content: "$";
+				color: green;
+			}
+			p:before {
+				content: url(hide.png);
+			}
+			a.a:after {
+				content: " (" attr(href) ")";
+			}
+			div {
+				width: 96px;
+				height: 48px;
+				background: #eee;
+				border-color: red;
+				border-style: solid;
+				border-width: 2px 2px 50px 2px;
+				border-radius: 100%;
+				position: relative;
+			}
+			div:before {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 0;
+				background: #eee;
+				border: 18px solid red;
+				border-radius: 100%;
+				width: 12px;
+				height: 12px;
+			}
+			div:after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				background: red;
+				border: 18px solid #eee;
+				border-radius: 100%;
+				width: 12px;
+				height: 12px;
+			}
+			li {
+				position: relative;
+				display: inline-block;
+				list-style: none;
+			}
+			li:after {
+				content: "";
+				position: absolute;
+				right: -5px;
+				height: 20px;
+				width: 3px;
+				background: linear-gradient(to bottom, red, red);
+			}
+			li:last-child:after {
+				display: none;
+			}
+			/*清除浮动样式*/
+			
+			.clearfix::before,
+			.clearfix::after {
+				content: ".";
+				display: block;
+				height: 0;
+				visibility: hidden;
+			}
+			.clearfix:after {
+				clear: both;
+			}
+			.clearfix {
+				zoom: 1;
+			}
+			/*hover*/
+			.data_custom {
+				display: inline-block;
+				position: relative;
+			}
+			.data_custom:hover {
+				color: transparent;
+			}
+			.data_custom:hover:after {
+				content: attr(data-hover-response);
+				color: black;
+				position: absolute;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<span>Here is the example content</span>
+		<p>Here is the example content</p>
+		<a class="a" href="http://www.hao123.com/">链接</a>
+		<div class=""></div>
+		<ul>
+			<li>主页1</li>
+			<li>主页2</li>
+			<li>主页3</li>
+			<li>主页4</li>
+		</ul>
+		<a class="data_custom" data-hover-response="我说过不要碰我！" href="#">不要碰我，雅蠛蝶~~</a><br />
+		<strong>::before和::after这两个主要用来给元素的前面或后面插入内容，这两个常和"content"配合使用，使用的场景最多的就是清除浮动。</strong>
+	</body>
+
+</html>

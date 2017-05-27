@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				display: block;
+				border: 1px solid #aaa;
+				margin: 10px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="" height=""></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var canvas = document.getElementById('myCanvas');
+			canvas.height = 600;
+			canvas.width = 600;
+			var context = canvas.getContext("2d");
+			context.fillStyle = "red";
+			context.translate(10, 10); //x,y方向将坐标原点移动10,10
+			context.fillRect(0, 0, 100, 100);
+			context.fillStyle = "green";
+			context.translate(20, 20); //x,y方向将坐标原点在已经移动的基础上再移动20,20,总共移动了30,30,
+			context.fillRect(0, 0, 100, 100);
+			context.translate(-30,-30);//将远点移动到初始状态
+			
+			//canvas状态的保存和回复save()和restore()成对出现可以保证图形变换之后不影响其他部分
+			context.save();
+			context.fillStyle = "red";
+			context.translate(10, 10); //x,y方向将坐标原点移动10,10
+			context.fillRect(0, 150, 100, 100);
+			context.restore();
+			context.save();
+			context.fillStyle = "green";
+			context.translate(20, 20); //x,y方向将坐标原点移动20,20
+			context.fillRect(0, 150, 100, 100);
+			context.restore();
+			
+			//scale()会在x，y方向上放大，包括边框，宽高和距离原点的距离
+			context.translate(200,0);
+			context.lineWidth=2;
+			context.strokeStyle="#000000";
+			context.save();
+			context.scale(1, 1); 
+			context.strokeRect(10, 20, 50, 50);
+			context.restore();
+			context.save();
+			context.scale(2, 2); 
+			context.strokeRect(10, 20, 50, 50);
+			context.restore();
+			context.save();
+			context.scale(3, 3); 
+			context.strokeRect(10, 20, 50, 50);
+			context.restore();
+			
+			context.save();
+			context.translate(300,100);
+			context.fillStyle = "red";
+			context.fillRect(-50, -50, 100, 100);
+			context.fillStyle = "black";
+			context.fillRect(0,0,2,2);//此时的原点
+			context.rotate(Math.PI/4);//相对于原点旋转角度
+			context.strokeStyle = "green";
+			context.strokeRect(-50, -50, 100, 100);
+			context.restore();
+			
+			//transform(a,b,c,d,e,f)效果会叠加
+			//a,d水平，垂直缩放(1,1)
+			//b,c水平，垂直斜切(0,0)
+			//e,f水平，垂直位移(0,0)
+			//setTransform(a,b,c,d,e,f)清空前面设置的transform，包括translate，scale重新设置
+			context.setTransform(1,0,0,1,0,300);
+			context.save();
+			context.transform(1,0.2,0.5,1,50,0);
+			context.transform(1,0,0,1,-40,-10);
+			context.fillStyle = "red";
+			context.fillRect(0, 0, 200, 150);
+			cotnext.restore();
+		}
+	</script>
+
+</html>

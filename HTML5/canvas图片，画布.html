@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				display: block;
+				border: 1px solid #aaa;
+				margin: 10px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="" height=""></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var canvas = document.getElementById('myCanvas');
+			canvas.height = 600;
+			canvas.width = 600;
+			var context = canvas.getContext("2d");
+			//createPattern(obj,"no-repeat|repeat-x|repeat-y|repeat")
+			//obj可以是img，canvas，video等等
+			var img = new Image();
+			img.src = "img/1.jpg";
+			img.onload = function() {
+				var pattern = context.createPattern(img, "no-repeat");
+				context.fillStyle = pattern;
+				context.fillRect(0, 0, canvas.width, canvas.height);
+				context.drawImage(img,300,0);
+			};
+			var backcanvas = creatBackCanvas();
+			var patternCanvas = context.createPattern(backcanvas, "repeat");
+			context.fillStyle = patternCanvas;
+			context.fillRect(0, 200, canvas.width, canvas.height);
+		}
+
+		function creatBackCanvas() {
+			var backCanvas = document.createElement("canvas");
+			backCanvas.width = 100;
+			backCanvas.height = backCanvas.width;
+			backCanvasCxt = backCanvas.getContext("2d");
+			drawStar(backCanvasCxt, backCanvas.width / 2, backCanvas.width / 2, backCanvas.width / 2, backCanvas.width / 4, 1, "yellow", "yellow", 0);
+			return backCanvas;
+		}
+
+		function pathStar(cxt, x, y, R, r, Rot) {
+			cxt.beginPath();
+			for (var i = 0; i < 5; i++) {
+				cxt.lineTo(Math.cos((18 + i * 72) / 180 * Math.PI) * R, -Math.sin((18 + i * 72) / 180 * Math.PI) * R);
+				cxt.lineTo(Math.cos((54 + i * 72) / 180 * Math.PI) * r, -Math.sin((54 + i * 72) / 180 * Math.PI) * r);
+			}
+			cxt.closePath();
+		}
+
+		function drawStar(cxt, x, y, R, r,borderWidth, borderColor, fillColor,Rot) {
+			cxt.save();
+			cxt.translate(x, y);
+			cxt.rotate(Rot/180*Math.PI);
+			cxt.lineWidth = borderWidth;
+			cxt.strokeStyle = borderColor;
+			cxt.fillStyle = fillColor;
+			pathStar(cxt, x, y, R, r, Rot);
+			cxt.fill();
+			cxt.stroke();
+			cxt.restore();
+		}
+	</script>
+
+</html>

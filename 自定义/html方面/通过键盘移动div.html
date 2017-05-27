@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+div{width:100px;height:100px; background:#F00; position:absolute; left:50%; top:50%;}; 
+</style>
+<script>
+document.onkeydown=function(ev)
+{
+	var oEvent=ev||event;
+	var aDiv=document.getElementById('div1');	
+	if(oEvent.keyCode==37)
+	{
+		aDiv.style.left=aDiv.offsetLeft-10+'px';	
+	}
+	else if(oEvent.keyCode==39)
+	{
+		aDiv.style.left=aDiv.offsetLeft+10+'px';
+		
+	}
+	else if(oEvent.keyCode==38)
+	{
+		aDiv.style.top=aDiv.offsetTop-10+'px';
+	}
+	else if(oEvent.keyCode==40)
+	{
+		aDiv.style.top=aDiv.offsetTop+10+'px';
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<button class="button1">Button1</button>
+		<button class="button1">Button2</button>
+		<button class="button1">Button3</button>
+		<button class="button1">Button4</button>
+		<button class="button1">Button5</button>
+		<button class="button1">Button6</button>
+		<button class="button1">Button7</button><br />
+		<button class="button2">Button1</button>
+		<button class="button2">Button2</button>
+		<button class="button2">Button3</button>
+		<button class="button2">Button4</button>
+		<button class="button2">Button5</button>
+		<button class="button2">Button6</button>
+		<button class="button2">Button7</button>
+	</body>
+	<script type="text/javascript">
+		var b = document.getElementsByClassName("button1");
+		for (var i = 0; i < b.length; i++) {
+			b[i].onclick = function() {
+				alert("button" + (i+1));
+			}
+		}
+		var a = document.getElementsByClassName("button2");
+		for (var i = 0; i < a.length; i++) {
+			(function(n) {
+				a[n].onclick = function() {
+					alert("button" + (n+1));
+				}
+			})(i)
+		}
+//		for (var i = 0; i < $(".button2").length; i++) {
+//			(function(n) {
+//				$(".button2").eq(n).click(function() {
+//					alert(n + 1);
+//				})
+//			})(i);
+//		}
+	</script>
+
+</html>

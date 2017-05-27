@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#canvas {
+				display: block;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="" height=""></canvas>
+	</body>
+	<script type="text/javascript">
+		var canvasWidth = 600,
+			canvasHeight = canvasWidth,
+			canvas = document.getElementById("canvas"),
+			context = canvas.getContext("2d");
+		isMouseDown = false; //记录鼠标是否在canvas中被按下
+		lastLoc = {
+				x: 0,
+				y: 0
+			} //记录鼠标上一次的位置
+		lastTime = 0; //记录鼠标上一次位置的时间戳
+		canvas.width = canvasWidth;
+		canvas.height = canvasHeight;
+		drawGrid();
+		canvas.onmousedown = function(e) {
+			e.preventDefault();
+			isMouseDown = true;
+			lastLoc = windowToCanvas(e.clientX, e.clientY);
+			lastTime = new Date().getTime();
+		}
+		canvas.onmouseup = function(e) {
+			e.preventDefault();
+			isMouseDown = false;
+		}
+		canvas.onmouseout = function(e) {
+			e.preventDefault();
+			isMouseDown = false;
+		}
+		canvas.onmousemove = function(e) {
+			e.preventDefault();
+			if (isMouseDown) {
+				var curtLoc = windowToCanvas(e.clientX, e.clientY), //鼠标当前位置
+					curTime = new Date().getTime(), //当前时间戳
+					s = calsDistance(curtLoc, lastLoc),
+					t = curTime - lastTime;
+				context.beginPath();
+				context.moveTo(lastLoc.x, lastLoc.y);
+				context.lineTo(curtLoc.x, curtLoc.y);
+				context.strokeStyle = "#000000";
+				context.lineWidth = 30;
+				context.lineCap = "round";
+				context.lineJoin = "round";
+				context.stroke();
+				lastLoc = curtLoc;
+				lastTime=curTime;
+			}
+		}
+
+		function windowToCanvas(x, y) {
+			var bbox = canvas.getBoundingClientRect(); //获取canvas的信息，其中包括left和top
+			return {
+				x: Math.round(x - bbox.left),
+				y: Math.round(y - bbox.top)
+			};
+		}
+
+		function calsDistance(loc1, loc2) {
+			return Math.sqrt(Math.pow(loc1.x - loc2.x, 2) + Math.pow(loc1.y - loc2.y, 2))
+		}
+
+		function drawGrid() {
+			context.save();
+			context.strokeStyle = "rgb(230,11,9)";
+			//正方形
+			context.beginPath();
+			context.moveTo(3, 3);
+			context.lineTo(canvasWidth - 3, 3);
+			context.lineTo(canvasWidth - 3, canvasHeight - 3);
+			context.lineTo(3, canvasHeight - 3);
+			context.closePath();
+			context.lineWidth = 6;
+			context.stroke();
+			//米字型
+			context.beginPath();
+			context.moveTo(0, 0);
+			context.lineTo(canvasWidth, canvasHeight);
+			context.moveTo(canvasWidth, 0);
+			context.lineTo(0, canvasHeight);
+			context.moveTo(canvasWidth / 2, 0);
+			context.lineTo(canvasWidth / 2, canvasHeight);
+			context.moveTo(0, canvasHeight / 2);
+			context.lineTo(canvasWidth, canvasHeight / 2);
+			context.lineWidth = 1;
+			context.stroke();
+			context.restore();
+		}
+	</script>
+
+</html>

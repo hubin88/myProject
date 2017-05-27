@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+onload=function()
+{	
+	var Int=document.getElementsByTagName('input'),
+		str='';
+		Int[0].value='';
+		Int[1].value='';
+		Int[2].value='';
+		Int[3].onclick=function()
+		{	
+		 	str=Int[0].value+','+Int[1].value+','+Int[2].value;
+		var	nowtime=new Date(),
+			nexttime=new Date(str),
+			time=Math.ceil((nexttime.getTime()-nowtime.getTime())/(24*3600*1000));
+			alert('距离'+Int[0].value+'年'+Int[1].value+'月'+Int[2].value+'日还有'+time+'天');
+		};
+}
+</script>
+</head>
+
+<body>
+    <input type="number" min="1" max="9999" onkeyup='this.value=this.value.replace(/\D/gi,"")'/>年
+    <input type="number" min="1" max="12" onkeyup='this.value=this.value.replace(/\D/gi,"")'/>月
+    <input type="number" min="1" max="31" onkeyup='this.value=this.value.replace(/\D/gi,"")'/>日
+    <input type="button" value="按钮"/>
+</body>
+</html>

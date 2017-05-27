@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css" />
+		<style type="text/css">
+			[class *=col-] {
+				background-color: #eee;
+				border: 1px solid #ccc;
+			}
+			[class *=col-] [class *=col-] {
+				background-color: #f36;
+				border: 1px dashed #fff;
+				color: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--基本用法-->
+<!--		<div class="container">-->
+			<!--col-xs-*适用于所有屏幕宽度-->
+			<div class="row">
+				<div class="col-xs-1">.col-xs-1</div>
+				<div class="col-xs-2">.col-xs-2</div>
+				<div class="col-xs-3">.col-xs-3</div>
+				<div class="col-xs-6">.col-xs-6</div>
+			</div>
+			<!--col-sm-*适用于屏幕宽度最小为768px-->
+			<div class="row">
+				<div class="col-sm-3">.col-sm-3</div>
+				<div class="col-sm-3">.col-sm-3</div>
+				<div class="col-sm-3">.col-sm-3</div>
+				<div class="col-sm-3">.col-sm-3</div>
+			</div>
+			<!--col-md-*适用于屏幕宽度最小为992px-->
+			<div class="row">
+				<div class="col-md-4">.col-md-4</div>
+				<div class="col-md-4">.col-md-4</div>
+				<div class="col-md-4">.col-md-4</div>
+			</div>
+			<!--col-lg-*适用于屏幕宽度最小为1200px-->
+			<div class="row">
+				<div class="col-lg-3">.col-lg-3</div>
+				<div class="col-lg-9">.col-lg-9</div>
+			</div>
+		<!--</div>-->
+		<!--调整屏幕大小看看效果,改变宽度，样式有变化-->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-10 col-sm-6">.col-lg-3 .col-md-10 .col-sm-6</div>
+				<div class="col-lg-9 col-md-2 col-sm-4">.col-lg-9 .col-md-2 .col-sm-4</div>
+				<div class="col-sm-2">.col-sm-2</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-sm-6 col-xs-4">.col-lg-3 .col-sm-6 .col-xs-4</div>
+				<div class="col-lg-9 col-sm-6 col-xs-8">.col-lg-9 .col-sm-6 .col-xs-8</div>
+			</div>
+		</div>
+		<!--列偏移-->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">.col-md-4</div>
+				<div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">.col-md-3</div>
+				<div class="col-md-3 col-md-offset-2">.col-md-3 .col-md-offset-2</div>
+				<div class="col-md-3 col-md-offset-1">.col-md-3 .col-md-offset-1</div>
+			</div>
+		</div>
+		<!--列排序，改变前后位置-->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-push-8">.col-md-4 .col-md-push-8</div>
+				<div class="col-md-4 col-md-offset-4 col-md-pull-4">.col-md-4 .col-md-offset-4 .col-md-pull-4</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 col-md-push-5">.col-md-3 .col-md-push-5</div>
+				<div class="col-md-3 col-md-offset-2 col-md-push-4">.col-md-3 .col-md-offset-2 .col-md-push-4</div>
+				<div class="col-md-3 col-md-offset-1 col-md-pull-8">.col-md-3 .col-md-offset-1 .col-md-pull-8</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-md-push-8">.col-md-4 .col-md-push-8</div>
+				<div class="col-md-8 col-md-pull-4">.col-md-4 .col-md-pull-4</div>
+			</div>
+		</div>
+		<br />
+		<!--列嵌套-->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					我的里面嵌套了一个网格
+					<div class="row">
+						<div class="col-md-6">col-md-6</div>
+						<div class="col-md-6">col-md-6</div>
+					</div>
+				</div>
+				<div class="col-md-4">col-md-4</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">.col-md-4</div>
+				<div class="col-md-8">
+					我的里面嵌套了一个网格
+					<div class="row">
+						<div class="col-md-4">col-md-4</div>
+						<div class="col-md-4">col-md-4</div>
+						<div class="col-md-4">col-md-4</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

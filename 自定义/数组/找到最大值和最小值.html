@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="underscore.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	var arr=[1,2,3,4,5,6,7,8,9];
+	var arr1=["445","45","354"]
+//	第一种方法
+		document.write(arr1+"中最大值是"+Math.max.apply(Math,arr1)+",最小值是"+Math.min.apply(Math,arr1)+"<br>");
+//	第二种方法，用库里面的方法
+		document.write(arr+"中最大值是"+_.max(arr)+",最小值是"+_.min(arr));
+	</script>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="text" name="m" id="m" value="" />
+		<input type="text" name="n" id="n" value="" />
+		<button id="yueshu">公约数</button>
+		<br />
+		<input type="text" name="x" id="x" value="" />
+		<input type="text" name="y" id="y" value="" />
+		<button id="beishu">公倍数</button>
+	</body>
+	<script type="text/javascript">
+		 //求数组交集
+		function arrayIntersection(a, b) {
+				var ai = 0,
+					bi = 0;
+				var result = new Array();
+				while (ai < a.length && bi < b.length) {
+					if (a[ai] < b[bi]) {
+						ai++;
+					} else if (a[ai] > b[bi]) {
+						bi++;
+					} else /* they're equal */ {
+						result.push(a[ai]);
+						ai++;
+						bi++;
+					}
+				}
+				return result;
+			}
+			//公约数
+		document.getElementById("yueshu").onclick = function() {
+				var arr1 = [],
+					arr2 = [];
+				var m = parseInt(document.getElementById("m").value),
+					n = parseInt(document.getElementById("n").value);
+				for (var i = 1; i <= m; i++) {
+					if (m % i == 0) {
+						arr1.push(i);
+					}
+				}
+				for (var j = 1; j <= n; j++) {
+					if (n % j == 0) {
+						arr2.push(j);
+					}
+				}
+				alert(arrayIntersection(arr1, arr2));
+			}
+			//求最大公约数的欧几里得算法
+			function gcd(a, b) {
+				var t;
+				if (a < b) t = b, b = a, a = t;
+				while (b != 0) t = b, b = a % b, a = t;
+				return a;
+			}
+			alert(gcd(125,100));
+			//公倍数
+		document.getElementById("beishu").onclick = function() {
+			var a = 1,
+				b = 1,
+				c = 1;
+			var arr1 = [],
+				arr2 = [];
+			var x = parseInt(document.getElementById("x").value),
+				y = parseInt(document.getElementById("y").value);
+			for (var i = 2; i <= x; i++) {
+				if (x % i == 0) {
+					arr1.push(i);
+					x /= i;
+					i--;
+				}
+			}
+			for (var j = 2; j <= y; j++) {
+				if (y % j == 0) {
+					arr2.push(j);
+					y /= j;
+					j--;
+				}
+			}
+			for (var m = 0; m < arr1.length; m++) {
+				a *= arr1[m];
+			}
+			for (var n = 0; n < arr2.length; n++) {
+				b *= arr2[n];
+			}
+			var arr3 = arrayIntersection(arr1, arr2);
+			for (var k = 0; k < arr3.length; k++) {
+				c *= arr3[k];
+			}
+			//最小公倍数等于这两个数全部共有的质因数的代表与各自独有的质因数的乘积。即把两个数的所有质因数相乘再除以共有的部分
+			var d = a * b / c;
+			alert(d);
+		}
+	</script>
+
+</html>

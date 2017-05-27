@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		 //	找素数
+		!(function() {
+			var m, n, k;
+			k = 1000;
+			for (m = 2; m <= k; m++) {
+				for (n = 2; n < m; n++) {
+					if (m % n == 0)
+						break;
+				}
+				if (m == n) //n循环结束后，如果m=n的话就输出m
+					document.write(m + "\n");
+			}
+			document.write("<hr />");
+		})();
+		 //改变符号的连加
+		!(function() {
+			var sum = 0,
+				flag = 1,
+				m = 1000;
+			for (var i = 1; i <= m; i++) {
+				sum += i * flag;
+				flag *= -1;
+			}
+			document.write(sum + "<hr />");
+		})();
+		 //输出*
+		!(function() {
+			for (var i = 1; i < 5; i++) {
+				for (var j = 1; j < 5 - i; j++) {
+					document.write("&nbsp;");
+				}
+				for (var k = 0; k < 2 * i - 1; k++) {
+					document.write("*");
+				}
+				document.write("<br/>");
+			}
+			document.write("<hr/>");
+		})();
+		 //乘法表
+		!(function() {
+			var result = 0;
+			for (var i = 9; i > 0; i--) {
+				for (var j = 1; j < i + 1; j++) {
+					result = i * j;
+					document.write(i + "*" + j + "=" + result + "\n");
+				}
+				document.write("<br/>");
+			}
+			document.write("<hr/>");
+		})();
+		 //计算某个日期是一年中的第几天
+		!(function() {
+			var sum = 0,
+				falg, year = new Date().getFullYear(),
+				month = new Date().getMonth()+1,
+				day = new Date().getDate();
+			var months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+			for (var i = 0; i < month - 1; i++) {
+				sum += months[i];
+			}
+			sum += day;
+			if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))
+				flag = 1;
+			else
+				flag = 0;
+			if (flag == 1 && month > 2)
+				sum++;
+			document.write(year + "年" + month + "月" + day + "日是该年中的第" + sum + "天 <hr/>");
+		})();
+		!(function() {
+			for(var x=1;x<=7;x++){
+                for(var y=1;y<=7;y++){
+                    if(x+y==8||x==y){
+                       document.write("0");
+                    }else{
+                       document.write("."); 
+                    }
+                }
+                document.write("<br>");
+            }
+		})();
+	</script>
+
+</html>

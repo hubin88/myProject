@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		(function() {
+			var Item = Backbone.Model.extend({
+				defaults: {
+					part1: "hello",
+					part2: "world"
+				}
+			});
+			var List = Backbone.Collection.extend({
+				model: Item
+			});
+			var ItemView = Backbone.View.extend({
+				tagName: "li",
+				initialize: function() {
+					_.bindAll(this, "render", 'unrender', 'swap', 'remove');
+					this.model.on('change', this.render);
+					this.model.on('remove', this.unrender);
+				},
+				events: {
+					'click span.swap': 'swap',
+					'click span.delete': 'remove'
+				},
+				render: function() {
+					$(this.el).html('<span>' + this.model.get('part1') + ' ' + this.model.get('part2') + '</span><span class="swap">[swap]</span> <span class="delete">[delete]</span>');
+					return this;
+				},
+				unrender: function() {
+					$(this.el).remove();
+					console.log("move2")
+				},
+				swap: function() {
+					var swapped = {
+						part1: this.model.get('part2'),
+						part2: this.model.get('part1')
+					};
+					this.model.set(swapped);
+				},
+				remove: function() {
+					this.model.destroy();
+					console.log("move1")
+				}
+			});
+			var ViewList = Backbone.View.extend({
+				el: $("body"),
+				initialize: function() {
+					_.bindAll(this, "render", "addItem", "appendItem");
+					this.collection = new List();
+					this.collection.on('add', this.appendItem);
+					this.counter = 0;
+					this.render();
+				},
+				events: {
+					"click #add": "addItem"
+				},
+				render: function() {
+					var me = this;
+					$(this.el).append("<input type='button' id='add' value='增加'>");
+					$(this.el).append("<ul><li>hello world!</li></ul>");
+					$.each(this.collection.models, function(item) {
+						me.appendItem(item);
+					});
+				},
+				addItem: function() {
+					this.counter++;
+					var item = new Item();
+					item.set({
+						part1: "Hi " + item.get('part1'),
+						part2: item.get('part2') + this.counter
+					});
+					this.collection.add(item);
+				},
+				appendItem: function(item) {
+					var itemView = new ItemView({
+						model: item
+					});
+					$('ul', this.el).append(itemView.render().el);
+				}
+			});
+			var viewList = new ViewList();
+		})();
+	</script>
+
+</html>

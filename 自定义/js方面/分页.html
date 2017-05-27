@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			a {
+				border: 1px solid red;
+				color: black;
+				margin: 0 3px;
+				padding: 0 3px;
+				text-decoration: none;
+				font-size: 14px;
+				line-height: 14px;
+				width: 20px;
+				height: 20px;
+			}
+			span {
+				color: red;
+			}
+			*[disabled] {
+				cursor: not-allowed !important;
+			}
+			input[type=button]{cursor: pointer;margin: 0 2px;}
+		</style>
+		<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<ol id="ol"></ol>
+		<div id="page"></div>
+	</body>
+	<script type="text/javascript">
+		for (var i = 0; i < 500; i++) {
+			$("ol").append("<li>" + (i + 1) + "、这是一段文字</li>");
+		}
+		var pageNow, //当前页，0表示第一页
+			pageSize = 15, //每页显示的条数
+			pageNum, //总页数
+			l = $("li").length;
+		pageNum = Math.ceil(l / pageSize);
+		upPage(0);
+
+		function upPage(page) {
+			page = parseInt(page);
+			if (page < 0 || page > pageNum - 1) {
+				return
+			} else {
+				for (var i = 0; i < l; i++) {
+					if (i >= page * pageSize && i < (page + 1) * pageSize) {
+						$("li").eq(i).show();
+					} else {
+						$("li").eq(i).hide();
+					}
+				}
+				pageNow = page;
+			}
+			var first = "<input type=\"button\" id=\"first\" value=\"首页 \" onclick=\"upPage(0)\">";
+			var last = "<input type=\"button\" id=\"last\" value=\"末页 \" onclick=\"upPage(" + (pageNum - 1) + ")\">";
+			var list = "";
+			for (var j = 0; j < pageNum; j++) {
+				list += "<a href=\"javascript:;\" onclick=\"upPage(" + j + ")\">" + (j + 1) + "</a>";
+			}
+			var prev = "<input type=\"button\"  id=\"prev\" value=\"上一页 \" onclick=\"upPage(" + (pageNow - 1) + ")\">";
+			var next = "<input type=\"button\"  id=\"next\" value=\"下一页 \" onclick=\"upPage(" + (pageNow + 1) + ")\">";
+			var goTo = "到第<input type=\"text\" id=\"goPage\" value=\"" + (pageNow + 1) + "\" size=\"1\" />页<input type=\"button\" value=\"确定\" onclick=\"upPage($('#goPage').val()-1);\" >";
+			var now = "每页:" + pageSize + "/<span style='color:red'>" + l + "</span>条  页数:<span style='color:blue'>" + (pageNow + 1) + "</span>/" + pageNum + "页";
+			$("#page").html(first + prev + list + next + last + goTo + now);
+			if (pageNow == 0) {
+				$("#first").attr("disabled", true);
+				$("#prev").attr("disabled", true);
+			} else if (pageNow == pageNum - 1) {
+				$("#last").attr("disabled", true);
+				$("#next").attr("disabled", true);
+			}
+			$("a").eq(pageNow).css({
+				"border-color": "blue",
+				"border-width": "2px",
+				"background-color": "yellow",
+				"color": "red"
+			});
+			if (pageNum <= 5) {
+				return
+			} else {
+				if (pageNow <= 2) {
+					for (var i = 5; i < pageNum; i++) {
+						$("a").eq(i).hide();
+					}
+					$("#next").before("<span>… </span>");
+				}
+				if (pageNow >= pageNum - 3) {
+					for (var i = 0; i < pageNum - 5; i++) {
+						$("a").eq(i).hide();
+					}
+					$("#prev").after("<span> …</span>");
+				}
+				if (pageNow > 2 && pageNow < pageNum - 3) {
+					for (var i = 0; i < pageNum; i++) {
+						if (i < pageNow - 2 || i > pageNow + 2) {
+							$("a").eq(i).hide();
+						}
+					}
+					$("#prev").after("<span> …</span>");
+					$("#next").before("<span>… </span>");
+				}
+			}
+		}
+	</script>
+
+</html>

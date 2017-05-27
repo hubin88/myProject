@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				display: inline-block;
+				border: 1px solid #aaa;
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas_one" width="" height=""></canvas>
+		<canvas id="myCanvas_two" width="" height=""></canvas>
+		<canvas id="myCanvas_three" width="" height=""></canvas>
+		<canvas id="myCanvas_four" width="" height=""></canvas>
+		<canvas id="myCanvas_five" width="" height="" style="display: none;"></canvas>
+		<input type="range" name="range" id="range" min="0.5" max="3.0" step="0.1" value="1.0" />
+	</body>
+	<script type="text/javascript">
+		var canvasOne = document.getElementById('myCanvas_one');
+		var canvasTwo = document.getElementById('myCanvas_two');
+		var canvasThree = document.getElementById('myCanvas_three');
+		var canvasFour = document.getElementById('myCanvas_four');
+		var canvasFive = document.getElementById('myCanvas_five');
+		var contextOne = canvasOne.getContext("2d");
+		var contextTwo = canvasTwo.getContext("2d");
+		var contextThree = canvasThree.getContext("2d");
+		var contextFour = canvasFour.getContext("2d");
+		var contextFive = canvasFive.getContext("2d");
+		var Range = document.getElementById("range");
+		var img = new Image();
+		var isMouseDown = false,
+			dx, dy;
+		var lastpos = {
+			x: 0,
+			y: 0
+		};
+		var dis = {
+			x: 0,
+			y: 0
+		};
+		window.onload = function() {
+			//drawImage(obj,[sx,sy,sw,sh,]dx,dy[,dw,dh]);
+			//obj:要引用的图像对象或者canvas
+			//sx,sy在源图像上需要截取的左上角坐标
+			//sw,sh在源图像上需要截取的宽和高
+			//在canvas上显示时，图像左上角的坐标
+			//在canvas上显示时，图像的宽和高
+			var scale = Range.value;
+			canvasOne.height = canvasTwo.height = canvasThree.height = 400;
+			canvasOne.width = canvasTwo.width = canvasThree.width = 400;
+			canvasFour.width = 950, canvasFour.height = 600;
+				//制作水印
+			canvasFive.width=200;
+			canvasFive.height=100;
+			contextFive.font = "bold 40px Arial";
+			contextFive.fillStyle="rgba(0,0,0,0.5)";
+			contextFive.textBaseline="middle";
+			contextFive.textAlign="center";
+			contextFive.fillText("户彬制作",canvasFive.width/2,canvasFive.height/2);
+			img.src = 'img/girl.jpeg';
+			img.onload = function() {
+				contextOne.drawImage(img, 0, 0);
+				contextTwo.drawImage(img, 10, 10, canvasTwo.width - 20, canvasTwo.height - 20);
+				contextThree.drawImage(img, 100, 100, 300, 300, 30, 30, 340, 340);
+				drawImageByScale(scale);
+				Range.onmousemove = function() {
+					scale = Range.value;
+					drawImageByScale(scale, dis.x, dis.y);
+				}
+				canvasFour.onmousedown = function(e) {
+					e.preventDefault();
+					lastpos.x = mousePos(e).x - dis.x;
+					lastpos.y = mousePos(e).y - dis.y;
+					if (mousePos(e).x >= dx && mousePos(e).y >= dy && mousePos(e).x <= 950 * scale + dx && mousePos(e).y <= 600 * scale + dy) {
+						isMouseDown = true;
+						this.style.cursor="all-scroll";
+					}
+				}
+				canvasFour.onmouseup = function(e) {
+					e.preventDefault();
+					isMouseDown = false;
+					this.style.cursor="";
+				}
+				canvasFour.onmouseout = function(e) {
+					e.preventDefault();
+					isMouseDown = false;
+					this.style.cursor="";
+				}
+				canvasFour.onmousemove = function(e) {
+					e.preventDefault();
+					if (isMouseDown) {
+						dis.x = mousePos(e).x - lastpos.x;
+						dis.y = mousePos(e).y - lastpos.y;
+						drawImageByScale(scale, dis.x, dis.y);
+					}
+				}
+			}
+			function mousePos(e) {
+				var pos = canvasFour.getBoundingClientRect();
+				return {
+					x: e.clientX - pos.left,
+					y: e.clientY - pos.top
+				}
+			}
+
+			function drawImageByScale(scale, disx, disy) {
+				var imageWidth = 950 * scale,
+					imageHeight = 600 * scale;
+				dx = (canvasFour.width - imageWidth) / 2 + disx || 0,
+				dy = (canvasFour.height - imageHeight) / 2 + disy || 0;
+				contextFour.clearRect(0, 0, canvasFour.width, canvasFour.height);
+				contextFour.drawImage(img, dx, dy, imageWidth, imageHeight);
+				contextFour.drawImage(canvasFive, canvasFour.width-canvasFive.width,canvasFour.height-canvasFive.height);
+			}
+		}
+	</script>
+
+</html>

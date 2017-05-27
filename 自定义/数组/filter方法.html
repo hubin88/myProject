@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+		//filter()方法返回的数组元素是调用的数组的一个子集。传递的函数是用来逻辑判定的：该函数返回true或false.如果返回值为true或能转化为true的值，那么传递给判定函数的元素就是这个子集的成员，它将被添加到一个作为发那绘制的数组中
+			//filter找到适合条件的元素。（比如大于某个值）
+			var arr1=[1,23,5,78,35,55,13];
+//			alert(arr1.filter(function(element){return element>23}));
+			var arr=[-1,0,1,23,5,78,35,55,13];
+//			alert(arr2.filter(function(element){return element}));
+			//0没有被返回
+		//filter()可以跳过稀疏数组中缺少的元素，返回的数组总是稠密的
+		var dense=[1,2,3,,undefined,null,,6,7].filter(function(){return true});
+			alert(dense);
+		//filter()删除undefined和null元素
+		var o=[1,2,3,,undefined,null,,6,7].filter(function(x){ return x!==undefined&&x!==null});
+			alert(o);
+		var aa=[1,2,3,45,6,78,9,9,54].filter(function(x){ return x!==6})
+		console.log(aa);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

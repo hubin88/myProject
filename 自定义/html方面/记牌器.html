@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      #cardName{
+        display: table;
+        width: 1000px;
+        table-layout: fixed;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+      .row{
+        display: table-row;
+      }
+      .table-cell{
+        display: table-cell;
+        text-align: center;
+        border: 1px solid #ccc;
+        height: 20px;
+      }
+      input[type="button"] {
+        display: block;
+        border: none;
+        width: 100%;
+        line-height: 20px;
+        outline: none;
+        cursor: pointer;
+      }
+      .single input{
+        background-color: #0f0;
+      }
+      .double input{
+        background-color: #0e0;
+      }
+      .three input{
+        background-color: #0d0;
+      }
+      .four input{
+        background-color: #0c0;
+      }
+      .some input{
+        background-color: #0b0;
+      }
+      input[type="button"]:hover{
+       background: #00f; 
+       color: #fff;
+      }
+      .joker{
+        display: block;
+        width: 200%;
+        text-align: center;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+      }
+      *[disabled]{
+        cursor: not-allowed!important;
+        background: #f00!important;
+        color: #fff;
+      }
+      #clear{
+        margin: 10px;
+        text-align: center;
+      }
+      #remain>*[data-point]{
+        color: #0a0;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cardName">
+      <div class="row card-point">
+        <div class="table-cell">牌面</div>
+        <div class="table-cell" data-point="3">3</div>
+        <div class="table-cell" data-point="4">4</div>
+        <div class="table-cell" data-point="5">5</div>
+        <div class="table-cell" data-point="6">6</div>
+        <div class="table-cell" data-point="7">7</div>
+        <div class="table-cell" data-point="8">8</div>
+        <div class="table-cell" data-point="9">9</div>
+        <div class="table-cell" data-point="10">10</div>
+        <div class="table-cell" data-point="11">J</div>
+        <div class="table-cell" data-point="12">Q</div>
+        <div class="table-cell" data-point="13">K</div>
+        <div class="table-cell" data-point="14">A</div>
+        <div class="table-cell" data-point="15">2</div>
+        <div class="table-cell" data-point="16">小王</div>
+        <div class="table-cell" data-point="17">大王</div>
+      </div>
+      <div class="row single" data-group="single">
+        <div class="table-cell">单张</div>
+        <div class="table-cell" data-point="3"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="4"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="5"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="6"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="7"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="8"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="9"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="10"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="11"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="12"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="13"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="14"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="15"><input type="button" value="确定"></div>
+        <div class="table-cell JOKER" data-point="16"><input type="button" value="确定"></div>
+        <div class="table-cell JOKER" data-point="17"><input type="button" value="确定"></div>
+      </div>
+      <div class="row double" data-group="double">
+        <div class="table-cell">对子</div>
+        <div class="table-cell" data-point="3"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="4"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="5"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="6"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="7"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="8"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="9"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="10"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="11"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="12"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="13"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="14"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="15"><input type="button" value="确定"></div>
+      </div>
+      <div class="row three" data-group="three">
+        <div class="table-cell">三张</div>
+        <div class="table-cell" data-point="3"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="4"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="5"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="6"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="7"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="8"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="9"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="10"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="11"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="12"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="13"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="14"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="15"><input type="button" value="确定"></div>
+      </div>
+      <div class="row four" data-group="four">
+        <div class="table-cell">炸弹</div>
+        <div class="table-cell" data-point="3"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="4"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="5"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="6"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="7"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="8"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="9"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="10"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="11"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="12"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="13"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="14"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="15"><input type="button" value="确定"></div>
+        <div class="joker" data-point="18"><input type="button" value="确定"></div>
+      </div>
+      <div class="row some" data-group="some">
+        <div class="table-cell">顺子</div>
+        <div class="table-cell" data-point="3"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="4"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="5"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="6"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="7"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="8"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="9"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="10"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="11"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="12"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="13"><input type="button" value="确定"></div>
+        <div class="table-cell" data-point="14"><input type="button" value="确定"></div>
+      </div>
+      <div class="row" id="remain">
+        <div class="table-cell">剩余</div>
+        <div class="table-cell" data-point="3">4</div>
+        <div class="table-cell" data-point="4">4</div>
+        <div class="table-cell" data-point="5">4</div>
+        <div class="table-cell" data-point="6">4</div>
+        <div class="table-cell" data-point="7">4</div>
+        <div class="table-cell" data-point="8">4</div>
+        <div class="table-cell" data-point="9">4</div>
+        <div class="table-cell" data-point="10">4</div>
+        <div class="table-cell" data-point="11">4</div>
+        <div class="table-cell" data-point="12">4</div>
+        <div class="table-cell" data-point="13">4</div>
+        <div class="table-cell" data-point="14">4</div>
+        <div class="table-cell" data-point="15">4</div>
+        <div class="table-cell JOKER" data-point="16">1</div>
+        <div class="table-cell JOKER" data-point="17">1</div>
+      </div>
+    </div>
+    <div id="clear">
+      <button>重置</button>
+   </div>
+  </body>
+  <script type="text/javascript">
+    var Card = function (){
+      var _this=this,first;
+      this.btn=document.getElementsByTagName('input');
+      this.remain=document.getElementById("remain").children;
+      this.btnLen=this.btn.length;
+      this.remainLen=this.remain.length;
+      this.some=document.getElementsByClassName('some')[0];
+      this.someLen=this.some.children.length;
+      this.clear=document.getElementById("clear").children[0];
+      this.clear.onclick=_this.getClear;
+      for (var i = 0; i < this.btnLen; i++) {
+        this.btn[i].onclick=function(){
+          var point=Number(this.parentNode.getAttribute("data-point")),
+          group=this.parentNode.parentNode.getAttribute("data-group");
+          if (group!="some") {
+            if (point==16||point==17) {
+              document.getElementsByClassName('joker')[0].children[0].setAttribute("disabled",true);
+            }
+            if (point==18) {
+              this.setAttribute("disabled",true);
+              document.getElementsByClassName('JOKER')[0].children[0].setAttribute("disabled",true);
+              document.getElementsByClassName('JOKER')[1].children[0].setAttribute("disabled",true);
+              document.getElementsByClassName('JOKER')[2].innerText=0;
+              document.getElementsByClassName('JOKER')[3].innerText=0;
+            }
+            _this.getRemain(point,group);
+          }else{
+            if (!!first) {
+              _this.getSome(first,point);
+              first=undefined;
+            }else{
+              first=point;
+            }
+          }                    
+        };
+      }
+    }
+    Card.prototype ={
+      getRemain:function(n,group) {
+        for (var i = 0; i <this.remainLen; i++) {
+          if (Number(this.remain[i].getAttribute("data-point"))===n) {
+            switch (group){
+              case "single":
+              this.remain[i].innerText=--this.remain[i].innerText;
+              break;
+              case "double":
+              this.remain[i].innerText=this.remain[i].innerText-2;
+              break;
+              case "three":
+              this.remain[i].innerText=this.remain[i].innerText-3;
+              break;
+              case "four":
+              this.remain[i].innerText=this.remain[i].innerText-4;
+              break;
+            }
+            if (this.remain[i].innerText<=0) {
+              this.remain[i].style.color="#fff";
+              this.remain[i].style.background="red";
+              for (var k = 0; k < this.btnLen; k++) {
+                if (Number(this.btn[k].parentNode.getAttribute("data-point"))===n) {
+                  this.btn[k].setAttribute("disabled",true);
+                }
+                if (this.btn[k].parentNode.parentNode.getAttribute("data-group")==="some") {
+                  if (n<=7&&Number(this.btn[k].parentNode.getAttribute("data-point"))<=n) {
+                    this.btn[k].setAttribute("disabled",true);
+                  }else if(n>=10&&Number(this.btn[k].parentNode.getAttribute("data-point"))>=n){
+                    this.btn[k].setAttribute("disabled",true);
+                  }
+                }
+              }
+            }
+            if (this.remain[i].innerText==1) {
+              for (var k = 0; k < this.btnLen; k++) {
+                if (Number(this.btn[k].parentNode.getAttribute("data-point"))===n&&this.btn[k].parentNode.parentNode.getAttribute("data-group")!="single"&&this.btn[k].parentNode.parentNode.getAttribute("data-group")!="some") {
+                  this.btn[k].setAttribute("disabled",true);
+                }
+              }
+            }
+            if (this.remain[i].innerText==2) {
+              for (var k = 0; k < this.btnLen; k++) {
+                if (Number(this.btn[k].parentNode.getAttribute("data-point"))===n&&this.btn[k].parentNode.parentNode.getAttribute("data-group")!="single"&&this.btn[k].parentNode.parentNode.getAttribute("data-group")!="some"&&this.btn[k].parentNode.parentNode.getAttribute("data-group")!="double") {
+                  this.btn[k].setAttribute("disabled",true);
+                }
+              }
+            }
+            if (this.remain[i].innerText==3) {
+             for (var k = 0; k < this.btnLen; k++) {
+              if (Number(this.btn[k].parentNode.getAttribute("data-point"))===n&&this.btn[k].parentNode.parentNode.getAttribute("data-group")!="single"&&this.btn[k].parentNode.parentNode.getAttribute("data-group")!="some"&&this.btn[k].parentNode.parentNode.getAttribute("data-group")!="double"&&this.btn[k].parentNode.parentNode.getAttribute("data-group")!="three") {
+                  this.btn[k].setAttribute("disabled",true);
+                }
+              } 
+            }
+          }
+        }
+      },
+      getSome:function(point1,point2) {
+        for (var i = 1; i <this.remainLen-3; i++) {
+          if (Number(this.remain[i].getAttribute("data-point"))>=Number(point1)&&Number(this.remain[i].getAttribute("data-point"))<=Number(point2)) {
+            this.remain[i].innerText=--this.remain[i].innerText;
+          }
+        }
+      },
+      getClear:function(){
+        location.reload();
+      }  
+    } 
+    var card=new Card();
+  </script>
+</html>
+

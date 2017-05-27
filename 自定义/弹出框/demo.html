@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="skins/green.css" />
+	</head>
+
+	<body>
+	</body>
+	<script src="../js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="source/jquery.artDialog.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="source/artDialog.plugins.js" type="text/javascript" charset="utf-8"></script>-->
+	<script type="text/javascript">
+		(function(d) {
+			d['okValue'] = '确定';
+			d['cancelValue'] = '取消';
+			d['title'] = '消息';
+			// [more..]设置默认的属性
+		})($.dialog.defaults);
+		$.dialog({
+			title: '欢迎',
+			content: '欢迎使用artDialog对话框组件！',
+//			time:2000,
+			ok:function(){}
+		});
+		$.dialog('artDialog: I Love You!');
+		//更多示例参考index
+	</script>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css" />
+	</head>
+
+	<body>
+
+		<body>
+			<!--data-toggle="tab"和data-toggle="pill"触发切换效果，2个可以通用-->
+			<!-- 选项卡组件（菜单项nav-tabs）-->
+			<ul id="myTab" class="nav nav-tabs" role="tablist">
+				<li class="active"><a href="#bulletin" role="tab" data-toggle="tab">公告</a></li>
+				<li><a href="#rule" role="tab" data-toggle="tab">规则</a></li>
+				<li><a href="#forum" role="tab" data-toggle="tab">论坛</a></li>
+				<li><a href="#security" role="tab" data-toggle="tab">安全</a></li>
+				<li><a href="#welfare" role="tab" data-toggle="tab">公益</a></li>
+			</ul>
+			<!-- 选项卡面板 -->
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane active fade in" id="bulletin">公告内容面板</div>
+				<div class="tab-pane fade" id="rule">规则内容面板</div>
+				<div class="tab-pane fade" id="forum">论坛内容面板</div>
+				<div class="tab-pane fade" id="security">安全内容面板</div>
+				<div class="tab-pane fade" id="welfare">公益内容面板</div>
+			</div>
+			<hr />
+			<!-- 选项卡组件（菜单项nav-pills）-->
+			<ul id="myTab2" class="nav nav-pills" role="tablist">
+				<li class="active"><a href="#bulletin2" role="tab" data-toggle="pill">公告</a></li>
+				<li><a href="#rule2" role="tab" data-toggle="pill">规则</a></li>
+				<li><a href="#forum2" role="tab" data-toggle="pill">论坛</a></li>
+				<li><a href="#security2" role="tab" data-toggle="pill">安全</a></li>
+				<li><a href="#welfare2" role="tab" data-toggle="pill">公益</a></li>
+			</ul>
+			<!-- 选项卡面板 -->
+			<div id="myTabContent2" class="tab-content">
+				<div class="tab-pane fade in active" id="bulletin2">公告内容面板</div>
+				<div class="tab-pane fade" id="rule2">规则内容面板</div>
+				<div class="tab-pane fade" id="forum2">论坛内容面板</div>
+				<div class="tab-pane fade" id="security2">安全内容面板</div>
+				<div class="tab-pane fade" id="welfare2">公益内容面板</div>
+			</div>
+			<hr />
+			<!-- 选项卡组件（菜单项nav-tabs）-->
+			<ul id="myTab3" class="nav nav-tabs" role="tablist">
+				<li class="active"><a href="#bulletin3" role="tab">公告</a></li>
+				<li><a href="#rule3" role="tab">规则</a></li>
+				<li><a href="#forum3" role="tab">论坛</a></li>
+				<li><a href="#security3" role="tab">安全</a></li>
+				<li><a href="#welfare3" role="tab">公益</a></li>
+			</ul>
+			<!-- 选项卡面板 -->
+			<div id="myTabContent3" class="tab-content">
+				<div class="tab-pane active fade in" id="bulletin3">公告内容面板</div>
+				<div class="tab-pane fade" id="rule3">规则内容面板</div>
+				<div class="tab-pane fade" id="forum3">论坛内容面板</div>
+				<div class="tab-pane fade" id="security3">安全内容面板</div>
+				<div class="tab-pane fade" id="welfare3">公益内容面板</div>
+			</div>
+		</body>
+		<script src="bootstrap-3.3.5-dist/js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="bootstrap-3.3.5-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//通过js也可以触发
+				$(function() {
+					$("#myTab3 a").click(function(e) {
+						e.preventDefault();
+						$(this).tab("show");
+					});
+				})
+		</script>
+
+</html>

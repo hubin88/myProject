@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+div{float:left;width:100px;height:100px;display:none;}
+.div1{background-color:#F00;}
+.div2{background-color:#0F0;}
+.div3{background-color:#00F;}
+</style>
+<script src="jquery-1.11.2.min.js"></script>
+<script>
+$(function(){
+	$("#btn1").click(function(){
+	$(".div1").fadeIn("fast");
+	$(".div2").fadeIn("slow");
+	$(".div3").fadeIn(2000);	
+	});
+	$("#btn2").click(function(){
+	$(".div1").fadeOut(2000);
+	$(".div2").fadeOut("slow");
+	$(".div3").fadeOut("fast");	
+	});
+	$("#btn3").click(function(){
+	$(".div1").fadeToggle("slow");
+	$(".div2").fadeToggle(2000);
+	$(".div3").fadeToggle("fast");
+	});	
+})
+</script>
+</head>
+
+<body>
+<button type="button" id="btn1">淡入</button>
+<button type="button" id="btn2">淡出</button>
+<button type="button" id="btn3">切换</button><br>
+<div class="div1"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+</body>
+</html>

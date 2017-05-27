@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http - equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>点证|文字直播</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/webuploader.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css" />
+	</head>
+
+	<body>
+			<!--<div class="content">
+				<div class="list">
+					<ul class="media-list"></ul>
+				</div>
+				<div class="comments-box hide">
+					<div class="toolbar">
+						<span class="font">字体</span>
+						<span class="face">表情</span>
+						<span class="picture">图片</span>
+						<span class="prompt"></span>
+						<div class="font-panel">
+							<div class="div-family">选择字体：
+								<select class="font-family">
+									<option value="Microsoft YaHei">微软雅黑</option>
+									<option value="SimSun">宋体</option>
+									<option value="SimHei">黑体</option>
+									<option value="KaiTi">楷体</option>
+								</select>
+							</div>
+							<div class="div-size">选择大小：
+								<select class="font-size">
+									<option value="14">14px</option>
+									<option value="9">9px</option>
+									<option value="10">10px</option>
+									<option value="11">11px</option>
+									<option value="12">12px</option>
+									<option value="13">13px</option>
+								</select>
+							</div>
+							<div class="font-weight">B</div>
+							<div class="font-xieti">I</div>
+						</div>
+						<div class="face-panel" id="facebox">
+						</div>
+					</div>
+					<div class="recommend"></div>
+					<div class="text">
+						<textarea rows="7" maxlength="500"></textarea>
+					</div>
+					<div class="send">
+						<span class="remained">500字</span>
+						<input type="button" id="" value="发送" />
+					</div>
+				</div>
+			</div>
+			<div class="pop-box"></div>-->
+	</body>
+	<script src="js/lib/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/underscore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/backbone.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/jquery.mousewheel.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/jquery.mCustomScrollbar.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/jquery.qqFace.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/webuploader.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/jquery.artDialog.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/pub/cummon.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tpl/template.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/pub/AppConfig.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="js/mvc/model.js" type="text/javascript" charset="utf-8"></script>-->
+	<script src="js/mvc/view.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		(function(d) {
+			d['okValue'] = '确定';
+			d['cancelValue'] = '取消';
+			d['title'] = '消息';
+		})($.dialog.defaults);
+	</script>
+	<!--<script type="text/javascript">
+		var addEvent = (function(window, undefined) {
+			var _eventCompat = function(event) {
+				var type = event.type;
+				if (type == 'DOMMouseScroll' || type == 'mousewheel') {
+					event.delta = (event.wheelDelta) ? event.wheelDelta / 120 : -(event.detail || 0) / 3;
+				}
+				if (event.srcElement && !event.target) {
+					event.target = event.srcElement;
+				}
+				if (!event.preventDefault && event.returnValue !== undefined) {
+					event.preventDefault = function() {
+						event.returnValue = false;
+					};
+				}
+				return event;
+			};
+			if (window.addEventListener) {
+				return function(el, type, fn, capture) {
+					if (type === "mousewheel" && document.mozHidden !== undefined) {
+						type = "DOMMouseScroll";
+					}
+					el.addEventListener(type, function(event) {
+						fn.call(this, _eventCompat(event));
+					}, capture || false);
+				}
+			} else if (window.attachEvent) {
+				return function(el, type, fn, capture) {
+					el.attachEvent("on" + type, function(event) {
+						event = event || window.event;
+						fn.call(el, _eventCompat(event));
+					});
+				}
+			}
+			return function() {};
+		})(window);
+	</script>-->
+</html>

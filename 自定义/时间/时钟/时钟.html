@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>无标题文档</title>
+		<style>
+			body {
+				background: url(images/bg.png);
+				color: #FFF;
+				font-size: 50px;
+			}
+			#div1 {
+				margin-top: 200px;
+			}
+		</style>
+		<script>
+			function double(n) {
+				if (n < 10) {
+					return '0' + n;
+				} else {
+					return '' + n;
+				}
+			}
+			function third(m) {
+				if (m < 10) {
+					return '00' + m;
+				} else if (m < 100) {
+					return '0' + m;
+				} else {
+					return '' + m;
+				}
+			}
+			onload = function() {
+				var aImg = document.getElementsByName('a');
+				var aImg1 = document.getElementsByName('b');
+				function tick() {
+					var oDate = new Date();
+					var str = double(oDate.getFullYear()) + double(oDate.getMonth() + 1) + double(oDate.getDate()) + double(oDate.getHours()) + double(oDate.getMinutes()) + double(oDate.getSeconds())+third(oDate.getMilliseconds());
+				for (var i = 0; i < aImg.length; i++) {
+					aImg[i].src = 'images/' + str.charAt(i) + '.png';
+				}
+				var str = double(oDate.getDay()); //alert(str);
+				aImg1[0].src = 'images/0' + str.charAt(1) + '.png';
+			}
+			setInterval(tick, 1);
+			tick();
+			}
+		</script>
+	</head>
+
+	<body>
+		<center>
+			<div id="div1">
+				<img src="images/title.png">
+				<br>
+				<img src="images/0.png" name="a">
+				<img src="images/0.png" name="a">
+				<img src="images/0.png" name="a">
+				<img src="images/0.png" name="a">
+				<img src="images/year.png">
+				<img src="images/0.png" name="a">
+				<img src="images/0.png" name="a">
+				<img src="images/month.png">
+				<img src="images/0.png" name="a">
+				<img src="images/0.png" name="a">
+				<img src="images/00.png">
+				<br>
+				<img src="images/0.png" name="a">
+				<img src="images/0.png" name="a">
+				<img src="images/sign.png">
+				<img src="images/0.png" name="a">
+				<img src="images/0.png" name="a">
+				<img src="images/sign.png">
+				<img src="images/0.png" name="a">
+				<img src="images/0.png" name="a">
+				<img src="images/sign.png">
+				<img src="images/0.png" name="a">
+				<img src="images/0.png" name="a">
+				<img src="images/0.png" name="a">
+				<img src="images/week.png">
+				<img src="images/00.png" name="b">
+			</div>
+		</center>
+	</body>
+
+</html>

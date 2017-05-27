@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="cummon.css" />
+	</head>
+
+	<body>
+		<div>
+			<ul id="tag">
+				<li>你说我是好人吗，我是好人啊</li>
+				<li>哈哈，我真的不知道说什么了</li>
+				<li>生活就是应该平淡的</li>
+				<li>像上学一样的工作</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function scrollNews() {
+			$('#tag li').eq(0).fadeOut("slow", function() {
+				$(this).appendTo($(this).parent()).fadeIn("slow");
+			});
+		}
+		setInterval(function(){
+			scrollNews();
+		}, 1000);
+	</script>
+	</script>
+
+</html>

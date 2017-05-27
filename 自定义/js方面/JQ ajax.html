@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<body>
+        <div id="divtest">
+            <div class="title">
+                <span class="fl">奇偶性和是否大于0</span> 
+                <span class="fr">
+                    <input id="btnShow_1" type="button" value="验证1" />
+                    <input id="btnShow_2" type="button" value="验证2" />
+                </span>
+            </div>
+            <ul>
+               <li>请求输入一个数字 
+                   <input id="txtNumber" type="text" size="12" />
+               </li>
+            </ul>
+            <div class="title">
+                <span class="fl">加载一段文字</span> 
+                <span class="fr">
+                    <input id="btnShow" type="button" value="加载" />
+                </span>
+            </div>
+            <ol>
+               <li id="divload"></li>
+            </ol>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+            	//ajaxStart()和ajaxStop()方法是绑定Ajax事件。ajaxStart()方法用于在Ajax请求发出前触发函数，ajaxStop()方法用于在Ajax请求完成后触发函数。
+            	$("#divload").ajaxStart(function(){
+                    $(this).html("正在请求数据...");
+                });
+                $("#divload").ajaxStop(function(){
+                    $(this).html("数据请求完成！");
+                });
+            	//ajaxSetup()方法可以设置Ajax请求的一些全局性选项值，设置完成后，后面的Ajax请求将不需要再添加这些选项值
+                $.ajaxSetup({
+                    dataType:"text",//dataType为服务器返回的数据类型
+                    type:"post",//type为发送数据请求的方式，默认为get
+                    success:function(data){
+                        $("ul").append("<li>你输入的<b>  "
+                            + $("#txtNumber").val() + " </b>是<b> "
+                            + data + " </b></li>");
+                    }//success为请求成功的执行的回调函数
+                });
+                $("#btnShow_1").bind("click", function () {
+                    $.ajax({
+                        data: { num: $("#txtNumber").val()},//data为请求时传递的数据
+                        url: "http://www.imooc.com/data/check.php"//url表示服务器请求的路径
+                    });
+                })
+                $("#btnShow_2").bind("click", function () {
+                    $.ajax({
+                        data: { num: $("#txtNumber").val()},//data为请求时传递的数据
+                        url: "http://www.imooc.com/data/check_f.php"//url表示服务器请求的路径
+                    });
+                })
+            });
+        </script>
+	</body>
+</html>

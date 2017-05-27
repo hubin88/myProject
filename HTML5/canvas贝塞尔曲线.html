@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				display: block;
+				border: 1px solid #aaa;
+				margin: 10px;
+			}
+			#canvasWarp{
+				position: relative;
+			}
+			#controller{
+				background: rgba(0,0,100,0.5);
+				border-radius: 5px;
+				position: absolute;
+				left: 10px;
+				top: 0;
+				padding: 10px;
+				color: white;
+			}
+			#controller span{
+				vertical-align: middle;
+			}
+			#white,#black{
+				display: inline-block;
+				border-radius: 3px;
+				cursor: pointer;
+				background: black;
+				padding: 10px;
+			}
+			#textCode{
+				position: absolute;
+				left: 700px;
+				top: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="canvasWarp">
+			<canvas id="myCanvas" width="" height=""></canvas>
+			<div id="controller">
+				<span id="white">二次贝塞尔曲线</span>
+				<span id="black">三次贝塞尔曲线</span>
+			</div>
+			<div id="textCode">
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var canvas = document.getElementById('myCanvas');
+			canvas.height = 600;
+			canvas.width = 600;
+			var context = canvas.getContext("2d");
+			var drag = false,
+				n = 3,
+				index;
+			var points = [{
+				x: 100,
+				y: 300
+			}, {
+				x: 200,
+				y: 150
+			}, {
+				x: 300,
+				y: 450
+			}, {
+				x: 400,
+				y: 300
+			}];
+			DrawCanvas();
+			document.getElementById("white").onclick=function(){
+				n=3;
+				DrawCanvas();
+			}
+			document.getElementById("black").onclick=function(){
+				n=4;
+				DrawCanvas();
+			}
+			canvas.onmousedown = function(e) {
+				for (var i = 0; i < n; i++) {
+					context.save();
+					context.beginPath();
+					context.arc(points[i].x, points[i].y, 10, 0, Math.PI * 2);
+					if (context.isPointInPath(MousePos(e).x, MousePos(e).y)) {
+						index = i;
+						drag = true;
+						canvas.style.cursor="all-scroll";
+					}
+					context.restore();
+				}
+			}
+			canvas.onmousemove = function(e) {
+				if (drag) {
+					points[index].x = MousePos(e).x;
+					points[index].y = MousePos(e).y;
+					DrawCanvas(e);
+				}
+			}
+			canvas.onmouseup = canvas.onmouseout = function(e) {
+				drag = false;
+				canvas.style.cursor="auto";
+			}
+
+			function MousePos(e) {
+				return {
+					x: e.clientX - canvas.getBoundingClientRect().left,
+					y: e.clientY - canvas.getBoundingClientRect().top
+				}
+			}
+
+			function DrawCanvas(e) {
+				context.clearRect(0, 0, canvas.width, canvas.height);
+				for (var i = 0; i < n; i++) {
+					context.save();
+					context.beginPath();
+					context.arc(points[i].x, points[i].y, 10, 0, Math.PI * 2);
+					context.fillStyle = "rgba(0,0,0,0.2)";
+					context.strokeStyle = "red";
+					context.fill();
+					context.stroke();
+					context.restore();
+				}
+				context.save();
+				context.lineCap = "round";
+				context.lineJoin = "round";
+				context.beginPath();
+				context.moveTo(points[0].x, points[0].y);
+				context.lineTo(points[1].x, points[1].y);
+				context.lineTo(points[2].x, points[2].y);
+				n == 3 ? null : context.lineTo(points[3].x, points[3].y);
+				context.lineWidth = 1;
+				context.strokeStyle = "#aaa";
+				context.stroke();
+				context.beginPath();
+				context.moveTo(points[0].x, points[0].y);
+				n == 3 ? context.quadraticCurveTo(points[1].x, points[1].y, points[2].x, points[2].y) : context.bezierCurveTo(points[1].x, points[1].y, points[2].x, points[2].y, points[3].x, points[3].y);
+				context.lineWidth = 5;
+				context.strokeStyle = "#000";
+				context.stroke();
+				context.restore();
+				displayCode();
+			}
+			
+			function displayCode(){
+				var textArr=
+				n==3?[
+					'<div>context.moveTo('+points[0].x+', '+points[0].y+');</div>',
+					'<div>context.quadraticCurveTo('+points[1].x+', '+points[1].y+', '+points[2].x+', '+points[2].y+');</div>'
+				]:[
+					'<div>context.moveTo('+points[0].x+', '+points[0].y+');</div>',
+					'<div>context.bezierCurveTo('+points[1].x+', '+points[1].y+', '+points[2].x+', '+points[2].y+', '+points[3].x+', '+points[3].y+');</div>'
+				];
+				document.getElementById("textCode").innerHTML=textArr.join("");
+			}
+		}
+	</script>
+
+</html>

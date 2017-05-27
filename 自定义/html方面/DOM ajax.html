@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>无标题文档</title>
+		<script>
+			onload = function() {
+				document.getElementsByTagName('button')[0].onclick = function() {
+					var http;
+					if (window.XMLHttpRequest) {
+						http = new XMLHttpRequest();
+					} else {
+						http = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					http.onreadystatechange = function() {
+						if (http.readyState == 4 && http.status == 200)
+							document.getElementsByTagName('div')[0].innerHTML = http.responseText;
+					};
+					http.open('get', 'aaa.txt?' + Math.random(), true);
+					http.send();
+				};
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<button>显示数据</button>
+
+		<div></div>
+
+	</body>
+
+</html>

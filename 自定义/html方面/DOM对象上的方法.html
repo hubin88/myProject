@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body onload="accesskey()">
+		<input type="text" name="" id="text" value="123456" readonly="readonly"/>
+		<input type="button" id="btn1" value="Select Text" onclick="selText()" />
+		<input type="button" id="btn2" value="Clone Text1" onclick="clone_t()" />
+		<input type="button" id="btn3" value="Clone Text2" onclick="clone_f()" />
+		<p>accesskey 属性规定激活元素的快捷键。</p>
+		<p><b>注释：</b>快捷键在不同的浏览器中各有不同：不要与默认的快捷键冲突</p>
+		<ul>
+			<li>IE, Chrome, Safari, Opera 15+: [ALT] + <em>accesskey</em></li>
+			<li>Opera prior version 15: [SHIFT] [ESC] + <em>accesskey</em></li>
+			<li>Firefox: [ALT] [SHIFT] + <em>accesskey</em></li>
+		</ul>
+
+	</body>
+	<script type="text/javascript">
+		 //选择文本
+		function selText() {
+			document.getElementById('text').select()
+		}
+			//复制文本
+
+		function clone_t() {
+			var cloneText = document.getElementById('text').cloneNode(true);
+			document.body.appendChild(cloneText);
+		}
+		function clone_f() {
+			var cloneText = document.getElementById('text').cloneNode(false);
+			document.body.appendChild(cloneText);
+		}
+			//快捷键
+
+		function accesskey() {
+			document.getElementById('btn1').accessKey = "r";
+			document.getElementById('btn2').accessKey = "q";
+		}
+	</script>
+
+</html>

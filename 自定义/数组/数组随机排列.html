@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script>
+	 var num = 15;
+	 var a1 = [];
+	 for (var i = 0 ; i<num ;i++ ){
+	  a1[i] = i;
+	 }
+	 var a2 = [];
+	 for (var i = 0 ; i<num ;i++){
+	  a2.push(a1.splice(Math.floor(Math.random()*a1.length) , 1));
+	 }
+	 alert(a2)
+  </script>
+</body>
+</html>

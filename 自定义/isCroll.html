@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrapper {
+				width: 500px;
+				height: 300px;
+			}
+			ul,
+			li {
+				width: 600px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrapper">
+			<ul>
+				<input type="" name="" id="" value="" />
+				<select name="">
+					<option value="">sadadasd</option>
+					<option value="">sadadasd</option>
+					<option value="">sadadasd</option>
+				</select>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+				<li>this is a isCroll,this is a isCroll,this is a isCroll</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/iscroll.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function loaded() {
+			var myscroll = new iScroll("wrapper", {
+				momentum: false,
+				vScroll: true,
+				hScroll: true,//当滑动内容宽度小于wrapper的宽度是无法水平滑动
+				hScrollbar: false,
+				vScrollbar: false,
+				zoom: true,
+				onBeforeScrollMove: function() {
+					console.log('onBeforeScrollMove');
+				},
+				onScrollMove: function() {
+					console.log('onScrollMove');
+				},
+				onScrollStart: function() {
+					console.log("onScrollStart");
+					var h = $("ul").css("transform");
+					console.log(h);
+				},
+				//				onBeforeScrollStart: function(e) {
+				//					var target = e.target;
+				//					while (target.nodeType != 1) target = target.parentNode;
+				//					if (target.tagName != "SELECT" && target.tagName != "INPUT" && target.tagName != "TEXTAREA")
+				//						e.preventDefault();
+				//				},
+				onBeforeScrollStart: function(e) {
+					if ($(e.target).is("select") || $(e.target).is("input") || $(e.target).is("textarea")) {
+						return;
+					}
+					e.preventDefault();
+					console.log("onBeforeScrollStart");
+				},
+				onBeforeScrollEnd: function() {
+					console.log("onBeforeScrollEnd");
+				},
+				onScrollEnd: function() {
+					console.log("onScrollEnd");
+				},
+				onTouchEnd: function() {
+					$(".pull").remove();
+					console.log("onTouchEnd");
+				},
+				onRefresh: function() {
+					console.log("onRefresh");
+				}
+			});
+		
+		}
+		window.addEventListener("load", loaded, false);
+	</script>
+
+</html>

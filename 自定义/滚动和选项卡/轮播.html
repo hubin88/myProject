@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>无标题文档</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			#div {
+				width: 288px;
+				height: 180px;
+				background: #F00;
+				margin: 200px auto 0;
+				position: relative;
+				overflow: hidden;
+			}
+			#button{
+				text-align: center;
+			}
+			#button>input{
+				margin: 5px 10px;
+			}
+			ul {
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 1;
+				display: flex;
+				transition: all 1s ease-out;
+			}
+			
+			ul li {
+				width: 288px;
+				height: 180px;
+				cursor: pointer;
+				font-size: 0;
+			}
+			
+			ol {
+				z-index: 2;
+				position: absolute;
+				bottom: 0;
+				right: 15px;
+			}
+			
+			ol li {
+				width: 20px;
+				height: 20px;
+				border: #000 solid 1px;
+				background: #999;
+				float: left;
+				display: inline;
+				text-align: center;
+				margin: 0 5px;
+				margin-bottom: 0;
+				cursor: pointer;
+			}
+			
+			.active {
+				background: #FF0;
+				font-weight: bold;
+				color: #0F0;
+			}
+		</style>
+		<script src="../js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$(function() {
+				var now = 0,
+					direction = -1,
+					l = $("ul>li").length,
+					w = $("ul>li").width();
+				$("#left").click(function() {
+					direction = 1;
+				});
+				$("#right").click(function() {
+					direction = -1;
+				});
+				$("ol>li").mouseover(function(e) {
+					now = $(e.target).index();
+					move();
+				});
+
+				function move() {
+					$("ol>li").eq(now).addClass("active").siblings().removeClass("active");
+					$("ul").css("left", -now * w + "px");
+				}
+
+				function next() {
+					direction > 0 ? now-- : now++;
+					if (now == l) {
+						now = 0;
+					}
+					if (now == -1) {
+						now = l-1;
+					}
+					move();
+				}
+				var timer = setInterval(next, 2000);
+				$("#div").hover(function() {
+					clearInterval(timer);
+				}, function() {
+					timer = setInterval(next, 2000);
+				})
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="div">
+			<ul id="ul">
+				<li><img src="滚动/1.jpg" /></li>
+				<li><img src="滚动/2.jpg" /></li>
+				<li><img src="滚动/3.jpg" /></li>
+				<li><img src="滚动/4.jpg" /></li>
+				<li><img src="滚动/5.jpg" /></li>
+				<li><img src="滚动/6.jpg" /></li>
+				<li><img src="滚动/7.jpg" /></li>
+				<li><img src="滚动/8.jpg" /></li>
+			</ul>
+			<ol id="ol">
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+			</ol>
+		</div>
+		<div id="button">
+			<input type="button" name="left" id="left" value="left" />
+			<input type="button" name="left" id="right" value="right" />
+		</div>
+	</body>
+
+</html>

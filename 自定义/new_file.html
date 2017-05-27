@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function fn(a,b){
+			var data={
+				A:a,
+				C:"c"
+			}
+			if (arguments.length==2) {
+				data.B=b;
+			}
+			return data
+		}
+		var t=fn("aaa"),
+			m=fn("aaa","bbb");
+			console.log(t);
+			console.log(m);
+		function test1(func){
+			func;
+		}
+		function test2(){
+			alert("data");
+		}
+		test1(test2());
+	</script>
+</html>

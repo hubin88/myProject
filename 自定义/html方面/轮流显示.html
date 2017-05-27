@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding:0;
+		}
+		.pull-left{
+			float: left!important;
+		}
+		.media-body{
+			display: table-cell;
+		}
+		.media-object{
+			width: 50px;
+			height: 50px;
+		}
+		div.box{
+			clear: both;
+			margin: 10px 0;
+		}
+		div.box.active .title{
+			display: none;
+		}
+		div.box.active .content{
+			display: block;
+		}
+		div.box .content{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<div id="game">
+	
+</div>
+</body>
+<script type="text/javascript" src="../js/jQuery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	var datas=[
+			{
+				name:"英雄无敌",
+				num:"193万"
+			},
+			{
+				name:"dnf",
+				num:"195万"
+			},
+			{
+				name:"lol",
+				num:"197万"
+			},
+			{
+				name:"cf",
+				num:"198万"
+			},
+			{
+				name:"fs",
+				num:"200万"
+			},
+			{
+				name:"英雄无敌",
+				num:"193万"
+			},
+			{
+				name:"dnf",
+				num:"195万"
+			},
+			{
+				name:"lol",
+				num:"197万"
+			},
+			{
+				name:"cf",
+				num:"198万"
+			},
+			{
+				name:"fs",
+				num:"200万"
+			}
+		];
+		for (var i = 0; i < datas.length; i++) {
+			$("#game").append('<div class="box'+(i===0?" active":"")+'"><div class="title"><span>'+((i+1)<10?("0"+(i+1)):(i+1))+'</span>'+datas[i].name+'</div><div class="content"><a href="javascript:;" class="pull-left"><img class="media-object" src="" /></a><div class="media-body"><h5>'+datas[i].name+'</h5><p><span>'+datas[i].num+'</span>人参加</p></div></div></div>')
+		}
+		$("div.box").hover(function(){
+			$(this).addClass("active").siblings().removeClass("active");
+		});
+		$("div.box").on("click",function(){
+			console.log($(this).index());
+		});
+	</script>
+</html>

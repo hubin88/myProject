@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<script type="text/javascript">
+onload=function()
+{	
+	var oIn=document.getElementsByTagName("input");
+	oIn[0].onclick=function()
+	{	
+		var hu=prompt("请输入姓名:");
+		if(hu){alert("你好"+hu);}
+		else{alert("hello my friend");}
+	}
+	oIn[1].onclick=function()
+	{
+	var bin=confirm("你确定删除吗？");
+		if(bin==true){alert("你确定删除了")}
+		else{alert("取消删除")}
+	}
+}
+</script>
+</head>
+<body>
+	<input type="button" value="button1">
+	<input type="button" value="button2">
+</body>
+</html>

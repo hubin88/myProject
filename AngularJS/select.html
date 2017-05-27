@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="selectExample">
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div ng-controller="ExampleController1">
+			<select ng-model="selected" ng-options="x.id as x.name for x in users"></select>
+		</div>
+		<div ng-controller="ExampleController2">
+			<select ng-options="item.subItem as item.label for item in values track by item.id" ng-model="selected"></select>
+			<select ng-options="item.subItem as item.label for item in values track by item.id" ng-model="selected1"></select>
+		</div>
+	</body>
+	<script type="text/javascript">
+		angular.module('selectExample', [])
+			.controller('ExampleController1', ['$scope', function($scope) {
+				$scope.users = [{
+					name: 'a',
+					id: '1'
+				}, {
+					name: 'b',
+					id: '2'
+				}, {
+					name: 'c',
+					id: '3'
+				}];
+				$scope.selected = '2'; //id的值，区分类型
+			}])
+			.controller('ExampleController2', ['$scope', function($scope) {
+				$scope.values = [{
+					id: 1,
+					label: 'aLabel',
+					subItem: {
+						name: 'aSubItem'
+					}
+				}, {
+					id: 2,
+					label: 'bLabel',
+					subItem: {
+						name: 'bSubItem'
+					}
+				}];
+				$scope.selected = {
+					id: 1
+				};
+				$scope.selected1 = {
+					name: 'bSubItem'
+				};
+			}]);
+	</script>
+
+</html>

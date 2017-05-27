@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<input type="" name="" id="int" value="4313" />
+		<input type="" name="" id="int2" value="" />
+	</body>
+	<script type="text/javascript">
+		var int=document.getElementById("int");
+		var intt=document.getElementById("int2");
+//		int.oninput=function(){
+//			alert(this.value);
+//		};
+//		int.onpropertychange=function(){
+//			alert(this.value);
+//		};
+		intt.onblur=function(){
+			int.value=this.value;
+		}
+//		$("#int").on("input" ,function(){
+//			alert($(this).val());
+//		});
+		$("#int").on("change propertychange",function(){
+			alert($(this).val());
+		});
+	</script>
+</html>

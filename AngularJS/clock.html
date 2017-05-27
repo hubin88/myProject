@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body ng-app="ezstuff">
+		<ez-clock></ez-clock>
+	</body>
+	<script type="text/javascript">
+		angular.module("ezstuff", []) //创建模块ezstuff
+			.directive("ezClock", function() { //在模块上注册指令ezClock的类工厂
+				return {
+					restrict: "E",
+					replace: true,
+					template: "<div class='clock'></div>",
+					link: function(scope, element, attrs) {
+						var getTime=function(){
+							//获取当前时间
+							var d = new Date();
+							//element对应引用该指令的DOM对象的jqLite封装
+							element.text(d.toString());
+						};
+						getTime();
+						setInterval(getTime, 500);
+					}
+				}
+			})
+	</script>
+
+</html>

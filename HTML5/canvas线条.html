@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				display: block;
+				border: 1px solid #aaa;
+				margin: 100px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="" height=""></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+				var canvas = document.getElementById('myCanvas');
+				canvas.height = 600;
+				canvas.width = 1200;
+				var context = canvas.getContext("2d");
+				//直线
+				context.beginPath(); //指定起点,新的路径和状态
+				context.moveTo(50, 100); //起点
+				context.lineTo(150, 200); //过渡点
+				context.lineTo(50, 300); //过渡点
+				context.closePath(); //闭合路径
+				context.lineWidth = 5; //线宽
+				context.strokeStyle = "red"; //线条颜色
+				context.stroke(); //绘制直线
+				context.beginPath();
+				context.moveTo(150, 100);
+				context.lineTo(250, 200);
+				context.lineTo(150, 300);
+				context.lineWidth = 4;
+				context.strokeStyle = "green";
+				context.stroke();
+				context.beginPath();
+				context.moveTo(250, 100);
+				context.lineTo(350, 200);
+				context.lineTo(250, 300);
+				context.lineWidth = 3;
+				context.strokeStyle = "blue";
+				context.stroke();
+				//多边形和填充
+				context.beginPath();
+				context.moveTo(400, 150);
+				context.lineTo(500, 150);
+				context.lineTo(500, 100);
+				context.lineTo(550, 200);
+				context.lineTo(500, 300);
+				context.lineTo(500, 250);
+				context.lineTo(400, 250);
+				context.closePath();
+				context.lineWidth = 8;
+				context.strokeStyle = "blue";
+				context.fillStyle = "yellow"; //填充色
+				context.fill(); //填充
+				context.stroke();
+				//矩形
+				//fillRect(x,y,l,h)其中x,y为矩形左上角的坐标；l,h为长和高。实体矩形
+				//strokeRect(x,y,l,h)其中x,y为矩形左上角的坐标；l,h为长和高。矩形框
+				context.beginPath();
+				context.lineWidth = 5;
+				context.strokeStyle = "red";
+				context.fillStyle = "green";
+				context.fillRect(600, 100, 80, 80); //没用边框的，有填充的矩形
+				context.strokeRect(700, 100, 80, 80); //只有边框的矩形
+				//有边框和填充的矩形，第一种方法
+				context.fillRect(800, 100, 100, 100);
+				context.strokeRect(800, 100, 100, 100);
+				//有边框和填充的矩形，第二种方法
+				context.beginPath();
+				context.rect(950, 100, 100, 100);
+				context.lineWidth = 5;
+				context.strokeStyle = "blue";
+				context.fillStyle = "yellow";
+				context.fill();
+				context.stroke();
+				//函数调用
+				drawRect(context, 1080, 100, 100, 150, 10, "red", "green");
+				//当2个图形有重叠部分时,默认情况下后面的会覆盖前面的重叠部分
+				drawRect(context, 10, 350, 100, 100, 10, "red", "green");
+				drawRect(context, 80, 380, 100, 100, 10, "red", "green");
+				drawRect(context, 50, 330, 100, 100, 10, "red", "rgba(0,255,0,.5)");
+				//线条的帽子lineCap
+				context.lineWidth = 20;
+				context.beginPath();
+				context.moveTo(200, 350);
+				context.lineTo(300, 350);
+				context.lineCap = "butt"; //默认
+				context.stroke();
+				context.beginPath();
+				context.moveTo(200, 380);
+				context.lineTo(300, 380);
+				context.lineCap = "round";
+				context.stroke();
+				context.beginPath();
+				context.moveTo(200, 410);
+				context.lineTo(300, 410);
+				context.lineCap = "square";
+				context.stroke();
+				//辅助线
+				context.beginPath();
+				context.moveTo(200, 330);
+				context.lineTo(200, 430);
+				context.moveTo(300, 330);
+				context.lineTo(300, 430);
+				context.lineWidth = 1;
+				context.strokeStyle = "#000000";
+				context.stroke();
+				//星星
+				drawStar(context, 400, 400, 100, 40, 5, "green", "red",0);
+				//线条链接处lineJoin
+				context.strokeStyle = "#000000";
+				context.lineWidth = 20;
+				context.beginPath();
+				context.moveTo(500, 350);
+				context.lineTo(550, 400);
+				context.lineTo(500, 450);
+				context.lineJoin = "miter"; //默认
+				context.stroke();
+				context.beginPath();
+				context.moveTo(550, 350);
+				context.lineTo(600, 400);
+				context.lineTo(550, 450);
+				context.lineJoin = "bevel";
+				context.stroke();
+				context.beginPath();
+				context.moveTo(600, 350);
+				context.lineTo(650, 400);
+				context.lineTo(600, 450);
+				context.lineJoin = "round";
+				context.stroke();
+				context.beginPath();
+				context.moveTo(600, 280);
+				context.lineTo(800, 300);
+				context.lineTo(600, 320);
+				context.lineJoin = "miter";
+				context.miterLimit = 10; //默认
+				context.stroke();
+				context.beginPath();
+				context.moveTo(850, 280);
+				context.lineTo(1050, 300);
+				context.lineTo(850, 320);
+				context.lineJoin = "miter";
+				context.miterLimit = 20; //只有在lineJoin="miter"时才有效果
+				context.stroke();
+				drawRegularPolygon(context,80,800,450,6);
+			}
+			//调用drawRect函数直接画矩形
+		function drawRect(cxt, x, y, width, height, borderWidth, borderColor, fillColor) {
+			cxt.lineWidth = borderWidth;
+			cxt.strokeStyle = borderColor;
+			cxt.fillStyle = fillColor;
+			cxt.fillRect(x, y, width, height);
+			cxt.strokeRect(x, y, width, height);
+		}
+		//画五角星
+		function pathStar(cxt, x, y, R, r, Rot) {
+			cxt.beginPath();
+			for (var i = 0; i < 5; i++) {
+				cxt.lineTo(Math.cos((18 + i * 72) / 180 * Math.PI) * R, -Math.sin((18 + i * 72) / 180 * Math.PI) * R);
+				cxt.lineTo(Math.cos((54 + i * 72) / 180 * Math.PI) * r, -Math.sin((54 + i * 72) / 180 * Math.PI) * r);
+			}
+			cxt.closePath();
+		}
+
+		function drawStar(cxt, x, y, R, r,borderWidth, borderColor, fillColor,rot) {
+			var Rot=rot||0;
+			cxt.save();
+			cxt.translate(x, y);
+			cxt.rotate(Rot/180*Math.PI);
+			cxt.lineWidth = borderWidth||1;
+			cxt.strokeStyle = borderColor||"black";
+			cxt.fillStyle = fillColor||"transparent";
+			pathStar(cxt, x, y, R, r, Rot);
+			cxt.fill();
+			cxt.stroke();
+			cxt.restore();
+		}
+		//正多边形
+		function pathRegularPolygon(cxt,n, L) {
+			var R=L/(2*Math.sin(Math.PI/n));
+			cxt.beginPath();
+			for (var i = 0; i < n; i++) {
+				cxt.lineTo(Math.cos(2 * i * Math.PI / n) * R, -Math.sin(2 * i * Math.PI / n) * R);
+			}
+			cxt.closePath();
+		}
+		function drawRegularPolygon(cxt, L, x, y, n, borderWidth, borderColor, fillColor,rot) {
+			var Rot=rot||0;
+			cxt.save();
+			cxt.translate(x, y);
+			cxt.rotate(Rot/180*Math.PI);
+			cxt.lineWidth = borderWidth||3;
+			cxt.strokeStyle = borderColor||"black";
+			cxt.fillStyle = fillColor||"transparent";
+			pathRegularPolygon(cxt, n, L);
+			cxt.fill();
+			cxt.stroke();
+			cxt.restore();
+		}
+	</script>
+
+</html>

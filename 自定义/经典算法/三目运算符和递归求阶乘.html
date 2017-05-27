@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+onload=function()
+{	var oBtn=document.getElementsByTagName('button');
+	var oInt=document.getElementsByTagName('input');
+	var n;
+	oBtn[0].onclick=function()
+	{	oInt[0].value=null;
+		oInt[1].value=null;
+		n=prompt("请输入非负数：","")
+		while(isNaN(n)||n==''||n<0||n.match(/\s+/))
+		{alert("请输入非负数");
+		n=prompt("请输入非负数：","");
+		}
+		oInt[0].value=n;
+	}
+		oInt[0].value='';		
+oBtn[1].onclick=function()
+	{if(oInt[0].value=='')
+		{alert("请输入非负数");}
+		else{
+			function f(n)
+			{
+				return n>0?f(n-1)*n:1	
+			};
+	oInt[1].value=f(n);
+	};}
+	oInt[1].value='';
+}
+</script>
+</head>
+
+<body>
+<button type="button">请点击</button>
+<input type="txet" readonly="readonly"/>
+<button type="button">求阶乘</button>
+<input type="txet" readonly="readonly"/>
+</body>
+</html>

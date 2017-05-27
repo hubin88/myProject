@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	输入数值：<input type="number" id="num">
+	<input type="button" id="btn" value="计算和值">
+	结果：<input type="number" id="result">
+</body>
+<script type="text/javascript">
+	var worker = new Worker("SumCalculate.js"); // 创建执行运算的线程
+	worker.onmessage = function(e){ // 接收从线程中传出的计算结果
+		document.getElementById("result").value = e.data;
+	}
+	function calculate(){
+		var num = parseInt(document.getElementById("num").value,10);
+		worker.postMessage(num); // 将数值传给线程
+	}
+</script>
+</html>

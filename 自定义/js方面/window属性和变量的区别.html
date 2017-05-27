@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		alert(b);//此处只是定义了变量b，但是还未赋值
+		a="ok";//此处的a是window的属性，即window.a="ok";而不是变量
+		alert(a);//alert(window.a)
+		var b="love";//全局变量，var使变量声明提升；
+		delete a;//属性可以被删除,变量不可以
+		delete b;
+//		alert(a);//此处会出错
+		alert(b);
+	</script>
+</html>

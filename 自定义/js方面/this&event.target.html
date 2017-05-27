@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+	</head>
+
+	<body>
+		<div class="a1">
+			<div class="a2">
+				<span class="a3">我是红色背景
+				</span>
+			</div>
+			<span class="a3">我是白色背景
+			</span>
+		</div>
+		<ul class="abc">
+			<li>list <strong>item 1</strong></li>
+			<li><span>list item 2</span></li>
+			<li>list item 3</li>
+		</ul>
+		<div id="temp"></div>
+		<ul class="JQ-content-box" style="padding:20px; background:#FFFFFF">
+			<li>第一行
+				<ul>
+					<li>这是公告标题1</li>
+					<li>这是公告标题2</li>
+					<li>这是公告标题3</li>
+					<li>这是公告标题4</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+	<script src="jquery-1.11.2.min.js"></script>
+	<script type="text/javascript">
+		$(".a2").click(function() {
+				$(".a3", this).css("background", "red");
+			})
+			//$("selector",this)表示$(this).find("selector");
+			//	$(".a2").click(function(){
+			//		$(this).find(".a3").css("background","red");
+			//	})
+		 $(".a3").click(function() {
+				$(".a2,.a3").css("background", "green");
+			})
+			//1.this和event.target的区别：
+			//js中事件是会冒泡的，所以this是可以变化的，但event.target不会变化，它永远是直接接受事件的目标DOM元素；
+			//2.this和event.target都是dom对象，如果要使用jquey中的方法可以将他们转换为jquery对象：$(this)和$(event.target);
+		 $("ul.abc li").click(function(event) {
+			var $target = $(event.target);
+			if ($target.is("li")) {
+				$target.css("background-color", "red");
+			}
+		});
+		 //现在，当用户点击的是第一个列表项中的单词 "list" 或第三个列表项中的任何单词时，被点击的列表项会被设置为红色背景。不过，当用户点击第一个列表项中的 item 1 或第二个列表项中的任何单词时，都不会有任何变化，这是因为这上面的情况中，事件的目标分别是 <strong> 是 <span>。
+		$(".JQ-content-box li").on("click", function(event) {
+			$("#temp").html("clicked: " + event.target.nodeName+this.nodeName);
+			$(event.target).css("color", "#FF3300");
+		});
+//		$(".JQ-content-box li").on("click", function(event) {
+//			$("#temp").html("clicked: " + event.target.nodeName);
+//			$(this).css("color", "#FF3300");
+//			event.stopPropagation();
+//		});
+	</script>
+
+</html>

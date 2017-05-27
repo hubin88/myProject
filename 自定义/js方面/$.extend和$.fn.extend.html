@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div class="div">
+		</div>
+	</body>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		 //extend(dest,src1,src2,src3...);
+		 //它的含义是将src1,src2,src3...合并到dest中,返回值为合并后的dest,由此可以看出该方法合并后，是修改了dest的结构的。如果想要得到合并的结果却又不想修改dest的结构，可以如下使用：
+		 //	var newSrc=$.extend({},src1,src2,src3...)//也就是将"{}"作为dest参数。
+		var result = $.extend({}, {
+			name: "Tom",
+			age: 21
+		}, {
+			name: "Jerry",
+			sex: "Boy"
+		})
+		 console.log(result); //result={name:"Jerry",age:21,sex:"Boy"}
+		 //	也就是说后面的参数如果和前面的参数存在相同的名称，那么后面的会覆盖前面的参数值。
+		 //extend(boolean,dest,src1,src2,src3...)
+		 //	 第一个参数boolean代表是否进行深度拷贝，其余参数和前面介绍的一致，什么叫深层拷贝，我们看一个例子
+		var result1 = $.extend(true, {}, {
+			name: "John",
+			location: {
+				city: "Boston",
+				county: "USA"
+			}
+		}, {
+			last: "Resig",
+			location: {
+				state: "MA",
+				county: "China"
+			}
+		});
+		console.log(result1); //result={name:"John",last:"Resig",location:{city:"Boston",state:"MA",county:"China"}}
+		 // 也就是说它会将src中的嵌套子对象也进行合并，而如果第一个参数boolean为false，我们看看合并的结果是什么，如下：
+		var result2 = $.extend(false, {}, {
+			name: "John",
+			location: {
+				city: "Boston",
+				county: "USA"
+			}
+		}, {
+			last: "Resig",
+			location: {
+				state: "MA",
+				county: "China"
+			}
+		});
+		console.log(result2); // result={name:"John",last:"Resig",location:{state:"MA",county:"China"}}
+		 //给$库添加静态方法,只有$类可以调用，具体的实例不能调用
+		$.extend({
+			add: function(a, b) {
+				return a + b;
+			},
+			minus: function(a, b) {
+				return a - b
+			},
+			multiply: function(a, b) {
+				return a * b;
+			},
+			divide: function(a, b) {
+				return Math.floor(a / b);
+			}
+		});
+		alert($.add(3, 5));
+		 //$.fn.extend添加的方法可以被对象调用，对象就是类的实例化.即$('selector').method()
+		$.fn.extend({
+			hu:function(){
+				alert("hubin");
+			}
+		});
+		$(".div").hu();
+		//$.hu()是错误的
+	</script>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	//keys,_.keys(object)获取object对象所有的属性名称。 values,_.values(object)返回object对象所有的属性值。 
+	document.write(_.keys({one: 1, two: 2, three: 3})+"<br>");
+	document.write(_.values({one: 1, two: 2, three: 3})+"<br>");
+	//pairs,_.pairs(object)把一个对象转变为一个[key, value]形式的数组。 
+	document.write(_.pairs({one: 1, two: 2, three: 3})+"<br>");
+	//functions,_.functions(object)返回一个对象里所有的方法名, 而且是已经排序的 — 也就是说, 对象里每个方法(属性值是一个函数)的名称.
+	document.write(_.functions(_)+"<br>");
+	//extend,_.extend(destination, *sources)复制source对象中的所有属性覆盖到destination对象上，并且返回 destination 对象. 复制是按顺序的, 所以后面的对象属性会把前面的对象属性覆盖掉(如果有重复). 
+	document.write(_.extend({name:"hubin",age:20},{age:25})+"<br>");
+	//has,_.has(object, key)对象是否包含给定的键
+	document.write(_.has({a: 1, b: 2, c: 3}, "b")+"<br>");
+	//isEqual,_.isEqual(object, other)执行两个对象之间的优化深度比较，确定他们是否应被视为相等。 
+	var moe   = {name: 'moe', luckyNumbers: [13, 27, 34]};
+	var clone = {name: 'moe', luckyNumbers: [13, 27, 34]};
+	document.write((moe == clone)+"\n");
+	document.write(_.isEqual(moe,clone)+"<br>");
+	//isEmpty,_.isEmpty(object)如果object 不包含任何值(没有可枚举的属性)，返回true。 对于字符串和类数组（array-like）对象，如果length属性为0，那么_.isEmpty检查返回true。
+	document.write(_.isEmpty([1,2,3])+"<br>");
+	document.write(_.isEmpty([])+"<br>");
+	document.write(_.isEmpty({})+"<br>");
+	document.write(_.isEmpty("asdgfe")+"<br>");
+	//isElement,_.isElement(object)如果object是一个DOM元素，返回true。 
+	document.write(_.isElement($("body")[0])+"<hr>");
+	//isArray,_.isArray(object)如果object是一个数组，返回true。
+	document.write(_.isArray([])+"<br>");
+	//isObject,_.isObject(value)如果object是一个对象，返回true。需要注意的是JavaScript数组和函数是对象，字符串和数字不是。 
+	document.write(_.isObject({})+"<br>");
+	//isArguments,_.isArguments(object)如果object是一个参数对象，返回true。 
+	document.write(_.isArguments(moe)+"<br>");
+	//isFunction,_.isFunction(object)如果object是一个函数（Function），返回true。 
+	document.write(_.isFunction(alert)+"<br>");
+	//isString,_.isString(object)如果object是一个字符串，返回true。 
+	document.write(_.isString("asd")+"<br>");
+	//isNumber,_.isNumber(object)如果object是一个数值，返回true (包括 NaN)。 
+	document.write(_.isNumber(5)+"<hr>");
+	//isFinite,_.isFinite(object)如果object是一个有限的数字，返回true。 
+	document.write(_.isFinite(Math.PI)+"<br>");
+	//isBoolean,_.isBoolean(object)如果object是一个布尔值，返回true。
+	document.write(_.isBoolean(false)+"<br>");
+	//isDate,_.isDate(object)如果object是一个Date类型（日期时间），返回true。 
+	document.write(_.isDate(new Date())+"<br>");
+	//isRegExp,_.isRegExp(object)如果object是一个正则表达式，返回true。 
+	document.write(_.isRegExp(/\d+/ig)+"<hr>");
+	//isNaN,_.isNaN(object)如果object是 NaN，返回true。注意： 这和原生的isNaN 函数不一样，如果变量是undefined，原生的isNaN 函数也会返回 true 。
+	document.write(_.isNaN(NaN)+"<br>");
+	document.write(_.isNaN(undefined)+"<br>");
+	document.write(isNaN(undefined)+"<br>");
+	//isNull,_.isNull(object)如果object的值是 null，返回true。 
+	document.write(_.isNull(null)+"<br>");
+	document.write(_.isNull("")+"<hr>");
+	//isUndefined,_.isUndefined(value)如果value是undefined，返回true。 
+	document.write(_.isUndefined(window.i)+"<br>");
+	</script>
+	
+</html>

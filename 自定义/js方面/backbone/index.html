@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Backbone.js Todos</title>
+	</head>
+
+	<body>
+		<div id="todoapp">
+			<header>
+				<h1>
+                 Todos</h1>
+				<input id="new-todo" type="text" placeholder="What needs to be done?">
+			</header>
+			<section id="main">
+				<input id="toggle-all" type="checkbox">
+				<label for="toggle-all">
+                Mark all as complete</label>
+				<ul id="todo-list">
+				</ul>
+			</section>
+		</div>
+	</body>
+	<script src="jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="underscore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="backbone.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/template" id="item-template">
+		<div class="view">
+			<input class="toggle" type="checkbox" <%=d one ? 'checked="checked"' : '' %> />
+			<label><%- title %></label>
+			<a class="destroy"></a>
+		</div>
+		<input class="edit" type="text" value="<%- title %>" />
+	</script>
+	<script type="text/template" id="stats-template">
+		<% if (done) { %>
+		<a id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
+		<% } %>
+		<div class="todo-count"><b><%= remaining %></b>
+			<%= remaining == 1 ? 'item' : 'items' %> left</div>
+	</script>
+	<script type="text/javascript">
+		//todo是备忘录的意思哦
+		var Toto = Backbone.Model.extend({
+			defaults: {
+				done: false
+			},
+			toggle: function() {
+				//设置做了点击就没做，设置没做点击就做了...
+				this.save({
+					done: !this.get('done')
+				});
+			}
+		});
+		var TodoList = Backbone.Collection.extend({
+			model: Todo,
+			localStorage: new Store('todos'), //所有项目保存至todos命名空间
+			//过滤已完成的项目
+			done: function() {
+				return this.filter(function(todo) {
+					return todo.get('done');
+				});
+			},
+			remaining: function() {
+				return this.without.applay(this, this.done);
+			}
+		});
+		var Todos = new TodoList();
+		var TodoView = Backbone.View.extend({
+			tagName: 'li', //视图时一个个li标签
+			template: $('#item-template').template(), //获取模板
+			events: {
+				'change .check': 'toggleDone',
+				'dblclick .todo-content': 'edit',
+				'click .todo-destroy': 'destroy',
+				'keypress .todo-input': 'updateOnEnter',
+				'blur .todo-input': 'close'
+			},
+			initialize: function() {
+				//确保在正确作用域
+				_.bindAll(this, 'render', 'close', 'remove');
+				//监听存储模板修改以确定是否修改el
+				this.model.bind('change', this.render);
+				this.model.bind('destroy', this.render);
+			},
+			render: function() {
+				//使用存储模板更新el
+				var el = jQuery.tmpl(this.template, this.model.toJSON());
+				$(this.el).html(el);
+				return this;
+			},
+			tiggleDone: function() {
+				this.model.toggle();
+			},
+			edit: function() {
+				$(this.el).addClass('editing');
+				this.input.focus();
+			},
+			close: function() { //关闭编剧状态
+				this.model.save({
+					content: this.input.val()
+				});
+				$(this.el).removeClass('editing');
+			},
+			//按下回车键结束编辑
+			updateOnEnter: function(e) {
+				if (e.keyCode == 13)
+					e.target.blur();
+			},
+			remove: function() {
+				$(this.el).remove();
+			},
+			destroy: function() {
+				this.model.destroy();
+			}
+		});
+	</script>
+
+</html>

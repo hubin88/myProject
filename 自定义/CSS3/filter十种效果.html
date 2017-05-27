@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img {
+				display: block;
+				margin: auto;
+				width: 800px;
+				height: 500px;
+			}
+			
+			div {
+				text-align: center;
+				margin-top: 20px;
+			}
+			img.none{
+				-webkit-filter:none;
+			}
+			img.grayscale {
+				-webkit-filter: grayscale(1);
+			}
+			
+			img.sepia {
+				-webkit-filter: sepia(1);
+			}
+			
+			img.saturate {
+				-webkit-filter: saturate(0.5);
+			}
+			
+			img.saturate {
+				-webkit-filter: saturate(3);
+			}
+			
+			img.hue-rotate {
+				-webkit-filter: hue-rotate(90deg);
+			}
+			
+			img.invert {
+				-webkit-filter: invert(1);
+			}
+			
+			img.opacity {
+				-webkit-filter: opacity(.2);
+			}
+			
+			img.brightness {
+				-webkit-filter: brightness(1.5);
+			}
+			
+			img.contrast {
+				-webkit-filter: contrast(2);
+			}
+			
+			img.blur {
+				-webkit-filter: blur(10px);
+			}
+			
+			img.drop-shadow {
+				-webkit-filter: drop-shadow(0 0 10px black);
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- elm {
+        filter: none | <filter-function > [ <filter-function> ]* 
+      	}      
+		  其默认值是none，他不具备继承性，其中filter-function一个具有以下值可选：
+		grayscale灰度, 默认值：100％
+		sepia褐色,默认值：100％，
+		saturate饱和度,默认值：100％，
+		hue-rotate色相旋转,默认值：0deg,
+		invert反色,默认值：100％,
+		opacity透明度,默认值：100％,
+		brightness亮度,默认值：100％,
+		contrast对比度,默认值：100％,
+		blur模糊,默认值：0,
+		drop-shadow阴影,这个和box-shadow一样的效果，给图片加阴影效果.
+		-->
+		<img src="aa.jpeg" />
+		<div class="">
+			<button class="none">none</button>
+			<button class="grayscale">grayscale</button>
+			<button class="sepia">sepia</button>
+			<button class="saturate">saturate</button>
+			<button class="hue-rotate">hue-rotate</button>
+			<button class="invert">invert</button>
+			<button class="opacity">opacity</button>
+			<button class="brightness">brightness</button>
+			<button class="contrast">contrast</button>
+			<button class="blur">blur</button>
+			<button class="drop-shadow">drop-shadow</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var Btn=document.getElementsByTagName("button"),
+			Img=document.getElementsByTagName("img")[0],
+			len=Btn.length;
+		for (var i=0;i<len;i++) {
+			Btn[i].onclick=function(){
+				var $this=this;
+				Img.setAttribute("class",$this.className);	
+			}
+		}
+	</script>
+
+</html>

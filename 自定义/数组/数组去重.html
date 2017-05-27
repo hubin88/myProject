@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<script type="text/javascript">
+onload=function()
+	{
+		var arr=[56,133,45,"bb","b","bb",463,45,56,56,56,"我","我",321,123,123,123,123,56,56,64,83,64,55,"sd","a","a"];
+		document.write(arr+"<br>");
+		var l=arr.length;
+		var newArr=[];
+//		for(var i=0;i<l;i++)
+//		{
+//			for(var j=i+1;j<l;j++)
+//			{
+//				if(arr[i]==arr[j])
+//				{
+//					arr.splice(j,1);
+//					--l;
+//					--j;
+//				}
+//			}
+//		};
+//		document.write(arr);
+		for (var i=0;i<l;i++) {
+			if(newArr.indexOf(arr[i])==-1){
+				newArr.push(arr[i]);
+			}
+		}
+		document.write(newArr);
+	}
+</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+div{width:200px; height:200px; background:#F00; border:#0F0 solid 1px;
+float:left; margin:10px;}
+</style>
+<script src="../运动框架3.js"></script>
+<script>
+onload=function()
+{
+	var aDiv=document.getElementsByTagName('div');
+	aDiv[0].onmouseover=function()
+	{
+		startMove(this,{width:300});
+	};
+	aDiv[0].onmouseout=function()
+	{
+		startMove(this,{width:200});
+	};
+	aDiv[1].onmouseover=function()
+	{
+		startMove(this,{height:300});
+	};
+	aDiv[1].onmouseout=function()
+	{
+		startMove(this,{height:200});
+	};
+	aDiv[2].onmouseover=function()
+	{
+		startMove(this,{opacity:30});
+	};
+	aDiv[2].onmouseout=function()
+	{
+		startMove(this,{opacity:100});
+	};
+	aDiv[3].onmouseover=function()//不兼容FF
+	{
+		startMove(this,{borderRadius:200});
+	};
+	aDiv[3].onmouseout=function()
+	{
+		startMove(this,{borderRadius:0});
+	};
+	aDiv[4].onmouseover=function()
+	{
+		startMove(this,{width:300,height:300,opacity:30,borderRadius:200});
+	};
+	aDiv[4].onmouseout=function()
+	{
+		startMove(this,{width:200,height:200,opacity:100,borderRadius:0});
+	};
+	
+};
+</script>
+</head>
+
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+</html>

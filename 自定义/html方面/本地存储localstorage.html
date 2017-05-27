@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="count">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		if (window.localStorage) {
+			console.log('This browser supports localStorage');
+		} else {
+			console.log('This browser does NOT support localStorage');
+		}
+		//存储数据的方法就是直接给window.localStorage添加一个属性，例如：window.localStorage.a 或者 window.localStorage["a"]。它的读取、写、删除操作方法很简单，是以键值对的方式存在的，如下：
+		localStorage.a = 3; //设置a为"3"
+		localStorage["a"] = "sfsf"; //设置a为"sfsf"，覆盖上面的值
+		localStorage.setItem("b", "isaac"); //设置b为"isaac"
+		var a1 = localStorage["a"]; //获取a的值
+		var a2 = localStorage.a; //获取a的值
+		var b = localStorage.getItem("b"); //获取b的值
+		localStorage.removeItem("a"); //清除a的值
+		//这里最推荐使用的自然是getItem() 和setItem()， 清除键值对使用removeItem()。 如果希望一次性清除所有的键值对， 可以使用clear()。 另外， HTML5还提供了一个key() 方法， 可以在不知道有哪些键值的时候使用， 如下：
+		var storage = window.localStorage;
+
+		function showStorage() {
+			for (var i = 0; i < storage.length; i++) {
+				//key(i)获得相应的键，再用getItem()方法获得对应的值
+				document.write(storage.key(i) + " : " + storage.getItem(storage.key(i)) + "<br>");
+			}
+		}
+		//写一个最简单的，利用本地存储的计数器：
+		var storage = window.localStorage;
+		if (!storage.getItem("pageLoadCount")) storage.setItem("pageLoadCount", 0);
+		storage.pageLoadCount = Number(storage.getItem("pageLoadCount")) + 1; //必须格式转换
+		document.getElementById("count").innerHTML ="pageLoadCount:"+storage.pageLoadCount;
+		document.getElementById("count").onclick=function(){
+			localStorage.removeItem("pageLoadCount");
+		}
+		//sessionStrage和localStorage基本一样，只是浏览器关闭之后就会失效。
+	</script>
+
+</html>

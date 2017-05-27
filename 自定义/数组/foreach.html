@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+	//forEach(function(value,index,arr){})三个参数，后面不需要用到的可以省略
+		var arr=[1,2,3,4,5,6,7,8,9,0],result=0;
+//		arr.forEach(alert);//输出每个元素
+		arr.forEach(function(value){
+			result+=value;
+		})
+		alert(result);
+		arr.forEach(function(value,index,arr){
+			arr[index]=++value;
+		})
+		alert(arr);
+	</script>
+
+</html>

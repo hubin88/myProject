@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				display: inline-block;
+				margin: 10px;
+				list-style: none;
+				border: 1px solid #CCC;
+			}
+			
+			ul.light>li.active {
+				background: red;
+			}
+			
+			ul {
+				text-align: center;
+			}
+			
+			ul.light>li {
+				width: 100px;
+				height: 30px;
+			}
+			
+			ul.prize>li {
+				text-align: center;
+				width: 100px;
+				height: 300px;
+			}
+			
+			div.button {
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content">
+			<ul class="light">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul class="prize">
+				<li>prizeOne</li>
+				<li>prizeTwo</li>
+				<li>prizeThree</li>
+				<li>prizeFour</li>
+				<li>prizeFive</li>
+			</ul>
+			<div class="button">
+				<input type="button" id="button" value="点击抽奖"/>
+			</div>
+		</div>
+	</body>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var lastTime = 1461291197010; //这个时间从服务器获取
+		var nowTime = new Date().getTime();
+		if (nowTime - lastTime < 7 * 86400000) {
+			$("#button").prop("disabled", true);
+			alert("请" + (7 - parseInt((nowTime - lastTime) / 86400000)) + "天后再来抽奖！");
+		} else {
+			$("#button").prop("disabled", false);
+			$("#button").off().on("click", function() {
+				$(this).prop("disabled", true);
+				lastTime = new Date().getTime(); //把这个时间存到服务器，下次抽奖的时候比对时间
+				var winningNumber = getRandomNumber(0, 4) + 16;
+				var $index = 0,
+					flag = 0;
+					console.log(winningNumber);
+				var timer = setInterval(function() {
+					active($index);
+//					switch (flag) {
+//						case 0:
+//						case 1:
+//						case 2:
+//						case 3:
+//						case 8:
+//						case 9:
+//						case 10:
+//						case 11:
+//						case 16:
+//						case 17:
+//						case 18:
+//						case 19:
+//							$index++;
+//							break;
+//						case 4:
+//						case 5:
+//						case 6:
+//						case 7:
+//						case 12:
+//						case 13:
+//						case 14:
+//						case 15:
+//							$index--;
+//							break;
+//					}
+					if (flag>=4&&flag<=7||flag>=12&&flag<=15) {
+						$index--;
+					} else{
+						$index++;
+					}
+					if (flag == winningNumber) {
+						clearInterval(timer);
+						return $index;
+					}
+					flag++;
+				}, 100);
+			});
+		}
+
+		function getRandomNumber(lowValue, highValue) {
+			var choice = highValue - lowValue + 1;
+			return Math.floor(Math.random() * choice + lowValue);
+		}
+
+		function active($index) {
+			$("ul.light>li").eq($index).addClass("active").siblings().removeClass("active");
+		}
+	</script>
+
+</html>

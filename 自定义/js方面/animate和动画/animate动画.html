@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+div{width:200px;height:200px;border:#000 solid 1px;background-color:#F00;float: left;}
+</style>
+<script src="jquery-1.11.2.min.js"></script>
+<script>
+$(function(){
+	$(".btn1").click(function(){
+	$(".div1").animate({
+		left:'250px',height:'150px',width:'150px'
+		},"slow")
+	});
+	$(".btn2").click(function(){
+	$(".div2").animate({
+		left:'+=250px',height:'+=150px',width:'+=150px'
+		},"slow")
+	});
+	$(".btn3").click(function(){
+	$(".div3").animate({
+		left:'250px',height:'toggle',width:'toggle'
+		},"slow")
+	});
+	$(".btn4").click(function(){
+	$(".div4").animate({height:'400px',opacity:'0.4'},"slow");
+	$(".div4").animate({width:'400px',opacity:'0.2'},"slow");	
+	$(".div4").animate({height:'200px',opacity:'0.4'},"slow");
+	$(".div4").animate({width:'200px',opacity:'1'},"slow",function () {
+		alert("完成");
+	});	
+	})
+});
+</script>
+</head>
+
+<body>
+<button type="button" class="btn1">开始动画1</button>
+<button type="button" class="btn2">开始动画2</button>
+<button type="button" class="btn3">开始动画3</button>
+<button type="button" class="btn4">动画</button>
+<div class="div1"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+<div class="div4"></div>
+</body>
+</html>

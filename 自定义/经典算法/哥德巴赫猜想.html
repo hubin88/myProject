@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="text" id="txt" value="" />
+		<button id="btn">分解数</button>
+	</body>
+	<script type="text/javascript">
+		var m, n, k, arr = [];
+		document.getElementById("btn").onclick = function() {
+			k = parseInt(document.getElementById("txt").value);
+			for (m = 2; m <= k; m++) {
+				for (n = 2; n < m; n++) {
+					if (m % n == 0)
+						break;
+				}
+				if (m == n) //n循环结束后，如果m=n的话就输出m
+					arr.push(m);
+			}
+			for (var i = 0; i < arr.length - 1; i++) {
+				for (var j = i + 1; j < arr.length; j++) {
+					if (arr[i] + arr[j] == k) {
+						document.write(k + "=" + arr[i] + "+" + arr[j] + "<br />")
+					}
+				}
+			}
+		}
+	</script>
+
+</html>

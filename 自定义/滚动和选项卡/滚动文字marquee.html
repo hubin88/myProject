@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.ellipsis {
+				margin: 0 auto;
+				width: 400px;
+				overflow: hidden;
+				white-space: nowrap;
+				/*text-overflow: ellipsis;*/
+			}
+			
+			p {
+				margin: 0;
+				transform: translate(0, 0);
+				width: 100%;
+			}
+			
+			marquee {background: red;
+				/*				margin-left: -200px;*/
+			}
+			
+			#ruler {
+				visibility: hidden;
+				white-space: nowrap;
+			}
+		</style>
+	</head>
+
+	<body>
+		<span id="ruler">test</span>
+		<span class="ruler">a所以，黑洞“表面”的重力加速度，跟黑洞的质量有关系,不过，考虑到我们常说的地球重力加速度指的是地球所以a</span>
+		<div class="ellipsis">
+			<!--<p class="aaa">
+			所以，黑洞“表面”的重力加速度，跟黑洞的质量有关系,不过，考虑到我们常说的地球重力加速度指的是地球所以，黑洞“表面”的重力加速度，跟黑洞的质量有关系,不过，考虑到我们常说的地球重力加速度指的是地球
+			</p>-->
+			<p class="bbb">
+				<!--<marquee direction="left" scrollamount="10" behavior="alternate" scrolldelay="100" onmouseover="this.stop()" onmouseout="this.start()">
+				</marquee>-->
+			</p>
+		</div>
+		<marquee direction="right" scrollamount="10" behavior="alternate" width="300" scrolldelay="100" onmouseover="this.stop()" onmouseout="this.start()"><span>跟黑洞的质量有关系</span></marquee>
+	</body>
+	<script src="../js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script type="text/javascript">
+		var X=-10,n=0,flag=0;
+		var re=/[-?0-9]+/g;
+			setInterval(function(){
+		var translateX=$("p.aaa").css("transform").match(re)[4];
+				if (translateX>=0) {
+					flag=0;
+				}
+				if(translateX<=-1000){
+					flag=1;
+				}
+				if (flag==0) {
+					n++;
+				}
+				if (flag==1) {
+					n--;
+				}
+				$("p.aaa").css("transform","translate("+X*n+"px,0)");
+			},30);
+		</script>-->
+	<script type="text/javascript">
+//		String.prototype.visualLength = function() {
+//			var ruler = $("#ruler");
+//			ruler.text(this);
+//			return ruler[0].offsetWidth;
+//		}
+//		var text = "a";
+//		var len = text.visualLength();
+		var LEN=$(".ruler").width();
+		var Width = LEN * 2 - $("p.bbb").width();
+		var str=$(".ruler").text();
+		$("p.bbb").html('<marquee direction="left" scrollamount="10" behavior="alternate" scrolldelay="100" onmouseover="this.stop()" onmouseout="this.start()" style="width:'+Width+'px;margin-left: '+($("p.bbb").width()-LEN)+'px;">'+str+'</marquee>');
+	</script>
+
+</html>

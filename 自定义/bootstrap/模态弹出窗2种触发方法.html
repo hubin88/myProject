@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css" />
+	</head>
+
+	<body>
+		<button class="btn btn-primary" data-toggle="modal" data-target=".mymodal-data" type="button">通过data-target触发</button>
+		<!--模态弹出窗声明，只需要自定义两个必要的属性：data-toggle和data-target
+			1、data-toggle必须设置为modal(toggle中文翻译过来就是触发器)；
+			2、data-target可以设置为CSS的选择符，也可以设置为模态弹出窗的ID值，一般情况设置为模态弹出窗的ID值，因为ID值是唯一的值。
+		-->
+		<a data-toggle="modal" href="#mymodal-link" class="btn btn-primary">通过链接href属性触发</a>
+		<!--触发模态弹出窗也可以是一个链接<a>元素，那么可以使用链接元素自带的href属性替代data-target属性-->
+		<!-- 模态弹出窗内容 -->
+		<div class="modal fade mymodal-data" id="mymodal-link" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false"  data-show="true">
+		<!--3、data-backdrop设置点击遮罩层关闭弹出窗，默认为true关闭，设置为"static"不会关闭；
+			4、 data-keyboard设置按键盘的ESC关闭弹出窗，默认为true关闭，设置为"false"不会关闭；
+			5、 data-show初始化时，弹出窗是否提示,设置为默认值true就可以了。-->
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">模态弹出窗标题</h4>
+					</div>
+					<div class="modal-body">
+						<p>模态弹出窗主体内容</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="bootstrap-3.3.5-dist/js/jQuery-2.1.4.min.js"></script>
+		<script src="bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+	</body>
+
+</html>

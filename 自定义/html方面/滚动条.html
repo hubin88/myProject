@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>无标题文档</title>
+		<style>
+			*{margin: 0;padding: 0;}
+			#div2 {
+				width: 20px;
+				height: 700px;
+				background: #0F0;
+				float: right;
+				position: relative;
+				border-radius: 10px;
+			}
+			#div1 {
+				width: 20px;
+				height: 40px;
+				background: #F00;
+				position: absolute;
+				top: 0;
+				left: 0;
+				border-radius: 10px;
+			}
+			#div3,
+			#div4,
+			#div5 {
+				width: 200px;
+				height: 200px;
+				background: #00F;
+				clear: both;	
+				margin: 20px;
+				font-size: 24px;
+				text-align: center;
+				position: absolute;
+			}
+			#div3{top: 0;left: 0;}
+			#div4{top: 0;left: 250px;}
+			#div5{top: 0;left: 500px;}
+			#div6 {
+				width: 300px;
+				height: 300px;
+				border: #000 solid 1px;
+				position: absolute;
+				left: 10px;
+				top: 430px;
+				margin: 20px;
+				overflow: hidden;
+			}
+			#div7 {
+				position: absolute;
+				left: 0;
+				top: 0;
+				padding: 10px;
+			}
+		</style>
+		<script>
+			onload = function() {
+				var oDiv = document.getElementById('div1');
+				var aDiv = document.getElementById('div2');
+				var bDiv = document.getElementById('div3');
+				var cDiv = document.getElementById('div4');
+				var dDiv = document.getElementById('div5');
+				var eDiv = document.getElementById('div6');
+				var fDiv = document.getElementById('div7');
+				var disY = 0;
+				oDiv.onmousedown = function(ev) {
+					var oEvent = ev || event;
+					disY = oEvent.clientY - oDiv.offsetTop;
+					document.onmousemove = function(ev) {
+						var oEvent = ev || event;
+						var t = oEvent.clientY - disY;
+						if (t < 0) {
+							t = 0;
+						} else if (t > aDiv.offsetHeight - oDiv.offsetHeight) {
+							t = aDiv.offsetHeight - oDiv.offsetHeight;
+						}
+						oDiv.style.top = t + 'px';
+						var n = t / (aDiv.offsetHeight - oDiv.offsetHeight);
+						bDiv.style.width = 200 * (1 - n) + 'px';
+						bDiv.style.height = 200 * (1 - n) + 'px';
+						dDiv.style.width = 200 * n + 'px';
+						dDiv.style.height = 200 * n + 'px';
+						cDiv.style.borderRadius = 200 * n + 'px';
+						cDiv.style.fontSize = 24 * (1 + 2 * n) + 'px';
+						fDiv.style.top = -n * (fDiv.offsetHeight - eDiv.offsetHeight) + 'px';
+					};
+					document.onmouseup = function() {
+						document.onmousemove = null;
+						document.onmouseup = null;
+					};
+					return false;
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="div2">
+			<div id="div1"></div>
+		</div>
+		<div id="div4">
+			<div style="position:relative;top:50px;left:0;">户彬</div>
+		</div>
+		<div id="div3"></div>
+		<div id="div5"></div>
+		<div id="div6">
+			<div id="div7">下面进入正题： 　　1、深渊副本难度的选择 　　80%以上的玩家都会奔着王者级这个难度去刷深渊，恐怕每天服务器深渊派对副本刷的最多的就属格蓝迪了吧，当然刷无影和属强戒 的可能大部分会去绝密和爱丽丝这样的副本，刷85SS的大部分都是格蓝迪，怎么说呢，其实我平时刷的话，我就喜欢刷在冒险级和王者级直接切换着来，这个版 本不像以前的版本那样，难度越高，出货率就越高，我觉得服务器在某个时间段内分配给某频道的史诗是固定的，副本的每个难度应该都会分配史诗，所以根本没必 要一直盯着王者级刷，相反，刷刷冒险级也经常会有惊喜。
+				　　2、深渊模式的非常困难和困难 　　模式分为困难和非常困难，我想很多土豪刷深渊，看到困难直接退，在这里我想说的是，在这个版本，困难也会掉史诗，虽然和非常困 难相比，掉率稍微低一些，但是困难出的蓝装更多，更值钱一些，非常困难主要出假紫，在我这段期间爆的史诗里面，大约有30%是困难难度出的，所以看到困难 也别灰心，可能有些勇士在刷深渊的时候，连续一直是困难好几次，而且不出货，其实这个时候你应该考虑换一下频道了。 　　3、深渊组合 　　在这里我就拿工业区的深渊作为例子，一般来说，总共有那么几个组合，女大枪队伍、隐形刺客队、男漫游女弹药、基佬队，在我刷这
+				3个月深渊的日子里面，每次刷都会留意，其实大枪队伍里面，我们应该留那个金发的，经过我多次测试下来，金发女大枪的出货率要高一些;再来隐形刺客队伍， 这个队伍没什么好说的，感觉都一样，一个技能秒要比一只一只打要好一些;男漫游女弹药队伍，我倒是建议优先解决女弹药，留男漫游(大部分玩家会选择先杀男 漫游吧)，至少我大部分出的货都是男漫游给的，最后那个基佬队，这个队伍优先解决格斗家，最后杀大叔。还有，我可以肯定的是这个版本出货率和被击数没有一 点关系。 　　4、职业检测 　　不管这个东西到底是怎么判定的，我想说肯定存在，因为不管是深渊还是异界，爆其他职业系列的装备都远远高于自己这个职业系列相
+				关的，如果每次都是爆你自己用的，那么不用多久就会史诗满大街，这完全不符合游戏的平衡，甚至会严重影响游戏的寿命，近一个多月我发现深渊爆率可能要低于 从前，不知道其他童鞋有没有感觉得到，很多时候能出个货就算很不错了，所以我建议等下次大版本的时候在刷，也就是5月21号，现在大家可以趁深渊票价格不 高，积攒多一些，等大版本更新后在刷。 　　5、角色幸运值 　　这个东西怎么说呢，我想理论上应该是存在的，服务器每天凌晨6点应该会在给每个角色恢复疲劳值的同时重置当天的幸运值，这个幸 运值很影响角色当天的深渊出货率，在这里我想说，如果你当天一半疲劳下去了，史诗没见到，甚至透明也很少的话，甚至换频道也不出的话，那么我建议你今天就
+				停手吧，不要死磕到底，不然会很悲剧，我刷深渊的时候，会发现如果前一天的深渊出货率特别高，那么第二天肯定会有所下降，也有可能什么都不出，所以大家在 觉得当天人品不怎么好的情况下，还是停手，没必要去浪费钱。 　　6、平民和土豪的刷法 　　对于平民来说，不可能每天去满疲劳刷深渊，因为代价太大了，每天一个号满疲劳需要1000票左右(格蓝迪和普鲁兹按4疲劳计 算)，平民我建议每天刷10把，这10把怎么分配呢，你可以在刷完异界，镇魂结束后去刷，反正就按照自己的心情来;土豪的刷法我这里要多说一些，不要死盯
+				着一个频道和副本刷，每天建议去不同的频道，看哪个频道顺眼就去哪个，服务器分配给频道的史诗是不均匀的，有些频道多，有些频道少，深渊也看时间段，其实 我们可以注意公屏上的喇叭，鉴于很多童鞋会出货炫耀，所以经常会刷出货的喇叭，如果在某个时间段你几乎看不到公屏上有人刷出货的喇叭，那么我建议你不要 刷，还有就是无需追求速度去秒深渊怪，老老实实打，一直秒也没什么意思，尤其在一直不出货，你会越刷越心烦的。 　　好了，这就是我这3个月来总结出来的深渊心得，仅供大家参考，如果大家觉得写得好，就给个赞，最后我还想说，刷深渊要有好的心态，幸运总会降临到你的头上，不要认为冲钱冲多了就会出货，那都是骗人的，最后祝各位勇士都爆到自己心仪的史诗装备。
+
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			/*input:disabled,
+			input:read-only {
+				cursor: not-allowed;
+			}*/
+			
+			input[disabled] {
+				cursor: not-allowed;
+			}
+			input[readonly] {
+				cursor: not-allowed;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--
+        	作者：764326904@qq.com
+        	时间：2015-08-10
+        	描述：请在chrom浏览器下观看
+        -->
+        <!--autocomplete 属性规定 form 或 input 域应该拥有自动完成功能。-->
+		<form action="" method="post" autocomplete="on">
+			<input type="button" name="" id="" value="按钮" disabled="disabled" />
+			<br />
+			<input type="checkbox" name="" id="" value="复选框" />
+			<br />
+			<input type="color" name="" id="" value="#FF0000" />
+			<br />
+			<input type="date" name="" id="" value="" />
+			<br />
+			<input type="datetime" name="" id="" value="" />
+			<br />
+			<input type="datetime-local" name="" id="" value="" />
+			<br />
+			<!--autofocus 属性规定在页面加载时，域自动地获得焦点。-->
+			<input type="email" multiple="multiple" name="" id="" value="" autofocus="autofocus" />
+			<br />
+			<!--multiple 属性规定输入域中可选择多个值。-->
+			<input type="file" multiple="multiple" name="" id="" value="" />
+			<br />
+			<input type="image" src="hide.png" name="" id="" value="" alt="图片加载失败" />
+			<br />
+			<input type="month" name="" id="" value="" />
+			<br />
+			<!--min、max 和 step 属性用于为包含数字或日期的 input 类型规定限定（约束）。
+				max 属性规定输入域所允许的最大值。
+				min 属性规定输入域所允许的最小值。
+				step 属性为输入域规定合法的数字间隔（如果 step="3"，则合法的数是 -3,0,3,6 等）。-->
+			<input type="number" name="" id="" value="10" max="30" min="5" step="5" />
+			<br />
+			<!--placeholder 属性提供一种提示（hint），描述输入域所期待的值。-->
+			<input type="password" name="" id="" value="" placeholder="请输入密码" maxlength="3" />
+			<br />
+			<input type="radio" name="sex" id="men" value="" checked=false />
+			<label for="men">男</label>
+			<br />
+			<input type="radio" name="sex" id="women" value="" checked=true/>
+			<label for="women">女</label>
+			<br /> 0
+			<input type="range" name="" id="" value="80" />100
+			<br />
+			<input type="reset" name="" id="" value="重置" />
+			<br />
+			<input type="search" name="" id="" value="" placeholder="搜索.." />
+			<br />
+			<input type="submit" name="" id="" value="提交" />
+			<br />
+			<input type="tel" name="" id="" value="" readonly="readonly" />
+			<br />
+			<!--pattern 属性规定用于验证 input 域的模式（pattern）。模式（pattern） 是正则表达式。-->
+			<input type="text" name="" id="" value="" pattern="[0-9]{3}" title="请输入3个数字" />
+			<br />
+			<!--required 属性规定必须在提交之前填写输入域（不能为空）。-->
+			<input type="time" name="" id="" value="" required="required" />
+			<br />
+			<input type="url" name="" id="" value="http://www.hao123.com/" />
+			<br />
+			<input type="week" name="" id="" value="" />
+			<br />
+			请选择加密强度<keygen name="security">
+			<br />
+			<select name="" multiple="multiple" style="-webkit-appearance: none;">
+				<optgroup label="aaa">
+					<option value="">132</option>
+					<option value="" selected="selected">123</option>
+					<option value="">465</option>
+				</optgroup>
+				<optgroup label="bbb">
+					<option value="">456</option>
+					<option value="">798</option>
+					<option value="">789</option>
+				</optgroup>
+			</select>
+			<br />
+			<select name="" style="-webkit-appearance: inherit;-moz-appearance: inherit;">
+				<!--没有后面的三角形-->
+				<option value="">1</option>
+				<option value="">2</option>
+				<option value="">3</option>
+			</select>
+			<br />
+			<input list="cars" placeholder="qizhe"/>
+			<datalist id="cars" >
+				<option value="BMW">
+				<option value="Ford">
+				<option value="Volvo">
+			</datalist>
+			<!--list 属性规定输入域的 datalist。datalist 是输入域的选项列表。-->
+			Webpage:
+			<input type="url" list="url_list" name="link" />
+			<datalist id="url_list">
+				<option label="W3Schools" value="http://www.w3school.com.cn" />
+				<option label="Google" value="http://www.google.com" />
+				<option label="Microsoft" value="http://www.microsoft.com" />
+			</datalist>
+		</form>
+		<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+			<input type="range" id="a" value="50">100 +
+			<input type="number" id="b" value="50"> =
+			<output name="x" for="a b"></output>
+		</form>
+		<form oninput="y.value=parseInt(a.value)+parseInt(b.value)">0
+			<input type="range" id="a" value="50">100 +0
+			<input type="range" id="b" value="50">100 =
+			<output name="y" for="a b"></output>
+		</form>
+		<!--file美化-->
+		<input type="text" size="20" name="upfile" id="upfile" style="border:1px dotted #ccc">
+		<input type="button" value="浏览" onclick="path.click()" style="border:1px solid #ccc;background:#fff">
+		<input type="file" id="path" style="display:none" onchange="upfile.value=this.value">
+	</body>
+
+</html>

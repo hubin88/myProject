@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<script type="text/javascript">
+onload=function()
+{	var ipt=document.getElementsByTagName("input");
+	ipt[0].value=ipt[1].value=ipt[3].value='';
+	function king(n,m)
+	{
+		var arr=[];
+		for(var i=1;i<n+1;i++)
+		{
+			arr.push(i);
+		};
+		var j=0;
+		for(var k=2;k<=n;k++)
+		{
+			j=(j+m)%k;
+		};
+		return j+1;
+	};
+	ipt[2].onclick=function()
+	{	
+		var a=+ipt[0].value,b=+ipt[1].value;
+		ipt[3].value=king(a,b);
+	};
+}
+</script>
+</head>
+<body>
+总共有<input type="text" />只猴子，
+每隔<input type="text" />只猴子踢出一只，
+最后剩下的是第<input type="button" value="ok">
+<input type="text" />只
+</body>
+</html>

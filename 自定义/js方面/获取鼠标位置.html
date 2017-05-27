@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		X:<input id="xxx" type="text" /> Y:<input id="yyy" type="text" />
+		<div id=""style="width: 2000px;height: 2000px;">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		function mousePosition(ev) {
+			if (ev.pageX || ev.pageY) {
+				return {
+					x: ev.pageX,
+					y: ev.pageY
+				};
+			}
+			return {
+				x: ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+				y: ev.clientY + document.body.scrollTop - document.body.clientTop
+			};
+		}
+
+		function mouseMove(ev) {
+			ev = ev || window.event;
+			var mousePos = mousePosition(ev);
+			document.getElementById('xxx').value = mousePos.x;
+			document.getElementById('yyy').value = mousePos.y;
+		console.log(mousePos.x,mousePos.y);
+		}
+		document.onclick = mouseMove;
+	</script>
+
+</html>

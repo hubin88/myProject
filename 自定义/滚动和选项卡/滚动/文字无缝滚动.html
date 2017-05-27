@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.div {
+				margin: 100px auto 0;
+				width: 350px;
+				height: 168px;
+				background: #fff;
+				border: 5px solid #ccc;
+				border-radius: 5px;
+				overflow: hidden;
+				padding: 5px;
+				cursor: pointer;
+			}
+			
+			.div ul li {
+				list-style: none;
+				height: 24px;
+				line-height: 24px;
+				text-overflow: ellipsis;
+				font-size: 12px;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="div" id="div">
+			<ul>
+				<li>1、分看见地上放声大哭了范上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了德萨</li>
+				<li>2、分看见地上放声大哭了范上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了德</li>
+				<li>3、分看见地声大哭了上放声大哭了上放声大哭了上放声大哭了范德</li>
+				<li>4、分看见地上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了范德</li>
+				<li>5、分看见地上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了上放声大哭了范德</li>
+				<li>6、分看见地上放声大哭了范声大哭了上放声大哭了</li>
+				<li>7、分看见地上放声大哭了上放声大哭了上放声大哭了范上放声大哭了上放声大哭了德</li>
+				<li>8、分看见地上放声大哭了上放声大哭了上放声大哭了上放声大哭了范德</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var area = document.getElementById('div');
+		var iliHeight = 24; //单行滚动的高度
+		var speed = 30; //滚动的速度
+		var time;
+		var delay = 1000;
+		area.scrollTop = 0;
+		area.innerHTML += area.innerHTML; //克隆一份一样的内容
+		function startScroll() {
+			time = setInterval("scrollUp()", speed);
+			area.scrollTop++;
+		}
+		function scrollUp() {
+			if (area.scrollTop % iliHeight == 0) {
+				clearInterval(time);
+				setTimeout(startScroll, delay);
+			} else {
+				if (area.scrollTop >= area.scrollHeight / 2 - 5) {
+					area.scrollTop = 0;
+				}
+				area.scrollTop++;
+			}
+		}
+		setTimeout(startScroll, delay)
+	</script>
+
+</html>

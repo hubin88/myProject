@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	<style type="text/css">
+		 .header{height:50px;min-width:500px;}/*顶部模块高度定死*/
+		 .logo{width:100px;height:50px;background:#99f;}/*为区分模块，设置了背景色 logo部分固定宽高*/
+		 .nav{height:50px;background:#ccc;}/*nav模块不固定宽度*/
+		 .content{min-height:100px;}/*为防止之后的调整窗口大小是出现影响视觉效果的问题，特设置最小高度*/
+		 .con1{width:200px;background:#f99;}/*固定宽度，高度不定*/
+		 .con2{min-width:200px;background:#999;}/*同上的min-height*/
+		 .con3{width:100px;background:#9f9;}/*固定宽度，高度不定*/
+		 .footer{height:50px;min-width:500px;background:#ccc;}/*固定高度*/
+		
+		/*为方便查看，与上面的样式分开书写*/
+		html,body{height:100%;margin:0;}/*需要添加高度控制，否则无法撑满整个屏幕*/
+		body{
+		display:-webkit-box;
+		-webkit-box-orient:vertical;/*按照垂直方向上进行自适应处理*/
+		}
+		.content{-webkit-box-flex:1;/*分配剩余的所有空间*/}
+				
+		.content,.header{display:-webkit-box;/*为content,header部分也添加box的展示模式*/}
+		.nav{-webkit-box-flex:1;}
+		.con2{-webkit-box-flex:1;}
+		
+		/*.con1{-webkit-box-ordinal-group:3;}
+		.con2{-webkit-box-ordinal-group:1;}
+		.con3{-webkit-box-ordinal-group:2;}*/
+  	</style>
+ </head>
+	 <body>
+	  	 <div class="header">
+			 <div class="logo">logo部分，宽高固定</div>
+			 <div class="nav">nav部分，高度固定，宽度自适应</div>
+		 </div>
+		 <div class="content">
+			 <div class="con1">内容初始化第1模块</div>
+			 <div class="con2">内容初始化第2模块</div>
+			 <div class="con3">内容初始化第3模块</div>
+		  </div>
+	  	<div class="footer">底部，宽度不定，高度固定</div>
+	</body>
+</html>

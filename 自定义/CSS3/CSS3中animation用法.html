@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+<style type="text/css">
+	div{margin: 100px;}
+	.div1{width: 100px;height: 100px;animation:name1 2s ;background: red;border-radius: 20px;}
+	@keyframes name1{
+		to{width: 300px;background-color: green;opacity: 0.5;transform: rotate(30deg);}
+	}
+	.div2{width: 100px;height: 100px;animation:name2 2s ;background: red;position: relative;}
+	@keyframes name2{
+		0%{width: 200px;}
+		25%{height: 200px;}
+		50%{background: green;}
+		75%{height: 100px;}
+		100%{width: 100px;}/*当动画完成时会回到初始的属性，即使没有指定100%时的属性*/
+	}
+	.div3{width: 100px;height: 100px;background: pink;position: relative;
+		/*animation-name: name3;
+		animation-duration: 5s;
+		animation-timing-function: linear;
+		animation-delay: 2s;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+		animation-play-state: running;*/
+		/*以上可以简写为下面的形式*/
+		animation: name3 5s linear 2s infinite alternate;
+	}
+	/*@keyframes name3
+	{
+	0%   {background: red; left:0px; top:0px;}
+	25%  {background: yellow; left:200px; top:0px;}
+	50%  {background: blue; left:200px; top:200px;}
+	75%  {background: green; left:0px; top:200px;}
+	100% {background: red; left:0px; top:0px;}
+	}*/
+	@keyframes name3{
+		0%{background: pink; left:0px; top: 0px;}
+		25%{background: green; left: 100px;top:0;opacity: 0.3;}
+		50%{background: blue;left: 100px; top:100px;border-radius: 100px;}
+		75%{background: green;left:0; top:100px; transform: rotate(45deg);}
+		100%{background: pink; left:0px; top: 0px;}
+	}
+	.div4{width: 500px;height: 500px;border-radius: 100%;
+	 animation:name4 2s both;background: red;position:absolute;top: 100px;left: 500px;}
+	@keyframes name4{
+		from{transform: scale(0);opacity: 1;}
+		to{transform: scale(1);opacity: 0.1;}
+	}
+	.div5{height: 50px;display: inline;font-size: 50px;line-height: 50px;
+	 animation:name5 3s linear 1s both;position:absolute;top: 50px;left: 500px;}
+	@keyframes name5{
+		from{opacity: 0;}
+		to{transform: rotateX(360deg);opacity:1;}
+	}
+	.div6{width: 200px;height: 100px;border: 1px solid red;box-shadow: 0 0 20px 10px black;background: green; }
+	@keyframes name6{
+		to{border: 2px solid green;box-shadow: 0 0 20px 10px red ;}
+	}
+</style>
+	</head>
+	<body>
+		<div class="div1"></div>
+		<div class="div2"></div>	
+		<div class="div3"></div>
+		<div class="div4"></div>
+		<div class="div5">这是一段文字</div>
+		<div class="div6">
+			
+		</div>
+		<!--animation-name:与@keyframes定义的名字一样
+			animation-duration:设置动画播放的时间。单位：S秒
+			animation-timing-function:设置动画播放方式.有ease | linear | ease-in | ease-out | ease-in-out 几种方式
+			animation-delay:设置动画开始播放的时间。
+			animation-iteration-count：定义动画的播放次数。infinite表示无限次播放
+			animation-direction:设置动画播放方向.normal | alternate. normal是默认值，如果设置为normal时，动画的每次循环都是向前播放；alternate的作用是，动画播放在第偶数次向前播放，第奇数次向反方向播放。
+			animation-play-state:属性主要用来控制元素动画的播放状态.其主要有两个值：running和paused。
+			animation-fill-mode属性定义在动画开始之前和结束之后发生的操作。主要具有四个属性值：none、forwards、backwords和both。animation-fill-mode:forwards|both可以让动画停在最后一帧处; 
+		-->
+	</body>
+	<script src="../js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(".div6").click(function(){
+			$(this).css({"animation-name":"name6","animation-duration":"1s","animation-fill-mode":"both"});
+		});
+	</script>
+</html>

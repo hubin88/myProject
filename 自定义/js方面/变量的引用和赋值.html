@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		 //		alert(Math.E.toFixed(2));
+		 //		alert(Math.log(100)/Math.LN10);
+		var x = 0.3 - 0.2,
+			y = 0.2 - 0.1;
+		 //		alert(x == y);
+		 //		alert(x);
+		 //		alert(y);
+		var a = 1,
+			b = 1;
+		 //		(a==b)&&alert(a+b);//和下面的写法等价
+		 //		if(a==b)alert(a+b);
+		 //=在对象中表示引用而不是赋值，下面均是对数组的引用，而不是一个副本，改变一个的值，其他都会变。	
+		var arr = [1, 2, 3, 4, 5];
+		var x = arr,
+			z = arr,
+			y = x;
+		x[2] = 7;
+		document.write(arr + "<br>" + x + "<br>" + y + "<br>" + z+"<br>");
+		//与下面的情况不一样,=在数字和字符串中表示赋值
+		var str1="hello world";
+		var str2=str1;str2="Hello World "
+		document.write(str1+"--"+str2+"<br>");
+		//将引用转化为赋值的方法
+		var a=arr.slice(0);//a依然为数组
+		 alert(a instanceof Array);
+		document.write(a+"<br>");
+		a[0]=6;
+		document.write(a+"--"+arr+"<br>");
+		b=arr.concat();//b依然为数组
+		alert(b instanceof Array);
+		b[1]=8;
+		document.write(b+"--"+arr+"<br>");
+	</script>
+
+</html>

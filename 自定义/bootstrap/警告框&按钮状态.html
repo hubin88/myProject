@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css" />
+	</head>
+
+	<body>
+		<!--需要有data-dismiss="alert"自定义属性-->
+		<div class="alert alert-success " role="alert">
+			<button class="close" type="button" data-dismiss="alert">&times;</button>
+			恭喜您操作成功！
+		</div>
+		<div class="alert alert-info " role="alert">
+			<button class="close" type="button" data-dismiss="alert">&times;</button>
+			请输入正确的密码
+		</div>
+		<div class="alert alert-warning " role="alert">
+			<button class="close" type="button" data-dismiss="alert">&times;</button>
+			您已操作失败两次，还有最后一次机会
+		</div>
+		<div class="alert alert-danger " role="alert">
+			<button class="close" type="button" data-dismiss="alert">&times;</button>
+			对不起，您输入的密码有误
+		</div>
+		<!--通过JS触发不需要加data-dismiss="alert"自定义属性-->
+		<div class="alert alert-warning" role="alert">
+			<h4>谨防被骗</h4>
+			<p>请确认您转账的信息是你的亲朋好友，不要轻意相信不认识的人...</p>
+			<button type="button" class="btnbtn-danger" data-dismiss="alert">关闭</button>
+		</div>
+		<div class="alert alert-danger" role="alert">
+			<h4>谨防被骗</h4>
+			<p>请确认您转账的信息是你的亲朋好友，不要轻意相信不认识的人...</p>
+			<button type="button" class="btnbtn-danger" id="close">关闭</button>
+		</div>
+		<hr />
+		<h3>按钮操作</h3>
+		<button class="btnbtn-primary" data-loading-text="正在加载中,请稍等..." type="button" id="loaddingBtn">加载</button>
+		<div class="btn-group" data-toggle="buttons">
+			<button type="button" data-toggle="button" class="btn btn-primary">确认</button>
+		</div>
+		<h3>复选框按钮</h3>
+		<div class="btn-group">
+			<label class="btn btn-primary">
+				<input type="checkbox" name="options" id="options1">电影
+			</label>
+			<label class="btn btn-primary">
+				<input type="checkbox" name="options" id="options2">音乐
+			</label>
+			<label class="btn btn-primary">
+				<input type="checkbox" name="options" id="options3">游戏
+			</label>
+			<label class="btn btn-primary">
+				<input type="checkbox" name="options" id="options4">摄影
+			</label>
+		</div>
+		<h3>单选框按钮</h3>
+		<div class="btn-group">
+			<label class="btn btn-primary">
+				<input type="radio" name="options" id="options1">男
+			</label>
+			<label class="btn btn-primary">
+				<input type="radio" name="options" id="options2">女
+			</label>
+			<label class="btn btn-primary">
+				<input type="radio" name="options" id="options3">未知
+			</label>
+		</div>
+		<h3>按钮参数</h3>
+		<div class="btn-group" data-toggle="buttons">
+			<button type="button" data-toggle="button" class="btn btn-primary" id="mybutton" data-complete-text="Loading finished" data-loading-text="Loading...">确认</button>
+		</div>
+	</body>
+	<script src="bootstrap-3.3.5-dist/js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="bootstrap-3.3.5-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		 //警告框
+		$(function() {
+			$("#close").on("click", function() {
+				$(this).alert("close");
+			});
+		});
+		 //按钮
+		$(function() {
+			$("#loaddingBtn").click(function() {
+				$(this).button("loading");
+			});
+		});
+		 //按钮参数
+		$(function() {
+			$("#mybutton").click(function() {
+				$(this).button('loading').delay(1000).queue(function() {
+					$(this).button('complete');// data-任意字符参数名-text,此处任意字符参数名与button自定义属性中的属性一样即可，可以随意设置
+				});
+			});
+		});
+	</script>
+
+</html>

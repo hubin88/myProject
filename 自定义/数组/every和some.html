@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+		<script type="text/javascript">
+		//every()方法当且仅当针对数组中的所有元素调用判定函数都返回true，他才返回true
+			var arr=[1,2,3,4,5,6,7,8,9];
+			alert(arr.every(function(e){return e<20}));
+			alert(arr.every(function(e){return e%2==0}));
+		//some()方法当数组中至少有一个元素调用判定函数返回true，他就会返回true
+			alert(arr.some(function(e){return e>20}));
+			alert(arr.some(function(e){return e%2==0}));
+		//注意，一但every和some确定返回结果，就会停止遍历数组。
+		</script>
+</html>

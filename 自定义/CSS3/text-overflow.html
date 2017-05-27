@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{text-overflow:ellipsis; 
+			    overflow:hidden; 
+			    white-space:nowrap; 
+			    width:200px; 
+			    background:red;
+		    	}
+		</style>
+	</head>
+	<body>
+          <!--
+          	作者：764326904@qq.com
+          	时间：2015-08-13
+          	描述：用省略号表示对象内文本的溢出
+          	text-overflow用来设置是否使用一个省略标记（...）标示对象内文本的溢出。
+          	但是text-overflow只是用来说明文字溢出时用什么方式显示，要实现溢出时产生省略号的效果，
+          	还须定义强制文本在一行内显示（white-space:nowrap）及溢出内容为隐藏（overflow:hidden）
+          	normal为浏览器默认值，break-word设置在长单词或 URL地址内部进行换行，此属性不常用，用浏览器默认值即可
+          -->
+		<div class="text">
+			这是一段很长的文字这是一段很长的文字这是一段很长的文字这是一段很长的文字			
+		</div>
+	</body>
+</html>

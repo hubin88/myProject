@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var n=10000,arr1=[],result=0,arr=[];
+		for (var m=2;m<=n;m++) {
+			for (var i = 1; i <= m/2; i++) {
+				if (m % i == 0) {
+					arr1.push(i);
+				}
+			}
+//			document.write(m+"的约数为("+arr1+")的和为：");
+			for(var j=0;j<arr1.length;j++){
+				result+=arr1[j];
+			}
+//			document.write(result+"<br />");
+			if(m==result){
+				arr.push(m);
+			}
+			arr1=[];
+			result=0;
+		}
+		document.write(arr+"<br>");
+	</script>
+</html>

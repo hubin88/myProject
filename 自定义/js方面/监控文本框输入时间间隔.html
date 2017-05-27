@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<input id="text1" type="text" value="" />
+	</body>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var lastTime;
+		$(function() {
+			$('#text1').keyup(function(e) {
+				lastTime = e.timeStamp;
+				console.log(lastTime);
+				setTimeout(function() {
+					if (lastTime - e.timeStamp == 0) {
+						alert("1秒内没再输入，可以发送查询");
+					}
+				}, 1000);
+			});
+		})
+	</script>
+
+</html>

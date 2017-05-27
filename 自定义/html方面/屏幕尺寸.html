@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+//scrollHeight和scrollWidth，获取网页内容高度和宽度(不包括滚动条)
+var a=document.documentElement.scrollWidth||document.body.scrollWidth;
+var b=document.documentElement.scrollHeight||document.body.scrollHeight;
+document.write(a+"<br>"+b+"<br/>");
+//获得浏览器窗口的尺寸（浏览器的视口，不包括工具栏和滚动条）的方法:
+var w=document.documentElement.clientWidth||document.body.clientWidth;
+var h=document.documentElement.clientHeight||document.body.cliEntHeight;
+document.write(w+'<br>'+h+"<br/>")
+//offsetHeight和offsetWidth，获取网页内容高度和宽度(包括滚动条等边线，会随窗口的显示大小改变)。
+var x= document.documentElement.offsetWidth|| document.body.offsetWidth;
+var y= document.documentElement.offsetHeight|| document.body.offsetHeight;
+document.write(x+'<br>'+y+"<br/>")
+
+</script>
+</head>
+
+<body>
+<div style="width: 200px;">
+	<p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它基于ECMAScript的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C、C++、C#、Java、JavaScript、Perl、Python等）。这些特性使JSON成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成(网络传输速率)。</p>
+</div>
+</body>
+</html>

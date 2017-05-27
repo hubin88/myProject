@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{position: fixed;}
+			div:not(:target){z-index: 0;}
+			#a:target,#b:target,#c:target{z-index:1;}
+		</style>
+	</head>
+	<body>
+		<a href="#a">a</a>
+		<a href="#b">b</a>
+		<a href="#c">c</a>
+		<div id="a">
+			<img src="1.jpg" />
+		</div>
+		<div id="b">
+			<img src="2.jpg" />
+		</div>
+		<div id="c">
+			<img src="3.jpg" />
+		</div>
+	</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="Css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="Css/default.css">
+	<link rel="stylesheet" type="text/css" href="Css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="Css/webuploader.css">
+	<link rel="stylesheet" type="text/css" href="Css/index.css">
+</head>
+<body>
+	<div id="live-text"></div>
+</body>
+	<script type="text/javascript" src="Script/jQuery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="Script/cummon.js"></script>
+	<script type="text/javascript" src="Script/react.min.js"></script>
+	<script type="text/javascript" src="Script/react-dom.min.js"></script>
+	<script type="text/javascript" src="Script/browser.min.js"></script>
+	<script type="text/javascript" src="Script/jquery-ui.js"></script>
+	<script type="text/javascript" src="Script/jquery.artDialog.js"></script>
+	<script type="text/javascript" src="Script/jquery.qqFace.js"></script>
+	<script type="text/javascript" src="Script/webuploader.js"></script>
+	<script type="text/javascript" src="Script/layer/layer.js"></script>
+	<script type="text/javascript" src="Script/AppConfig.js"></script>
+	<script type="text/babel">
+	var GetInfo=function(){
+		this.token=getQueryString("token"),//登录token
+		this.userDatas=[],//存储用户信息
+		this.roomDatas=[],//存储房间信息，包括房间名和房间id
+		this.roomId="",//当前房间id
+		this.listNum=10,//每次获取的直播内容数量
+		this.contentLists=[],//存储获取的直播内容
+		this.getUser=function(){//获取用户信息
+			ajax(AppConfig.bing, JSON.stringify({
+					"en": 0,
+					"cmd": {
+						"md": "01",
+						"fc": "009",
+						"token": this.token
+					}
+				}), function(msg) {
+					this.userDatas=msg.data;console.log(this.userDatas)
+				}.bind(this)
+			);
+		},
+		this.getRooms=function(){//获取房间信息
+			ajax(AppConfig.bing, JSON.stringify({
+					"en": 0,
+					"cmd": {
+						"md": "03",
+						"fc": "001",
+						"rstatus": 1,
+						"token": this.token
+					}
+				}),function(msg){
+					this.roomDatas=msg.data;
+					this.roomId=this.roomDatas[0].rid;//默认第一个房间是当前房间
+				}.bind(this)
+			);
+		},
+		this.getList=function(datyTime){
+			ajax(AppConfig.URL, {
+					Function: AppConfig.functionID.LiveList,
+					RoomID: this.roomId,
+					DType: 0,
+					MaxRecordID: 0,
+					MinRecordID: 0,
+					TopNumber: this.listNum,
+					Date: datyTime || 0
+				},function(msg){
+					this.contentLists=msg.Data.List;
+				}.bind(this)
+			);
+		},
+		this.init=function(){
+			this.getUser();
+			this.getRooms();
+			this.getList();
+		}
+	}; 
+	var getInfo=new GetInfo();
+	getInfo.init();
+		var NavRoom=React.createClass({//房间组件
+			handleClick:function(e){
+				e.stopPropagation();
+				e.preventDefault();
+				this.props.changeRoom(this.props.room.rid);
+			},
+			render:function(){
+			var roomClass="list";
+				if(this.props.isEnterRoom){
+					roomClass="addcolor addCursor";
+				}else{
+					roomClass+=this.props.active===this.props.room.rid?" active":"";
+				}
+				return (
+					<li className={roomClass} data-rid={this.props.room.rid} onClick={this.handleClick}>{this.props.room.rname}</li>
+				);
+			}
+		});
+		var DateTime=React.createClass({//选择日期组件
+			getInitialState:function(){
+				return {
+					choseDateStyle:{}//日期选择按钮的颜色
+				}
+			},
+			handleMouseOver:function(){
+				this.setState({
+					choseDateStyle:{
+						backgroundColor: "rgb(230, 175, 65)",
+						color: "#fff"
+					}
+				});
+			},
+			handleMouseOut:function(){
+				this.setState({
+					choseDateStyle:{}
+				});
+			},
+			componentDidMount:function(){
+				
+			},
+			render:function(){
+				var dateTimestyle={};
+				(this.props.isEnterRoom)&&(dateTimestyle.display="inline-block");
+				return (
+					<div className="date-time" style={dateTimestyle}>
+						<input type="button" id="today" value="今天" onClick={this.props.todayLists}/>
+						<input type="button" id="chose-date" value="选择日期" style={this.state.choseDateStyle} />
+						<input type="text" id="datetime-local" ref="datetimeLocal" onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} />
+					</div>
+				);
+			}
+		}); 
+		var Operation=React.createClass({//进入房间和纸条提问组件
+			render:function(){
+				var enterClass="enter",questionStyle={};
+				(this.props.isEnterRoom)&&(enterClass+=" hide");
+				if(this.props.isAnalyst!==2){
+					questionStyle.display="inline-block";
+				}
+				return (
+					<div className="operation">
+						<div className="question addcolor" style={questionStyle}>纸条提问</div>
+						<div className={enterClass} onClick={this.props.enterRoom}>进入</div>
+						<div className="more">更多</div>
+					</div>
+				);
+			}
+		}); 
+		var NavBar=React.createClass({//导航条组件
+		    getDefaultProps:function () {
+		      return {
+		       isAnalyst:getInfo.userDatas.grouptype
+		      };
+		    },
+			render:function(){
+			var roomNames=[],backStyle={};
+				if(this.props.isEnterRoom){
+					backStyle.display="inline-block";
+				}
+				getInfo.roomDatas.forEach(function(value,index){
+					if(this.props.isEnterRoom&&value.rid!=this.props.active){
+						return;
+					}
+					roomNames.push(<NavRoom key={value.rid} room={value} ref={"room"+value.rid} active={this.props.active} changeRoom={this.props.changeRoom} isEnterRoom={this.props.isEnterRoom}/>);
+				}.bind(this));
+				return (
+					<div className="navbar">
+						<div className="nav">
+							<ul>
+								<span className="back" style={backStyle} onClick={this.props.outRoom}>返回</span>
+								{roomNames}
+							</ul>
+						</div>
+						<DateTime isEnterRoom={this.props.isEnterRoom} todayLists={this.props.todayLists}/>
+						<Operation isEnterRoom={this.props.isEnterRoom} enterRoom={this.props.enterRoom} isAnalyst={this.props.isAnalyst}/>
+					</div>
+				);
+			}
+		});
+		var ContetList=React.createClass({
+			getInitialState:function(){
+				return {
+					PraiseNum:this.props.listContent.PraiseNum
+				}
+			},
+			addPraiseNum:function(){
+				if(!getInfo.userDatas.isRegister) { //游客不能点赞
+					$.dialog({
+						title: '系统提示',
+						content: '游客不能点赞哦，请先登录！',
+						ok: function() {
+							window.ReLoginPC();
+						},
+						cancel: function() {
+							return "";
+						}
+					});
+					return false;
+				}
+				var id = this.props.listContent.ID;
+				if(getCookie(id)) { //判断是否已经点过赞了
+					if($("#live-text").prev("div").css("visibility") == "visible") {
+						return false;
+					}
+					$.dialog({
+						title: '系统提示',
+						content: '您已经点过赞啦！',
+						time: 2000
+					});
+				} else {
+					ajax(
+						AppConfig.URL, {
+							Function: AppConfig.functionID.Likes,
+							RecordID: id
+						},
+						function(msg) {
+							var flag = msg.Data.IsOK;
+							if(flag) {
+							this.setState({
+								PraiseNum:++this.state.PraiseNum
+							});
+							setCookie(id, true);
+							}
+						}.bind(this)
+					);
+				}
+			},
+			render:function(){
+				var deleteClass="delete";
+				(!this.props.isEnterRoom)&&(deleteClass+=" hide");
+				return (
+					<li className="media" data-id={this.props.listContent.ID}>
+						<a className="pull-left" href="#">
+							<img className="media-object" src={this.props.listContent.AnalystHeadImg} alt="..." />
+						</a>
+						<div className="media-body">
+							<div className="media-heading">
+								<span className="name addcolor">{this.props.listContent.AnalystName}</span>
+								<span className="time">{this.props.listContent.CreateDate}</span>
+								<span className="zan" onClick={this.addPraiseNum}></span>
+								<span className="num">{this.state.PraiseNum}</span>
+							</div>
+							<div className="live-content">
+								{decodeURI(this.props.listContent.Contents).replace(/\[em_([1-9]|[1-6][0-9]|7[0-5])\]/g, '<img src="Images/face/$1.ico" border="0" />')}
+							</div>
+							<div className="favor">
+								<span className={deleteClass}  data-id={this.props.listContent.ID} onClick={this.props.delete}>删除</span>
+							</div>
+						</div>
+					</li>
+				);
+			}
+		});
+		var Content=React.createClass({
+			render:function(){
+				var contents=[],lists=this.props.listsID;
+					this.props.listDatas.forEach(function(value,index){
+						if(getIndex(lists,value.ID)===-1){
+							return;
+						}
+						contents.push(<ContetList  key={value.ID} listContent={value} isEnterRoom={this.props.isEnterRoom} ref={"list"+value.ID} delete={this.props.deleteID}/>);
+					}.bind(this));
+				return (
+					<div className="content">
+						<div className="list">
+							<ul className="media-list">
+								{contents}
+							</ul>
+						</div>
+					</div>
+				);
+			}
+		});
+		var LiveText=React.createClass({
+			getInitialState:function(){
+				return {
+					roomActiveIndex:getInfo.roomDatas[0].rid,//当前房间id
+					isEnterRoom:false,//是否进入了直播间
+					listDatas:getInfo.contentLists,
+					listsID:this.getListsID()
+				}
+			},
+			deleteID:function(e){
+				var _this=this;
+				e.stopPropagation();
+				var id=parseInt(e.target.getAttribute("data-id"));
+				
+				if($("#live-text").prev("div").css("visibility") == "visible") {
+					return false;
+				}
+				$.dialog({
+					title: '系统提示',
+					content: '您确定删除吗!',
+					ok: function() {
+						ajax(
+							AppConfig.URL, {
+								Function: AppConfig.functionID.DeleteLiveContent,
+								RecordID: id
+							},
+							function(msg) {
+								var flag = msg.Data.IsOK;
+								if(flag) {
+									var listsId=deleteVal(_this.state.listsID,id);
+									_this.setState({
+										listsID:listsId
+									});
+								}
+							}
+						);
+					},
+					cancel: function() {
+						return "";
+					}
+				});
+			},
+			getListsID:function(){
+				var listsId=[];
+					getInfo.contentLists.forEach(function(value,index){
+						listsId.push(value.ID);
+					}.bind(this));
+					return listsId;
+				},
+			changeRoom:function(index){
+				getInfo.roomId=index;
+				getInfo.getList(0);
+				this.setState({
+					roomActiveIndex:index,
+					listDatas:getInfo.contentLists,
+					listsID:this.getListsID()
+				});
+			},
+			enterRoom:function(){
+				this.setState({
+					isEnterRoom:true
+				});
+			},
+			outRoom:function(){
+				this.setState({
+					isEnterRoom:false
+				});
+			},
+			todayLists:function(){
+				getInfo.getList(0);
+				this.setState({
+					listDatas:getInfo.contentLists,
+					listsID:this.getListsID()
+				});
+			},
+			render:function(){
+				return (
+				<div id="live-text">
+					<NavBar active={this.state.roomActiveIndex} isEnterRoom={this.state.isEnterRoom} enterRoom={this.enterRoom} changeRoom={this.changeRoom} outRoom={this.outRoom} todayLists={this.todayLists}/>
+					<Content active={this.state.roomActiveIndex} isEnterRoom={this.state.isEnterRoom} listDatas={this.state.listDatas} listsID={this.state.listsID} deleteID={this.deleteID}/>
+				</div>
+				);
+			}
+		});
+		ReactDOM.render(<LiveText/>,document.body);
+	</script>
+</html>

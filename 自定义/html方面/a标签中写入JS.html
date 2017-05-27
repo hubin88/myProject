@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<a href='javascript:
+			var e="",r="";
+			do{
+				e=prompt("Expression:"+e+"\n"+r+"\n",e);
+				try{r="Result:"+eval(e);}
+				catch(ex){r=ex;}
+			}while(e);
+			void 0;
+			'>
+			JavaScript Evaluator
+		</a>
+		<!--
+        	作者：764326904@qq.com
+        	时间：2015-10-28
+        	描述：条件注释
+        -->
+		<!--[if lte IE 9]>
+			在IE9以下的浏览器显示
+		<![endif]-->
+		<!--[if !IE]><-->
+        	在非IE浏览器显示
+        <!--><![endif]-->
+	</body>
+	<script type="text/javascript">
+		/*@cc_on
+		  @if(@_jscript)
+			alert("IE浏览器")//这段代码只在IE中执行
+		  @else*/
+		 	alert("非IE浏览器")//这段代码在除了IE之外的浏览器执行
+		/*@end
+		  @*/
+	</script>
+</html>

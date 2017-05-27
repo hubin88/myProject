@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				display: block;
+				border: 1px solid #aaa;
+				margin: 10px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="" height=""></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var canvas = document.getElementById('myCanvas');
+			canvas.height = 600;
+			canvas.width = 600;
+			var context = canvas.getContext("2d");
+			/*
+			线性渐变背景createLinearGradient(x,y,m,n)
+			x:渐变开始点的 x 坐标
+			y:渐变开始点的 y 坐标
+			m:渐变结束点的 x 坐标,控制背景从左到右渐变
+			n:渐变结束点的 y 坐标，控制背景从上到下渐变
+			addColorStop(stop,color);方法规定 gradient 对象中的颜色和位置。
+			stop介于 0.0 与 1.0 之间的值，表示渐变中开始与结束之间的位置。
+			color在结束位置显示的 CSS 颜色值
+			超出部分不会显示出来
+			 * */
+			//从左上角到右下角的渐变背景
+			var grd1 = context.createLinearGradient(0, 0, 200, 200);
+			grd1.addColorStop(0, "#FF0000");
+			grd1.addColorStop(0.5, "#00FF00");
+			grd1.addColorStop(1, "#0000FF");
+			context.fillStyle = grd1;
+			context.fillRect(0, 0, 200, 200);
+			//从上到下的渐变背景
+			var grd2 = context.createLinearGradient(210, 0, 210, 200)
+			grd2.addColorStop(0, "black");
+			grd2.addColorStop(0.2, "red");
+			grd2.addColorStop(0.4, "yellow");
+			grd2.addColorStop(0.6, "green");
+			grd2.addColorStop(0.8, "blue");
+			grd2.addColorStop(1, "pink");
+			context.fillStyle = grd2;
+			context.fillRect(210, 0, 100, 200);
+			//从左到右的渐变背景
+			var grd3 = context.createLinearGradient(320, 0, 600, 0)
+			grd3.addColorStop(0, "black");
+			grd3.addColorStop(0.2, "red");
+			grd3.addColorStop(0.4, "yellow");
+			grd3.addColorStop(0.6, "green");
+			grd3.addColorStop(0.8, "blue");
+			grd3.addColorStop(1, "pink");
+			context.fillStyle = grd3;
+			context.fillRect(320, 0, 280, 200);
+			/*
+			 createLinearGradient(x0,y0,r0,x1,y1,r1) 方法创建放射状/圆形渐变对象。
+			x0 	渐变的开始圆的 x 坐标
+			y0 	渐变的开始圆的 y 坐标
+			r0 	开始圆的半径
+			x1 	渐变的结束圆的 x 坐标
+			y1 	渐变的结束圆的 y 坐标
+			r1 	结束圆的半径
+			一般情况下x0=x1,y0=y1,r1>r0
+			 * */
+			context.save();
+			context.translate(0,200);
+			var grd4 = context.createRadialGradient(200, 200, 50, 200,200, 150);
+			grd4.addColorStop(0, "red");
+			grd4.addColorStop(0.5, "green");
+			grd4.addColorStop(1, "blue");
+			context.fillStyle = grd4;
+			context.fillRect(0,0, 400,400);
+			context.restore();
+		}
+	</script>
+
+</html>

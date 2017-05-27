@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p>对于任意一个自然数 n ，若 n 为偶数，则将其除以 2 ；若 n 为奇数，则将其乘以 3 ，然后再加 1。如此经过有限次运算后，总可以得到自然数1。</p>
+	</body>
+	<script type="text/javascript">
+	var m=0;
+		function num(n){
+			if(n==1){
+				return;
+			}
+			else if(n%2==0){
+				n=n/2;
+				m++;
+			}else{
+				n=n*3+1;
+				m++;
+			};
+			document.write(n+"<br />");
+			num(n);
+			return m;
+		}
+		document.write("计算了"+num(17)+"次");
+	</script>
+</html>

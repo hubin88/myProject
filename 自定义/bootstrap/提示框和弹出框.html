@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css" />
+		<title></title>
+		<style id="jsbin-css">
+			body {
+				padding: 100px;
+			}
+			
+			.btn {
+				margin: 20px 10px 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<body>
+			<h3>按钮做的提示框</h3>
+			<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" data-original-title="提示框居左" title="">
+				提示框居左
+			</button>
+			<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" data-original-title="提示框在顶部">
+				提示框在顶部
+			</button>
+			<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="提示框在底部">
+				提示框在底部
+			</button>
+			<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" data-original-title="提示框居右">
+				提示框居右
+			</button>
+			<h3>链接制作的提示框</h3>
+			<a class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="提示框在顶部">
+     提示框在顶部
+  </a>
+			<a class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="提示框在底部">
+     提示框在底部
+  </a>
+			<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="提示框在居右">
+     提示框居右
+  </a>
+			<a class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="提示框居左">
+     提示框居左
+  </a>
+			<a href="##" class="btn btn-primary" id="myTooltip">
+     我是提示框
+  </a>
+			<h3>其他自定义属性</h3>
+			<!--data-trigger="click|hover|focus|manual"-->
+			<a class="btn btn-primary" data-toggle="tooltip" data-trigger="click" data-placement="top" title="data-trigger='click'">
+     提示框在顶部(点击)
+  </a>
+			<a class="btn btn-primary" data-toggle="tooltip" data-delay=1000 data-placement="bottom" title="提示框在底部">
+     提示框在底部(延迟时间)
+  </a>
+			<a class="btn btn-primary" data-toggle="tooltip" data-delay={ "show":1000, "hide":2000} data-placement="right" title="提示框在居右">
+     提示框居右(延迟时间)
+  </a>
+			<hr />
+			<h3>弹出框</h3>
+			<button type="button" class="btn btn-default" data-container="body" data-placement="bottom" data-toggle="popover" data-original-title="Bootstrap弹出框标题" data-content="Bootstrap弹出框的内容">
+				猛击我吧
+			</button>
+			<a href="##" class="btn btn-default" data-container="body" data-placement="right" data-toggle="popover" title="Bootstrap弹出框标题" data-content="Bootstrap弹出框的内容">
+        猛击我吧
+</a>
+		</body>
+		<script src="bootstrap-3.3.5-dist/js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="bootstrap-3.3.5-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$(function() {
+				$('[data-toggle="tooltip"]').tooltip();
+				$('#myTooltip').tooltip({
+					title: "我是一个提示框，我在顶部出现",
+					placement: 'top'
+				});
+			});
+			$(function() {
+				$('[data-toggle="popover"]').popover();
+			});
+		</script>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#border_image {
+				margin: 0 auto;
+				height: 100px;
+				line-height: 100px;
+				text-align: center;
+				font-size: 30px;
+				width: 450px;
+				border: 15px solid #ccc;
+				border-image: url(hide.png) 15 repeat;
+		</style>
+	</head>
+
+	<body>
+		<div id="border_image">
+			<p>请为我镶嵌上漂亮的画框吧</p>
+			<!--border-image:url(图片路径) X X X X 图片延伸方式
+				XXXX为切割图片的宽度，单位是像素，省略px，也可以是百分比，顺时针设置，都一样可以简写为X
+				round(平铺),repeat(重复),stretch(拉伸)
+			-->
+		</div>
+	</body>
+
+</html>

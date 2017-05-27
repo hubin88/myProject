@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+<style type="text/css">
+	#div{width: 800px;height: 500px;border: solid 1px black;}
+	.div{width:100px;height: 100px;background: red;border: solid 1px #000000;position: relative;border-radius:100px;}
+</style>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script>
+$(function(){
+	$("#btn1").click(function hubin(){
+		var $l=$("#div").width()*Math.random()+"px",$h=$("#div").height()*Math.random()+"px";
+		$(".div").animate({left:$l, top:$h},2000,hubin);
+	});
+	$("#btn2").click(function(){
+		$(".div").stop(true,false);
+	})
+})
+</script>		
+	</head>
+	<body>
+		<input type="button" id="btn1" value="开始" />
+		<input type="button" id="btn2" value="停止" />
+		<div id="div">
+			<div class="div"></div>
+		</div>
+	</body>
+</html>

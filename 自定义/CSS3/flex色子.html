@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			span {
+				display: block;
+				width: 40px;
+				height: 40px;
+				background: #292929;
+				border-radius: 100%;
+				/*margin: 5px;*/
+			}
+			
+			.div {
+				background: #292929;
+				width: 200px;
+				height: 200px;
+				margin: 5px;
+				border-radius: 10px;
+				position: relative;
+				display: inline-block;
+			}
+			
+			.box {
+				width: 120px;
+				height: 120px;
+				background: #E7E7E7;
+				padding: 5px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -60px;
+				margin-top: -60px;
+				border-radius: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--one item-->
+		<div class="div">
+			<div class="box" style="display: flex;">
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;justify-content: center;">
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;justify-content: flex-end;">
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;align-items: center;">
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;justify-content: center;align-items: center;">
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;justify-content: flex-end;align-items: center;">
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;align-items: flex-end;">
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;justify-content: center;align-items: flex-end;">
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;justify-content: flex-end;align-items: flex-end;">
+				<span class="item"></span>
+			</div>
+		</div>
+		<!--two items-->
+		<div class="div">
+			<div class="box" style="display: flex;justify-content:space-between;">
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;justify-content:space-between;align-items: center;">
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;justify-content:space-between;align-items: flex-end;">
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;flex-direction:column;justify-content:space-between;">
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;flex-direction:column;justify-content:space-between;align-items: center;">
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;flex-direction:column;justify-content:space-between;align-items: flex-end;">
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;">
+				<span class="item" style="align-self: flex-end;"></span>
+				<span class="item" style="align-self: center;"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;flex-direction: row-reverse;">
+				<span class="item"></span>
+				<span class="item" style="align-self: center;"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;justify-content:space-between;">
+				<span class="item"></span>
+				<span class="item" style="align-self: flex-end;"></span>
+			</div>
+		</div>
+		<!--three items-->
+		<div class="div">
+			<div class="box" style="display: flex;">
+				<span class="item"></span>
+				<span class="item" style="align-self: center;"></span>
+				<span class="item" style="align-self: flex-end;"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;align-items: flex-end;">
+				<span class="item"></span>
+				<span class="item" style="align-self: center;"></span>
+				<span class="item" style="align-self: flex-end;"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;flex-direction: column;">
+				<span class="item" style="align-self: center;"></span>
+				<span class="item" style="align-self: center;"></span>
+				<span class="item" style="align-self: flex-end;"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;">
+				<span class="item" style="align-self: flex-end;"></span>
+				<span class="item" style="align-self: flex-end;"></span>
+				<span class="item" style="align-self: center;"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;flex-wrap: wrap;align-content: flex-start;">
+				<div style="display: flex; flex-basis: 100%;">
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+				<div style="display: flex; flex-basis: 100%;">
+					<span class="item"></span>
+				</div>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;flex-wrap: wrap;align-content: flex-start;">
+				<div style="display: flex; flex-basis: 100%;justify-content: flex-end;">
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+				<div style="display: flex; flex-basis: 100%;justify-content: flex-end;">
+					<span class="item"></span>
+				</div>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;flex-direction: column-reverse;">
+				<div style="display: flex;">
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+				<div style="display: flex;">
+					<span class="item"></span>
+				</div>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;flex-direction: column-reverse;align-items: flex-end;">
+				<div style="display: flex;">
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+				<div style="display: flex;">
+					<span class="item"></span>
+				</div>
+			</div>
+		</div>
+		<!--four items-->
+		<div class="div">
+			<div class="box" style="display: flex;flex-wrap: wrap;align-content: space-between;">
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex; flex-wrap: wrap;">
+				<span class="item" style="align-self:flex-end;"></span>
+				<span class="item" style="align-self:center;"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex;">
+				<div style="display: flex;">
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+				<div>
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex; flex-wrap: wrap; align-content: space-between;">
+				<div style="display: flex;justify-content: space-between;flex-basis: 100%;">
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+				<div style="display: flex;justify-content: space-between;flex-basis: 100%;">
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+			</div>
+		</div>
+		<!--five items-->
+		<div class="div">
+			<div class="box" style="display: flex; flex-wrap: wrap; align-content: space-between;">
+				<div style="display: flex;justify-content: space-between;flex-basis: 100%;">
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+				<div style="display: flex;justify-content: center;flex-basis: 100%;">
+					<span class="item"></span>
+				</div>
+				<div style="display: flex;justify-content: space-between;flex-basis: 100%;">
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+			</div>
+		</div>
+		<!--six items-->
+		<div class="div">
+			<div class="box" style="display: flex; flex-wrap: wrap; align-content: space-between;">
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex; flex-wrap: wrap; align-content: space-between;flex-direction: column;">
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+		</div>
+		<div class="div">
+			<div class="box" style="display: flex; flex-wrap: wrap; align-content: space-between;">
+				<div style="display: flex;flex-basis: 100%;">
+					<span class="item"></span>
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+				<div style="display: flex;flex-basis: 100%;justify-content: center;">
+					<span class="item"></span>
+				</div>
+				<div style="display: flex;flex-basis: 100%;justify-content: space-between;">
+					<span class="item"></span>
+					<span class="item"></span>
+				</div>
+			</div>
+		</div>
+		<!--nine items-->
+		<div class="div">
+			<div class="box" style="display: flex; flex-wrap: wrap;">
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+				<span class="item"></span>
+			</div>
+		</div>
+	</body>
+
+</html>

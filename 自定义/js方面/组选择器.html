@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+<style type="text/css">
+	b{color: red;font-size: 16px;display: block;clear: left;}
+	div,span,p{width: 50px;height: 50px;float: left;margin: 10px;background: blue;padding: 5px;color: white;}
+</style>
+<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+	var list=$("div,p,span").map(function(){
+		return this.tagName;
+	}).get().join("-");
+	$("b").append(document.createTextNode(list));
+})
+</script>
+	</head>
+	<body>
+		<span>span</span>
+		<p>p</p>
+		<p>p</p>
+		<div id="">
+			div
+		</div>
+		<span id="">
+			span
+		</span>
+		<p>p</p>
+		<div id="">
+			div
+		</div>
+		<b></b>
+	</body>
+</html>

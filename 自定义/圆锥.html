@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.box {
+				width: 900px;
+				position: relative;
+				margin: auto;
+				perspective: 1000px;
+				perspective-origin: 50% 50%;
+				/*transform: scale(0.5);*/
+			}
+			
+			.cube {
+				position: relative;
+				width: 150px;
+				height: 150px;
+				margin: 150px auto;
+				transition: all 1s ease-in;
+				transform-style: preserve-3d;
+				/*animation: spin-vertical 5s infinite linear;*/
+			}
+			
+			.front {
+				transform: rotateY(0deg);
+				background: red;
+			}
+			
+			.right {
+				transform: rotateY(90deg);
+				background: green;
+			}
+			
+			.behind {
+				transform: rotateY(180deg);
+				background: blue;
+			}
+			
+			.left {
+				transform: rotateY(-90deg);
+				background: orange;
+			}
+			
+			.up {
+				transform: rotateX(90deg);
+				background: pink;
+			}
+			
+			.down {
+				transform: rotateX(-90deg);
+				background: yellow;
+			}
+			.plane {
+				/*outline: 1px solid black;*/
+				width: 150px;
+				height: 150px;
+				position: absolute;
+				opacity: 0.5;
+				text-align: center;
+				font-size: 50px;
+				line-height: 150px;
+				border-radius: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="cube">
+				<div class="plane front"></div>
+				<div class="plane behind"></div>
+				<div class="plane left"></div>
+				<div class="plane up"></div>
+				<div class="plane right"></div>
+				<div class="plane down"></div>
+			</div>
+		</div>
+	</body>
+	<script src="js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+			for (var i=0;i<74;i++) {
+//				$(".front").eq(0).clone().appendTo(".cube");
+//				$(".behind").eq(0).clone().appendTo(".cube");
+				$(".left").eq(0).clone().appendTo(".cube");
+				$(".up").eq(0).clone().appendTo(".cube");
+				$(".right").eq(0).clone().appendTo(".cube");
+				$(".down").eq(0).clone().appendTo(".cube");
+			}
+		function Plane(classname,index, angleX, angleY) {
+			$(classname).eq(index).css({
+				"transform":"rotateX(" + angleX + "deg) rotateY(" + angleY + "deg) translate3d(0,0,"+index*2+"px)",
+				"width":150-index*2+"px",
+				"height":150-index*2+"px",
+				"top":index+"px",
+				"left":index+"px"
+			});
+		}
+		for (var i=0;i<75;i++) {
+//				Plane(".front",i,0,0);
+//				Plane(".behind",i,0,180);
+				Plane(".left",i,0,-90);
+				Plane(".up",i,90,0);
+				Plane(".right",i,0,90);
+				Plane(".down",i,-90,0);
+			}
+	</script>
+	<script type="text/javascript">
+		var xAngle = 0,
+			yAngle = 0;
+		$(document).on('keydown', function(e) {
+			switch (e.keyCode) {
+				case 37: // left 
+					yAngle -= 90;
+					break;
+				case 38: // up 
+					xAngle += 90;
+					break;
+				case 39: // right 
+					yAngle += 90;
+					break;
+				case 40: // down 
+					xAngle -= 90;
+					break;
+			};
+			$(".cube").css("transform", "rotateX(" + xAngle + "deg) rotateY(" + yAngle + "deg)");
+		});
+	</script>
+
+</html>

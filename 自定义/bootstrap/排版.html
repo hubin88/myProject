@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css" />
+		<style type="text/css">
+			/*单元格鼠标悬浮效果*/
+			
+			.table-hover > tbody > tr:hover > td:hover,
+			.table-hover > tbody > tr:hover > th:hover {
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--标题-->
+		<h1>这是标题<small>这是副标题</small></h1>
+		<h2>这是标题<small>这是副标题</small></h2>
+		<h4>这是标题<small>这是副标题</small></h4>
+		<h5>这是标题<small>这是副标题</small></h5>
+		<!--字体风格设置-->
+		<p class="text-muted">我是一个普通的段落，我不需要强调显示</p>
+		<p style="font-style: italic;">这部分内容需要特别的强调，我和别人长得不一样(斜体)</p>
+		<p class="text-primary"><small>这部分内容需要特别的强调，我和别人长得不一样</small></p>
+		<p class="text-success"><em>这部分内容需要特别的强调，我和别人长得不一样(斜体)</em></p>
+		<p class="text-info"><i>这部分内容需要特别的强调，我和别人长得不一样(斜体)</i></p>
+		<p class="text-warning"><cite>这部分内容需要特别的强调，我和别人长得不一样</cite></p>
+		<p class="text-danger"><strong>这部分内容需要特别的强调，我和别人长得不一样</strong></p>
+		<p><b>这部分内容需要特别的强调，我和别人长得不一样</b></p>
+		<p class="lead">这部分内容需要特别的强调，我和别人长得不一样</p>
+		<!--对齐方式-->
+		<p class="text-left">我居左</p>
+		<p class="text-center">我居中</p>
+		<p class="text-right">我居右</p>
+		<p class="text-justify">我两端对齐(中文效果不好)</p>
+		<!--去除列表序号-->
+		<ul>
+			<li>列表项1</li>
+			<li>列表项2
+				<ul class="list-unstyled">
+					<li>列表项</li>
+					<li>列表项</li>
+					<li>列表项</li>
+				</ul>
+			</li>
+			<li>列表项3</li>
+		</ul>
+		<!--列表项水平排列-->
+		<ul class="list-inline">
+			<li>列表项1</li>
+			<li>列表项2
+				<ul class="list-inline">
+					<li>列表项</li>
+					<li>列表项</li>
+					<li>列表项</li>
+				</ul>
+			</li>
+			<li>列表项3</li>
+		</ul>
+		<!--自定义水平列表-->
+		<dl class="dl-horizontal">
+			<dt>列表1</dt>
+			<dd>列表内容，这里是列表的描述</dd>
+			<dt>列表列表2</dt>
+			<dd>列表内容，这里是列表的描述</dd>
+			<dt>列表列表列表3</dt>
+			<dd>列表内容，这里是列表的描述</dd>
+			<dt>列表内容太长，超过160px时显示省略号哦</dt>
+			<dd>列表内容，这里是列表的描述</dd>
+		</dl>
+		<!--网页上显示代码-->
+		<div>Bootstrap的代码风格有三种：<code>&lt;code&gt;</code>、<code>&lt;pre&gt;</code>和<code>&lt;kbd&gt;</code></div>
+		pre风格：
+		<div>
+			<pre class="pre-scrollable">
+				<!--超过340px出现滚动条-->
+&lt;ul&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+		</div>
+		kbd风格：
+		<div>请输入<kbd>ctrl+c</kbd>来复制代码，然后使用<kbd>ctrl+v</kbd>来粘贴代码</div>
+		<!--.table-responsive表示响应式表格，当你的浏览器可视区域小于768px时，表格底部会出现水平滚动条。当你的浏览器可视区域大于768px时，表格底部水平滚动条就会消失。-->
+		<div class="table-responsive">
+		<!--表格效果，看上面的样式-->
+			<table class="table table-bordered table-hover text-center">
+				<thead>
+					<tr>
+						<th>类名</th>
+						<th>描述</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="active">
+						<td>.active</td>
+						<td>表示当前活动的信息</td>
+					</tr>
+					<tr class="success">
+						<td>.success</td>
+						<td>表示成功或者正确的行为</td>
+					</tr>
+					<tr class="info">
+						<td>.info</td>
+						<td>表示中立的信息或行为</td>
+					</tr>
+					<tr class="warning">
+						<td>.warning</td>
+						<td>表示警告，需要特别注意</td>
+					</tr>
+					<tr class="danger">
+						<td>.danger</td>
+						<td>表示危险或者可能是错误的行为</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+
+</html>

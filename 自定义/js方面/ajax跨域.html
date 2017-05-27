@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<p>JSONP跨域的原理</p>
+		<pre>
+			在同源策略下，在某个服务器下的页面是无法获取到该服务器以外的数据的，但img、iframe、script等标签是个例外，
+			这些标签可以通过src属性请求到其他服务器上的数据。利用script标签的开放策略，我们可以实现跨域请求数据，当然，
+			也需要服务端的配合。当我们正常地请求一个JSON数据的时候，服务端返回的是一串JSON类型的数据，
+			而我们使用JSONP模式来请求数据的时候，服务端返回的是一段可执行的JavaScript代码。
+			举个例子，假如需要从服务器（http://www.a.com/user?id=123）获取的数据如下：
+			{"id": 123, "name" : 张三, "age": 17}
+			那么，使用JSONP方式请求（http://www.a.com/user?id=123?callback=foo）的数据将会是如下： 
+			foo({"id": 123, "name" : 张三, "age": 17});
+			当然，如果服务端考虑得更加充分，返回的数据可能如下： 
+			try{foo({"id": 123, "name" : 张三, "age": 17});}catch(e){}
+			这时候我们只要定义一个foo()函数，并动态地创建一个script标签，使其的src属性为http://www.a.com/user?id=123?callback=foo： 
+			便可以使用foo函数来调用返回的数据了。 
+		</pre>
+		<!--
+        	作者：764326904@qq.com
+        	时间：2016-05-25
+        	描述：chrome浏览器跨域
+        -->
+		<p>
+			1、关闭所有打开的Chrome。（重要）。否则，将没有效果！
+			2、创建Chrome的快捷方式，修改快捷方式的目标为："C:\Program Files\Google\Chrome\Application\chrome.exe" --args --disable-web-security
+			3、双击我们创建的Chrome快捷方式，打开Chrome，如图出现“您使用的是不受支持的命令行标记：--disable-web-security。稳定性和安全性会有所下降”，表示你取消了跨域限制了，可以随意跨域调用数据了。
+		</p>
+		<p>在服务端加上词句header("Access-Control-Allow-Origin: *");也可以</p>
+	</body>
+	<script src="js/jQuery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var URL = 'http://www.a.com/user?id=123';
+		//方法一
+		$.ajax({
+			type : "get",
+			url: URL,
+			dataType: 'jsonp', //以 JSONP 的方式载入 JSON 数据块。会自动在所请求的URL最后添加"?callback=?"
+			//jsonp,jsonpCallback可以省略
+			jsonp:callback, //在一个JSONP请求中重写回调函数的名字。这个值用来替代在"callback=?"这种GET或POST请求中URL参数里的"callback"部分，比如{jsonp:'onJsonPLoad'}会导致将"onJsonPLoad=?"传给服务器。
+			jsonpCallback: jsonpcallback//为jsonp请求指定一个回调函数名。这个值将用来取代jQuery自动生成的随机函数名。这主要用来让jQuery生成一个独特的函数名，这样管理请求更容易，也能方便地提供回调函数和错误处理
+			success: function(data) {
+				console.log(data); //处理data数据
+			},
+			error:function(){
+				alert("error");
+			}
+		});
+		//方法二jQuery.getJSON( url [, data ] [, success(data, textStatus, jqXHR) ] )
+		$.getJSON(URL + '?callback=?',{
+			//需要传入或请求的数据
+		},function(data) {
+			console.log(data); //处理data数据
+		});
+		//方法三jQuery.getScript( url [, success(script, textStatus, jqXHR) ] )
+		//此时也可以在函数外定义foo方法
+		function dosomething(data) {
+			console.log(data); //处理data数据
+		}
+		$.getScript(URL + '?callback=dosomething');
+	</script>
+		<!--方法四直接在页面上引入不同域上的js脚本文件-->
+		<script type="text/javascript">
+			function dosomething (data){
+				console.log(data); //处理data数据
+			}
+		</script>
+		<script src=URL + '?callback=dosomething' type="text/javascript"></script>
+</html>

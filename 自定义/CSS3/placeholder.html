@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			/* all */
+			
+			#name::-webkit-input-placeholder {
+				color: #f00;
+			}
+			
+			#name::-moz-placeholder {
+				color: #f00;
+			}
+			/* firefox 19+ */
+			
+			#name:-ms-input-placeholder {
+				color: #f00;
+			}
+			/* ie */
+			
+			input:-moz-placeholder {
+				color: #f00;
+			}
+			/* individual: webkit */
+			
+			#phone::-webkit-input-placeholder {
+				color: #00f;
+			}
+			
+			#nickname::-webkit-input-placeholder {
+				color: #090;
+				background: lightgreen;
+				text-transform: uppercase;
+			}
+			
+			#pwd::-webkit-input-placeholder {
+				font-style: italic;
+				text-decoration: underline;
+				letter-spacing: 3px;
+				color: #999;
+			}
+			/* individual: mozilla */
+			
+			#phone::-moz-placeholder {
+				color: #00f;
+			}
+			
+			#nickname::-moz-placeholder {
+				color: #090;
+				background: lightgreen;
+				text-transform: uppercase;
+			}
+			
+			#pwd::-moz-placeholder {
+				font-style: italic;
+				text-decoration: underline;
+				letter-spacing: 3px;
+				color: #999;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="text" id="name" value="" placeholder="请输入账号" />
+		<input type="text" id="phone" value="" placeholder="请输入手机号" />
+		<input type="text" id="nickname" value="" placeholder="请输入昵称" />
+		<input type="password" id="pwd" value="" placeholder="请输入密码" />
+	</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				display: block;
+				border: 1px solid #aaa;
+				margin: 10px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="" height=""></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+				var canvas = document.getElementById('myCanvas');
+				canvas.height = 600;
+				canvas.width = 800;
+				var context = canvas.getContext("2d");
+				//var skyStyle=context.createLinearGradient(0, 0, 0,canvas.height);
+				var skyStyle = context.createRadialGradient(canvas.width / 2, canvas.height, 0, canvas.width / 2, canvas.height, canvas.height)
+				skyStyle.addColorStop(0, "#035");
+				skyStyle.addColorStop(1, "#000");
+				context.fillStyle = skyStyle;
+				context.fillRect(0, 0, canvas.width, canvas.height);
+				for (var i = 0; i < 200; i++) {
+					var x = Math.random() * canvas.width,
+						y = Math.random() * canvas.height * 0.65,
+						R = Math.random() * 5 + 5,
+						r = R / 2,
+						rot = Math.random() * 360;
+					drawStar(context, x, y, R, r, 1, "yellow", "yellow", rot)
+				}
+				drawMoon(context, 600, 150, 100, 100, null, "orange", "yellow", 20);
+				//drawMoonQuadraticCurveTo(context, 400, 150,100,0,80,null, "orange","yellow",20);
+				greenland(context, 0, canvas.height * 0.7, 200, -100, 400, 100, canvas.width, 10, "green");
+			}
+			//两点距离
+		function dis(x1, y1, x2, y2) {
+			return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+		}
+		//星星
+		function pathStar(cxt, x, y, R, r, Rot) {
+			cxt.beginPath();
+			for (var i = 0; i < 5; i++) {
+				cxt.lineTo(Math.cos((18 + i * 72) / 180 * Math.PI) * R, -Math.sin((18 + i * 72) / 180 * Math.PI) * R);
+				cxt.lineTo(Math.cos((54 + i * 72) / 180 * Math.PI) * r, -Math.sin((54 + i * 72) / 180 * Math.PI) * r);
+			}
+			cxt.closePath();
+		}
+
+		function drawStar(cxt, x, y, R, r, borderWidth, borderColor, fillColor, Rot) {
+			cxt.save();
+			cxt.translate(x, y);
+			cxt.rotate(Rot / 180 * Math.PI);
+			cxt.lineWidth = borderWidth;
+			cxt.strokeStyle = borderColor;
+			cxt.fillStyle = fillColor;
+			pathStar(cxt, x, y, R, r, Rot);
+			cxt.fill();
+			cxt.stroke();
+			cxt.restore();
+		}
+		//月亮,用arcTo方法
+		function drawMoon(context, x, y, l, r, borderWidth, borderColor, fillColor, Rot) {
+			context.save();
+			context.translate(x, y);
+			context.rotate(Rot / 180 * Math.PI);
+			pathMoonArcTo(context, l, r);
+			context.lineWidth = borderWidth || 1;
+			context.strokeStyle = borderColor || "red";
+			context.fillStyle = fillColor;
+			context.fill();
+			context.stroke();
+			context.restore();
+		}
+
+		function pathMoonArcTo(context, l, r) {
+			context.beginPath();
+			context.arc(0, 0, r, 0.5 * Math.PI, 1.5 * Math.PI, true);
+			context.arcTo(l, 0, 0, r, r / Math.abs(l) * Math.sqrt((r, 2) + Math.pow(l, 2)));
+			context.closePath();
+		}
+		//用quadraticCurveTo方法
+		function drawMoonQuadraticCurveTo(context, x, y, x1, y1, r, borderWidth, borderColor, fillColor, Rot) {
+			context.save();
+			context.translate(x, y);
+			context.rotate(Rot / 180 * Math.PI);
+			pathMoonQuadraticCurveTo(context, x1, y1, r);
+			context.lineWidth = borderWidth || 1;
+			context.strokeStyle = borderColor || "red";
+			context.fillStyle = fillColor;
+			context.fill();
+			context.stroke();
+			context.restore();
+		}
+
+		function pathMoonQuadraticCurveTo(context, x1, y1, r) {
+			context.beginPath();
+			context.arc(0, 0, r, 0.5 * Math.PI, 1.5 * Math.PI, true);
+			context.quadraticCurveTo(x1, y1, 0, r);
+			context.closePath();
+		}
+		//绿地bezierCurveTo()
+		function greenland(context, x, y, x1, y1, x2, y2, x3, y3, fillColor) {
+			context.save();
+			context.translate(x, y);
+			pathland(context,y, x1, y1, x2, y2, x3, y3);
+			context.fillStyle = fillColor;
+			context.fill();
+			context.restore();
+		}
+
+		function pathland(context, y, x1, y1, x2, y2, x3, y3) {
+			context.beginPath();
+			context.moveTo(0, 0);
+			context.bezierCurveTo(x1, y1, x2, y2, x3, y3);
+			context.lineTo(x3, 600 - y);
+			context.lineTo(0, 600 - y);
+			context.closePath();
+		}
+	</script>
+
+</html>

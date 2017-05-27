@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+onload=function()
+{	
+	var aBtn=document.getElementsByTagName("button")[0];
+	var aP=document.getElementsByTagName("p")[1];
+	aBtn.onclick=function()
+	{
+		var day=new Date().getDay();
+		var x;
+		switch (day)
+		{
+		case 0:
+		  x="Today it's Sunday";
+		  break;
+		case 1:
+		  x="Today it's Monday";
+		  break;
+		case 2:
+		  x="Today it's Tuesday";
+		  break;
+		case 3:
+		  x="Today it's Wednesday";
+		  break;
+		case 4:
+		  x="Today it's Thursday";
+		  break;
+		case 5:
+		  x="Today it's Friday";
+		  break;
+		case 6:
+		  x="Today it's Saturday";
+		  break;
+		}
+	aP.innerHTML=x;
+	}
+}
+</script>
+</head>
+
+<body>
+<p>点击下面的按钮来显示今天是周几：</p>
+<button>点击这里</button>
+<p></p>
+</body>
+</html>

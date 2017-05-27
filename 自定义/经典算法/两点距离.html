@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var points=[
+			{x:100,y:300},
+			{x:200,y:600}
+		];
+		function Distance(x1,y1,x2,y2){
+			this.x=x1-x2;
+			this.y=y1-y2;
+		}
+		Distance.prototype.sub=function(){
+			return Math.sqrt(Math.pow(this.x,2)+Math.pow(this.y,2));
+		}
+		var p=new Distance(points[0].x,points[0].y,points[1].x,points[1].y);
+		alert(p.sub());
+	</script>
+</html>

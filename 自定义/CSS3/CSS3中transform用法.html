@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>transform用法</title>
+		<style type="text/css">
+			div{border: 1px solid #000000;width:300px;height:100px;background: #00FF00;margin:30px 200px;}
+			p{background: #F00;width:200px;height: 50px; margin:10px auto;}
+			.matrix{transform: matrix(1,0.4,0.6,1,20,20);/*matrix() 是一个含六个值的(a,b,c,d,e,f)变换矩阵，a为元素的水平伸缩量，1为原始大小；b为纵向扭曲，0为不变；c为横向扭曲，0不变；d为垂直伸缩量，1为原始大小；e为水平偏移量，0是初始位置；f为垂直偏移量，0是初始位置*/}
+			.translate{transform: translate(5px,10px);}/*X和Y方向的偏移量*/
+			.rotate{transform: rotate(10deg);transform-origin: 0 10px;}/*旋转角度,transform-origin是指参考点*/
+			.scale{transform: scale(0,0);transform-origin: right bottom;}/*X和Y方向的放大倍数，transform-origin是指参考点*/
+			.skew{transform: skew(30deg,20deg);}/*X和Y方向的斜切扭曲*/
+			.rotateX{transform: rotateX(120deg);}
+			.rotateY{transform: rotateY(120deg);}
+			.rotateZ{transform: rotateZ(120deg);}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<p class="matrix">transform:matrix</p>
+		</div>
+		<div>
+			<p class="translate">transform:translate</p>
+		</div>
+		<div>
+			<p class="rotate">transform:rotate</p>
+		</div>
+		<div>
+			<p class="scale">transform:scale</p>
+		</div>
+		<div>
+			<p class="skew">transform:skew</p>
+		</div>
+		<div>
+			<p class="rotateX">transform:rotateX</p>
+		</div>
+		<div>
+			<p class="rotateY">transform:rotateY</p>
+		</div>
+		<div>
+			<p class="rotateZ">transform:rotateZ</p>
+		</div>
+	</body>
+		<script src="../jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(".translate").click(function(){
+				$(this).css({"transform":"translate(100px,40px) rotateZ(120deg)","transition": "all .6s ease-in-out"})
+			});
+			$(".scale").parent().hover(function(){
+				$(this).children().css({"transform":"scale(1,-1)","transform-origin": "right bottom","transition": "all .6s ease-in-out"})
+			},function(){
+				$(this).children().css({"transform":"scale(0,0)","transform-origin": "right bottom","transition": "all .6s ease-in-out"})
+			});
+		</script>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//identity,_.identity(value)返回与传入参数相等的值. 相当于数学里的: f(x) = x,这个函数看似无用, 但是在Underscore里被用作默认的迭代器iterator. 
+		var n=5;
+		document.write((n===_.identity(n))+"<br>");
+		//noop,_.noop()返回undefined，不论传递给它的是什么参数。 可以用作默认可选的回调参数
+		document.write(_.noop(n)+"<br>");
+		//random,_.random(min, max)返回一个min 和 max之间的随机整数(包含min和max)。如果你只传递一个参数，那么将返回0和这个参数之间的整数。 
+		document.write(_.random(1,100)+"<br>");
+		//now,_.now()一个优化的方式来获得一个当前时间的整数时间戳。 可用于实现定时/动画功能。 
+		document.write(_.now()+"<br>");
+		document.write(new Date().getTime());
+	</script>
+</html>

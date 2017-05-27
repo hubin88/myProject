@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+<script type="text/javascript">
+onload=function()
+{	
+	var n=1;
+	function quickSort(arr)
+	{	
+		if(arr.length<=1) {
+			return arr;
+		}//结束的条件
+		var	centerindex=Math.floor(arr.length/2),
+			centernum=arr.splice(centerindex,1),
+			left=[],
+			right=[];
+		for(var i=0;i<arr.length;i++)
+		{	
+			if(arr[i]<centernum)
+				{
+					left.push(arr[i])	
+				}
+			else
+				{
+					right.push(arr[i])
+				};
+					
+		document.write(arr+"第"+n+++"次循环"+"<br>");
+			
+		}
+		return quickSort(left).concat([centernum],quickSort(right));
+	};
+	var arr=[132,60,80,100,542,646,465,469,16,12,16,13,13];
+	document.write(arr+"<br>");
+	document.write(quickSort(arr));
+}
+</script>
+	</head>
+	<body>
+	</body>
+</html>

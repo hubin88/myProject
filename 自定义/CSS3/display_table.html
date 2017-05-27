@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<style type="text/css">
+			#b,
+			#c,
+			#d {
+				border: 1px solid #CCC;
+			}
+			
+			#a {
+				display: table;
+				width: 100%;
+			}
+			
+			#b {
+				display: table-cell;
+				height: 340px;
+			}
+			
+			#c {
+				display: table-cell;
+				height: 340px;
+				width: 200px;
+			}
+			
+			table.one {
+				table-layout: automatic;
+			}
+			
+			table.two {
+				table-layout: fixed;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="a">
+			<div id="b">这是第一个单元格</div>
+			<div id="c">这是第二个单元格</div>
+		</div>
+		<div id="d">这是第三个单元格</div>
+		<table class="one" border="1" width="100%">
+			<tr>
+				<td width="20%">1000000000000000000000000000</td>
+				<td width="40%">10000000</td>
+				<td width="40%">100</td>
+			</tr>
+		</table>
+
+		<br />
+
+		<table class="two" border="1" width="100%">
+			<tr>
+				<td>1000000000000000000000000000</td>
+				<td>10000000</td>
+				<td>100</td>
+			</tr>
+		</table>
+
+	</body>
+
+</html>

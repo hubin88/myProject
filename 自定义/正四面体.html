@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.Box {
+				width: 900px;
+				position: relative;
+				margin: auto;
+				perspective: 1000px;
+				perspective-origin: 50% 50%;
+				/*transform: scale(0.5);*/
+			}
+			
+			.cube {
+				position: relative;
+				width: 200px;
+				height: 200px;
+				margin: 150px auto;
+				transition: all 1s ease-in;
+				transform-style: preserve-3d;
+			}
+			
+			div.box {
+				width: 200px;
+				position: relative;
+			}
+			
+			div.line {
+				background: red;
+				width: 200px;
+				height: 2px;
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="Box">
+			<div class="cube">
+				<div class="box">
+					<div class="line"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(".line").eq(0).clone().appendTo(".box").css({
+			"transform": "rotateZ(60deg)",
+			"transformOrigin": "0"
+		});
+		$(".line").eq(0).clone().appendTo(".box").css({
+			"transform": "rotateZ(-60deg)",
+			"transformOrigin": "100%"
+		});
+		$(".box").eq(0).clone().appendTo(".cube").css({
+			"transform": "rotateX(-"+Math.acos(1/3)*180/Math.PI+"deg)",
+			"transformOrigin": "0"
+		})
+		$(".box").eq(0).clone().appendTo(".cube").css({
+			"transform": " rotateZ(60deg) rotateX("+(Math.acos(1/3)*180/Math.PI+180)+"deg)",
+			"transformOrigin": "0"
+		})
+		$(".box").eq(0).clone().appendTo(".cube").css({
+			"transform": " rotateZ(-60deg) rotateX("+(Math.acos(1/3)*180/Math.PI+180)+"deg)",
+			"transformOrigin": "100%"
+		})
+	</script>
+	<script type="text/javascript">
+		var xAngle = 0,
+			yAngle = 0;
+		$(document).on('keydown', function(e) {
+			switch (e.keyCode) {
+				case 37: // left 
+					yAngle -= 45;
+					break;
+				case 38: // up 
+					xAngle += 45;
+					break;
+				case 39: // right 
+					yAngle += 45;
+					break;
+				case 40: // down 
+					xAngle -= 45;
+					break;
+			};
+			$(".cube").css("transform", "rotateX(" + xAngle + "deg) rotateY(" + yAngle + "deg)");
+		});
+	</script>
+
+</html>

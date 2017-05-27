@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+		<style>
+			@keyframes spin-vertical {
+				from {
+					transform: rotateX(0);
+				}
+				to {
+					transform: rotateX(-360deg);
+				}
+			}
+			
+			.outer {
+				width: 900px;
+				position: relative;
+				top: 200px;
+				left: 100px;
+				perspective: 1000px;
+				perspective-origin: 50% 50%;
+			}
+			
+			.inner {
+				position: relative;
+				width: 150px;
+				height: 150px;
+				margin: 50px auto;
+				transition: all 1s ease-in;
+				transform-style: preserve-3d;
+				/*animation: spin-vertical 5s infinite linear;*/
+			}
+			
+			.image1 {
+				transform: rotateY(0deg) translateZ(75px);
+				background: red;
+			}
+			
+			.image2 {
+				transform: rotateY(90deg) translateZ(75px);
+				background: green;
+			}
+			
+			.image3 {
+				transform: rotateY(180deg) translateZ(75px);
+				background: blue;
+			}
+			
+			.image4 {
+				transform: rotateY(270deg) translateZ(75px);
+				background: orange;
+			}
+			
+			.image5 {
+				transform: rotateX(90deg) translateZ(75px);
+				background: pink;
+			}
+			
+			.image6 {
+				transform: rotateX(270deg) translateZ(75px);
+				background: yellow;
+			}
+			
+			.image {
+				width: 150px;
+				height: 150px;
+				position: absolute;
+				/*opacity: 0.6;*/
+				text-align: center;
+				font-size: 50px;
+				line-height: 150px;
+			}
+			
+			* {
+				webkit-touch-callout: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="outer">
+			<div class="inner">
+				<div class="image image1" draggable="false">前</div>
+				<div class="image image2" draggable="false">右</div>
+				<div class="image image3" draggable="false">后</div>
+				<div class="image image4" draggable="false">左</div>
+				<div class="image image5" draggable="false">上</div>
+				<div class="image image6" draggable="false">下</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		var xdeg = 0,
+			ydeg = 0,
+			zdeg = 0;
+		setInterval(function() {
+			xdeg += parseInt(Math.random() * 90);
+			ydeg += parseInt(Math.random() * 90);
+			zdeg += parseInt(Math.random() * 90);
+			$(".inner").css("transform", "rotateX(" + xdeg + "deg) rotateY(" + ydeg + "deg) rotateZ(" + zdeg + "deg)");
+		}, 1000);
+	</script>
+	<!--<script type="text/javascript">
+		var xAngle = 0,
+			yAngle = 0,
+			zAngle = 0;
+		$(document).on('keydown', function(e) {
+			switch (e.keyCode) {
+				case 37: // left 
+					yAngle -= 90;
+					break;
+				case 38: // up 
+					xAngle += 90;
+					break;
+				case 39: // right 
+					yAngle += 90;
+					break;
+				case 40: // down 
+					xAngle -= 90;
+					break;
+				case 109:
+					zAngle += 90;
+					break;
+				case 107:
+					zAngle -= 90;
+					break;
+			};
+			$(".inner").css("transform", "rotateX(" + xAngle + "deg) rotateY(" + yAngle + "deg) rotateZ(" + zAngle + "deg)");
+		});
+	</script>-->
+	</body>
+
+</html>

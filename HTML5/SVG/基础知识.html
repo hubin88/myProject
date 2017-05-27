@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<svg width="100%" height="1000">
+			<!--<rect>标签可用来创建矩形，以及矩形的变种。
+				x 属性定义矩形的左侧位置（例如，x="0" 定义矩形到浏览器窗口左侧的距离是 0px）
+				y 属性定义矩形的顶端位置（例如，y="0" 定义矩形到浏览器窗口顶端的距离是 0px）
+			    rect 元素的 width 和 height 属性可定义矩形的高度和宽度
+				rx 和 ry 属性可使矩形产生圆角。
+				fill和stroke以及stroke-width等属性可以在标签中设置，也可以在样中设置
+			-->
+			<rect x="20" y="20" rx="30" ry="30" width="200" height="100" style="fill:rgb(0,0,255);stroke-width:3; stroke:rgb(255,0,0); fill-opacity:0.5;stroke-opacity:0.8; opacity:0.9;" />
+			<!--
+			<circle>标签可用来创建一个圆。
+				cx 和 cy 属性定义圆点的 x 和 y 坐标。如果省略 cx 和 cy，圆的中心会被设置为 (0, 0)
+				r 属性定义圆的半径。-->
+			<circle cx="330" cy="70" r="50" stroke="black" stroke-dasharray="10 5" stroke-width="20" fill="red" fill-opacity="0.6" stroke-opacity="0.7" opacity="0.5" />
+			<!--
+			<ellipse> 标签可用来创建椭圆。
+			    cx 属性定义圆点的 x 坐标
+			    cy 属性定义圆点的 y 坐标
+			    rx 属性定义水平半径
+			    ry 属性定义垂直半径
+				-->
+			<ellipse cx="240" cy="200" rx="220" ry="30" style="fill:purple;stroke-width:3;stroke:rgb(255,0,0);" />
+			<ellipse cx="220" cy="230" rx="190" ry="20" style="fill:lime;fill-opacity:0.5;stroke-opacity:0.8;" />
+			<ellipse cx="210" cy="260" rx="170" ry="15" style="fill:yellow;opacity:0.6;" />
+			<ellipse cx="240" cy="330" rx="220" ry="30" style="fill:yellow" />
+			<ellipse cx="220" cy="330" rx="190" ry="20" style="fill:white" />
+			<!--
+			<ellipse cx="240" cy="200" rx="220" ry="30" style="fill:purple;stroke-width:3;stroke:rgb(255,0,0);" />
+			<line> 标签用来创建线条。
+			    x1 属性在 x 轴定义线条的开始
+			    y1 属性在 y 轴定义线条的开始
+			    x2 属性在 x 轴定义线条的结束
+			    y2 属性在 y 轴定义线条的结束
+			-->
+			<g transform="translate(0,20)" stroke="red" stroke-opacity="0.5" stroke-width="5">
+				<!--g标签可以进行分组，分组后可以对一组图形进行整体操作-->
+				<line x1="450" y1="20" x2="650" y2="20" />
+				<line x1="450" y1="30" x2="650" y2="30" style="stroke-linecap: bevel;stroke-dasharray: 10 5 5 5; " />
+				<line x1="450" y1="40" x2="650" y2="40" style="stroke-linecap: round;stroke-dasharray:10 10 5 10; " />
+				<line x1="450" y1="50" x2="650" y2="50" style="stroke-dasharray:10 10;" />
+			</g>
+			<!--
+			<polygon> 标签用来创建含有不少于三个边的图形。
+				points 属性定义多边形每个角的 x 和 y 坐标
+			-->
+			<polygon points="700 20 800 20 750 100 " style="fill:red;stroke:blue;stroke-width:3;fill-rule:evenodd;fill-opacity:0.5;stroke-opacity:0.8;opacity:0.6;" />
+			<!--
+			<polyline> 标签用来创建仅包含直线的形状。	
+				points 属性定义多边形每个角的 x 和 y 坐标
+				注意与polygon不一样，图形不会自动封闭
+			-->
+			<polyline points="700 20 800 20 750 100" transform="translate(150,0)" style="fill:blue;stroke:red;stroke-width:3;transform: ;" />
+
+			<!-- 
+				<linearGradient> 可用来定义 SVG 的线性渐变。 当 y1 和 y2 相等，而 x1 和 x2 不同时，可创建水平渐变 当 x1 和 x2 相等，而 y1 和 y2 不同时，可创建垂直渐变 当 x1 和 x2 不同，且 y1 和 y2 不同时，可创建角形渐变
+				<linearGradient> 标签的 id 属性可为渐变定义一个唯一的名称 fill:url(#orange_red) 属性把 ellipse 元素链接到此渐变
+				<linearGradient> 标签的 x1、x2、y1、y2 属性可定义渐变的开始和结束位置 渐变的颜色范围可由两种或多种颜色组成。每种颜色通过一个
+				<stop> 标签来规定。offset 属性用来定义渐变的开始和结束位置。 
+			-->
+			<defs>
+				<!--defs标签可以定义引用，但是不会显示出来，在其他地方可以调用 -->
+				<linearGradient id="orange_red" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" stop-color="rgb(255,255,0)" stop-opacity="0.3" />
+					<stop offset="30%" stop-color="rgb(0,255,0)" stop-opacity="0.6" />
+					<stop offset="75%" stop-color="rgba(0,0,255,0.8)" />
+					<stop offset="100%" stop-color="rgba(255,0,0,1)" />
+				</linearGradient>
+			</defs>
+			<rect x="550" y="160" width="300" height="150" fill="url(#orange_red)" />
+			<!--
+			<radialGradient> 用来定义放射性渐变。
+				<radialGradient> 标签的 id 属性可为渐变定义一个唯一的名称，fill:url(#grey_blue) 属性把 ellipse 元素链接到此渐变，cx、cy 和 r 属性定义外圈，而 fx 和 fy 定义(定义渐变的中心),(cx,cy,r,fx,fy都可以省略) 渐变的颜色范围可由两种或多种颜色组成。每种颜色通过一个 <stop> 标签来规定。offset 属性用来定义渐变的开始和结束位置。 
+				-->
+			<defs>
+				<radialGradient id="grey_blue" cx="50%" cy="50%" r="50%" fx="100%" fy="50%">
+					<stop offset="0%" style="stop-color:rgb(255,255,0);" />
+					<stop offset="25%" style="stop-color:rgb(0,255,0);" />
+					<stop offset="75%" style="stop-color:rgb(0,0,255);" />
+					<stop offset="100%" style="stop-color:rgb(255,0,0);" />
+				</radialGradient>
+			</defs>
+			<ellipse cx="1050" cy="200" rx="150" ry="100" style="fill:url(#grey_blue)" />
+			<!--
+				path标签用来定义路径，下面的命令定义路径数据
+				M = moveto(将画笔移动到当前坐标,如果定义了多余的点，则按照L处理)
+				L = lineto(画直线)
+				H = horizontal lineto(水平线)
+				V = vertical lineto(竖直线)
+				C = curveto
+				S = smooth curveto
+				Q = quadratic Belzier curve
+				T = smooth quadratic Belzier curveto
+				A = elliptical Arc
+				Z = closepath(闭合路径)
+				以上所有命令均允许小写字母。大写表示绝对定位，小写表示相对定位。数字之间用空格或“,”隔开，在数字和命令或负数之间可以省略
+			-->
+			<path d="M100 400 200 500L300 400H400V500 l 100-50 h50 v-50" stroke="red" fill="transparent" stroke-width="3";/>
+			<!--M(x0,y0)起点
+				A(rx,ry,xr,laf,sf,x,y);
+				rx(radius-x)弧线所在椭圆的X半轴长，
+				ry(radius-y)弧线所在椭圆的Y半轴长，
+				xr(xAxis-rotation)弧线所在椭圆的X轴相对X方向顺时针旋转的角度
+				laf(large-arc-flag)是否选择弧长较长的那段弧
+				sf(sweep-flag)是否选择逆时针方向的那段弧
+				x,y弧线的终点位置
+			-->
+			<g transform="translate(100,0)">
+			<path d="M700 500 A200 100 0 0 0 800 600" stroke="red" fill="transparent" stroke-width="3";/>
+			<path d="M700 500 A200 100 0 0 1 800 600" stroke="green" fill="transparent" stroke-width="4";/>
+			<path d="M700 500 A200 100 30 1 0 800 600" stroke="blue" fill="transparent" stroke-width="5";/>
+			<path d="M700 500 A200 100 -30 1 1 800 600" stroke="black" fill="transparent" stroke-width="6";/>
+			</g>
+			<!--
+				M(x0,y0)起点
+				Q(x1,y1,x,y)二次贝塞尔曲线，x1,y1控制点，x,y终止点
+				T(x,y)光滑的二次贝塞尔曲线，在前面的命令是贝塞尔曲线的情况下，省略第一个控制点，默认与上一个贝塞尔曲线的终止点关于上一个贝塞尔曲线的最后一个控制点对称。
+				C(x1,y1,x2,y2,x,y)三次贝塞尔曲线，x1,y1,x2,y2控制点，x,y终止点
+				S(x2,y2,x,y)光滑的三次贝塞尔曲线，在前面的命令是贝塞尔曲线的情况下，省略第一个控制点，默认与上一个贝塞尔曲线的终止点关于上一个贝塞尔曲线的最后一个控制点对称。
+			-->
+			<path d="M50 700 Q100 600 200 700 T 400 600" stroke="red" fill="transparent" stroke-width="3";/>
+			<path d="M100 850 C200 700 300 1000 400 800 S 500 1000 600 800" stroke="red" fill="transparent" stroke-width="3";/>
+		</svg>
+	</body>
+
+</html>

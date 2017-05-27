@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Hello World</title>
+		<link type="text/css" rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.css">
+		<style>
+			.carousel,
+			.carousel .item {
+				height: 500px;
+			}
+			@media (max-width: 524px) {
+				.carousel,
+				.carousel .item {
+					height: 300px;
+				}
+			}
+			ol.carousel-indicators>li {
+				background-color: rgba(0, 0, 0, 0.8);
+			}
+			ol.carousel-indicators>li.active {
+				background-color: rgba(255, 0, 0, 0.8);
+			}
+			ol.carousel-indicators>li,ol.carousel-indicators>li.active{width: 20px;height: 20px;text-indent: 0;color: white;}
+		</style>
+	</head>
+
+	<body>
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-wrap="true" data-interval="3000">
+			<!--data-wrap="true"循环播放，true默认值，data-interval播放时间间隔默认5秒。data-pause:hover 默认鼠标悬停留在幻灯片区域即停止播放，离开即开始播放-->
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active">1</li>
+				<li data-target="#carousel-example-generic" data-slide-to="1">2</li>
+				<li data-target="#carousel-example-generic" data-slide-to="2">3</li>
+				<li data-target="#carousel-example-generic" data-slide-to="3">4</li>
+				<li data-target="#carousel-example-generic" data-slide-to="4">5</li>
+				<li data-target="#carousel-example-generic" data-slide-to="5">6</li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<a href="##"><img src="http://img.mukewang.com/5412ad400001e52014280484.jpg" alt="..."></a>
+					<div class="carousel-caption">
+						<p>11 英寸 MacBook Air 充电一次可运行长达 9 小时，而 13 英寸机型则可运行长达 12 小时。</p>
+					</div>
+				</div>
+				<div class="item">
+					<a href="##"><img src="http://img.mukewang.com/5412ad7c0001d2eb10880541.jpg" alt="..."></a>
+					<div class="carousel-caption">
+						无论是什么任务，配备 Intel HD Graphics 5000 图形处理器的第四代 Intel Core 处理器都能应对自如。
+					</div>
+				</div>
+				<div class="item">
+					<a href="##"><img src=" http://img.mukewang.com/5412ae5c0001653b12800644.jpg" alt="..."></a>
+					<div class="carousel-caption">
+						有了新一代 802.11ac 技术，MacBook Air 令 Wi-Fi 速度超越极限。
+					</div>
+				</div>
+				<div class="item">
+					<a href="##"><img src="http://img.mukewang.com/5412ad400001e52014280484.jpg" alt="..."></a>
+					<div class="carousel-caption">
+						<p>11 英寸 MacBook Air 充电一次可运行长达 9 小时，而 13 英寸机型则可运行长达 12 小时。</p>
+					</div>
+				</div>
+				<div class="item">
+					<a href="##"><img src="http://img.mukewang.com/5412ad7c0001d2eb10880541.jpg" alt="..."></a>
+					<div class="carousel-caption">
+						无论是什么任务，配备 Intel HD Graphics 5000 图形处理器的第四代 Intel Core 处理器都能应对自如。
+					</div>
+				</div>
+				<div class="item">
+					<a href="##"><img src=" http://img.mukewang.com/5412ae5c0001653b12800644.jpg" alt="..."></a>
+					<div class="carousel-caption">
+						有了新一代 802.11ac 技术，MacBook Air 令 Wi-Fi 速度超越极限。
+					</div>
+				</div>
+			</div>
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+		<!--没有添加data-ride="carousel"属性，则要通过js来触发轮播效果，此时还可以设置参数-->
+		<div id="myCarousel" class="carousel slide">
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="http://images3.c-ctrip.com/rk/201407/ll580x145.jpg" alt="">
+					<div class="carousel-caption">
+						<h4>标题一</h4>
+						<p>图片一内容简介</p>
+					</div>
+				</div>
+				<div class="item">
+					<img src="http://images3.c-ctrip.com/dj/201408/zj/zj_580145.jpg" alt="">
+					<div class="carousel-caption">
+						<h4>标题二/h4>
+                   <p>图片二内容简介</p>
+                </div>
+            </div>
+            <div class="item">
+            	<img src="http://images3.c-ctrip.com/rk/201403/yfdd580145a.png" alt="">
+                <div class="carousel-caption">
+                  <h4>标题三</h4>
+						<p>图片三内容简介</p>
+					</div>
+				</div>
+			</div>
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		</div>
+	</body>
+	<script src="bootstrap-3.3.5-dist/js/jQuery-2.1.4.min.js"></script>
+	<script src="bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+	<script>
+//		$('.carousel').carousel();
+		$("#myCarousel").carousel({
+			interval: 2000
+		});
+		$("#myCarousel a.left").click(function() {
+			$(".carousel").carousel("prev");
+		});
+		$("#myCarousel a.right").click(function() {
+			$(".carousel").carousel("next");
+		});
+	</script>
+
+</html>

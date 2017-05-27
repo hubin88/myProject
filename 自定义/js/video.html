@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <script type="text/javascript" src="jQuery-2.1.4.min.js"></script>
+</head>
+<body>
+	<div id="liveEle">
+    <!-- <gs:video-live id="videoComponent" site="dianzheng.gensee.com" ownerid="" bar="true"
+                   ctx="webcast" uname="dianzheng" authcode="123456"/> -->
+    <gs:video-vod id="videoComponent" site="dianzheng.gensee.com" ctx="Webcast" ownerid="2220c260c78e4e8f81d6e274bbdee779"  uname="user5623" authcode="123456"/>
+</div>
+
+<script type="text/javascript">
+
+
+      $.getScript("http://static.gensee.com/webcast/static/sdk/js/gssdk.js", function() {
+        
+      });
+
+</script>
+</body>
+</html>

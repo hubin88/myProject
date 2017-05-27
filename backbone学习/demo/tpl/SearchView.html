@@ -1,0 +1,12 @@
+<% _.each(persons,function(item){ %>
+    <li>
+        <a href="#employees/<%= item.id %>">
+            <img width="50" height="50" src="<%= item.avatar %>" style="float:left;margin-right: 10px;">
+            <p class="list-item">
+                <%= item.name %>
+                <br>
+                <%= item.position %>
+            </p>
+        </a>
+    </li>
+<% }) %>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;font-size:18px;font-family:宋体;}
+#div{width:400px;height:300px;background:#0F0;position:absolute;top:200px;left:500px;}
+table{margin:80px auto;border:none;}
+</style>
+<script>
+onload=function()
+{	
+	var oDiv=document.getElementById('div');
+	var disX=0,disY=0;
+	oDiv.onmousedown=function(ev)
+	{	
+		var oEvent=ev||event;
+		disX=oEvent.clientX-oDiv.offsetLeft;
+		disY=oEvent.clientY-oDiv.offsetTop;
+		document.onmousemove=function(ev)
+		{
+			var oEvent=ev||event;
+			var l=oEvent.clientX-disX,x=document.documentElement.clientWidth-oDiv.offsetWidth;
+			var t=oEvent.clientY-disY,y=document.documentElement.clientHeight-oDiv.offsetHeight;
+			if(l<0)
+			{
+				l=0;	
+			}
+			else if(l>x)
+			{
+				l=x;
+			}
+			if(t<0)
+			{
+				t=0;	
+			}
+			else if(t>y)
+			{
+				t=y;
+			}
+			oDiv.style.left=l+'px';
+			oDiv.style.top=t+'px';
+		};
+		document.onmouseup=function()
+		{
+			document.onmousemove=null;
+			document.onmouseup=null;
+		};
+	};	
+}
+</script>
+</head>
+
+<body>
+<div id="div">
+	<table cellspacing="10px">
+		<tr>
+		<th>用户名:</th>
+		<td colspan="2"><input type="text" id="txt"></td>
+		</tr>
+		<th>密 码:</th>
+		<td colspan="2"><input type="password" id="pad"></td>
+		</tr>
+		<tr>
+		<th></th>
+		<td colspan="2"><input type="checkbox">记住密码</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><input type="submit" value="确认"></td>
+			<td><input type="button" value="取消"></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

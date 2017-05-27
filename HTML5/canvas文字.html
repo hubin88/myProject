@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				display: block;
+				border: 1px solid #aaa;
+				margin: 10px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="" height=""></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var canvas = document.getElementById('myCanvas');
+			canvas.height = 1500;
+			canvas.width = 800;
+			var context = canvas.getContext("2d");
+			//context.font=font-style font-variant font-weight font-size font-family 默认值为"20px sans-serif"
+			//context.fillText(string,x,y,[maxlen]);
+			//context.strokeText(string,x,y,[maxlen]);maxlen文本宽度
+			context.font = "bold 20px Arial";
+			context.fillStyle = "#FF0000";
+			context.fillText("欢迎大家学习《Canvas绘图接口详解》！", 40, 50);
+			context.strokeStyle = "blue";
+			context.lineWidth = 1;
+			context.strokeText("欢迎大家学习《Canvas绘图接口详解》！", 40, 100);
+			context.fillText("欢迎大家学习《Canvas绘图接口详解》！", 40, 150, 200);
+			context.strokeText("欢迎大家学习《Canvas绘图接口详解》！", 40, 200, 200);
+			//用渐变色填充
+			var color = context.createLinearGradient(0, 0, 800, 0);
+			color.addColorStop(0, "purple");
+			color.addColorStop(0.25, "orange");
+			color.addColorStop(0.5, "green");
+			color.addColorStop(0.75, "yellow");
+			color.addColorStop(1, "pink");
+			context.strokeStyle = color;
+			context.fillStyle = color;
+			context.fillText("欢迎大家学习《Canvas绘图接口详解》！", 40, 250);
+			context.strokeText("欢迎大家学习《Canvas绘图接口详解》！", 40, 300);
+			//用图片，画布填充
+			var img = new Image();
+			img.src = "img/1.jpg";
+			img.onload = function() {
+				var pattern = context.createPattern(img, "repeat");
+				context.strokeStyle = pattern;
+				context.fillStyle = pattern;
+				context.fillText("欢迎大家学习《Canvas绘图接口详解》！", 40, 350);
+				context.strokeText("欢迎大家学习《Canvas绘图接口详解》！", 40, 400);
+			};
+			//font-style取值normal(Default)|italic(斜字体)|oblique(倾斜字体)
+			context.font = "italic bold 20px Arial";
+			context.fillText("欢迎大家学习《Canvas绘图接口详解》！", 40, 450);
+			context.font = "normal bold 20px Arial";
+			context.fillText("欢迎大家学习《Canvas绘图接口详解》！", 40, 500);
+			context.font = "oblique bold 20px Arial";
+			context.fillText("欢迎大家学习《Canvas绘图接口详解》！", 40, 550);
+			//font-variant取值normal(Default)|small-caps(小型大写字母)
+			context.save();
+			context.font = "normal small-caps bold 20px Arial";
+			context.fillText("欢迎大家学习《Canvas绘图接口详解》！", 40, 600);
+			context.restore();
+			//context.textAlign="left"|"center"|"right"水平对齐方式
+			context.save();
+			context.font = "bold 20px Arial";
+			context.fillStyle = "red";
+			context.textAlign = "left";
+			context.fillText("textAlign = left", 400, 650);
+			context.textAlign = "center";
+			context.fillText("textAlign = center", 400, 700);
+			context.textAlign = "right";
+			context.fillText("textAlign = right", 400, 750);
+			//辅助线
+			context.moveTo(400, 630);
+			context.lineTo(400, 770);
+			context.strokeStyle = "black";
+			context.stroke();
+			context.restore();
+			//context.textBaseline="top"|"middle"|"bottom"|alphabetic(Default)针对拉丁字母，英文|ideographic针对汉子，日文等方块字|hanging针对印度语言
+			context.fillStyle = "red";
+			context.font = "bold 20px sans-serif";
+			context.textBaseline = "top";
+			context.fillText("欢迎大家学习《Canvas绘图接口详解》！", 40, 800);
+			drawBaseline(context,800);
+			context.textBaseline = "middle";
+			context.fillText("欢迎大家学习《Canvas绘图接口详解》！", 40, 850);
+			drawBaseline(context,850);
+			context.textBaseline = "bottom";
+			context.fillText("欢迎大家学习《Canvas绘图接口详解》！", 40, 900);
+			drawBaseline(context,900);
+			
+			context.textBaseline = "alphabetic";
+			context.fillText("中英文测试abcdefghijklmnopqrstuvwxyz", 40, 950);
+			drawBaseline(context,950);
+			context.textBaseline = "ideographic";
+			context.fillText("中英文测试abcdefghijklmnopqrstuvwxyz", 40, 1000);
+			drawBaseline(context,1000);
+			context.textBaseline = "hanging";
+			context.fillText("中英文测试abcdefghijklmnopqrstuvwxyz", 40, 1050);
+			drawBaseline(context,1050);
+			
+			//measureText(string).width测量文本宽度
+			context.font = "20px sans-serif";
+			var textWidth=context.measureText("中英文测试abcdefghijklmnopqrstuvwxyz").width;
+			context.fillText("以上文本宽度为"+textWidth+"px",40,1100);
+		}
+
+		function drawBaseline(context, h) {
+			var width = context.canvas.width;
+			context.save();
+			context.strokeStyle = "black";
+			context.moveTo(0, h);
+			context.lineTo(width, h);
+			context.stroke();
+			context.restore();
+		}
+	</script>
+
+</html>

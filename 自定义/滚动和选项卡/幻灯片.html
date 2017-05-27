@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+li{ list-style:none;}
+div{ width:288px; height:180px; background:#F00; margin:200px auto; position:relative; overflow:hidden;}
+ul{ position:absolute; left:0; top:0; z-index:1;}
+ul li{ width:288px; height:180px;cursor:pointer;}
+ol{ z-index:2; position:absolute; bottom:0;right:15px; }
+ol li{width:20px; height:20px; border:#000 solid 1px; background:#999;float:left;
+	display: inline; text-align:center; margin:0 5px; margin-bottom:0;cursor:pointer;}
+.active{background:#FF0; font-weight:bold; color:#0F0;}
+</style>
+<script src="../html方面/运动框架3.js"></script>
+<script>
+onload=function()
+{	
+	var oDiv=document.getElementById('div');
+	var oUl=oDiv.getElementsByTagName('ul')[0];
+	var aBtn=oDiv.getElementsByTagName('ol')[0].getElementsByTagName('li');	
+	var now=0;
+	for(var i=0;i<aBtn.length;i++)
+	{
+		aBtn[i].index=i;
+		aBtn[i].onmouseover=function ()
+		{	
+			now=this.index;
+			move();
+		};
+	}
+	function move()
+	{
+		for(var i=0;i<aBtn.length;i++)
+		{
+			aBtn[i].className='';
+		}
+		aBtn[now].className='active';
+		startMove(oUl,{top:-180*now});
+	}
+	function next()
+	{
+		now++;
+		if(now==aBtn.length)
+		{
+			now=0;
+		}
+		
+		move();
+	}
+	
+	var timer=setInterval(next, 1500);
+	
+	oDiv.onmouseover=function ()
+	{
+		clearInterval(timer);
+	};
+	
+	oDiv.onmouseout=function ()
+	{
+		timer=setInterval(next,1500);
+	};
+}
+</script>
+</head>
+
+<body>
+<div id="div">
+	<ul id="ul">
+    	<li><img src="滚动/1.jpg"/></li>
+        <li><img src="滚动/2.jpg"/></li>
+        <li><img src="滚动/3.jpg"/></li>
+        <li><img src="滚动/4.jpg"/></li>
+        <li><img src="滚动/5.jpg"/></li>
+        <li><img src="滚动/6.jpg"/></li>
+        <li><img src="滚动/7.jpg"/></li>
+        <li><img src="滚动/8.jpg"/></li>
+    </ul>
+    <ol id="ol">
+    <li class="active">1</li>
+	<li>2</li>
+ 	<li>3</li>
+    <li>4</li>
+    <li>5</li>
+	<li>6</li>
+ 	<li>7</li>
+    <li>8</li>   
+    </ol>
+</div>
+</body>
+</html>

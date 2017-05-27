@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div ng-controller="myCtrl">
+		<h1>{{myName}}</h1><br />
+		<h1>{{mySex}}</h1><br />
+		<h1>{{Data.msg}}</h1><br />
+		<h1>{{User}}</h1>
+		</div>
+		<div ng-controller="ctrlOne">
+			<input type="text" ng-model="data.msg"/>
+			<p>{{data.msg}}</p>
+		</div>
+		<div ng-controller="ctrlTwo">
+			<input type="text" ng-model="data.msg"/>
+			<p>{{data.msg}}</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		angular.module("app",[])
+		.value("name","hubin")//可以改变
+		.value("name","HUBIN")
+		.constant("sex","男")//不可以改变
+		.constant("sex","女")
+		.service("user",function(){
+			this.firstName="上官";
+			this.lastName="飞燕";
+			this.getName=function(){
+				return	this.firstName+this.lastName;
+			};
+		})
+		.factory("data",function(){
+			return {
+				msg:"你好啊！",
+				setMsg:function(){
+					this.msg="我不好！";
+				}
+			}
+		})
+		.factory("DATA",function(){
+			return {
+				msg:"我来自factory的MSG",
+			}
+		})
+		.controller("myCtrl",function($scope,name,sex,data,user){
+			$scope.myName=name;
+			$scope.mySex=sex;
+			$scope.Data=data;
+			$scope.User=user.getName();
+		})
+		.controller("ctrlOne",function($scope,DATA){
+			$scope.data=DATA;
+		})
+		.controller("ctrlTwo",function($scope,DATA){
+			$scope.data=DATA;
+		})
+	</script>
+</html>

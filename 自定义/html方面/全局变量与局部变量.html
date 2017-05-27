@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<script type="text/javascript">
+	var x=1;
+	function test1()
+	{
+		alert(x);
+		var x=2;//var x=2;会被解析成var x;x=2;当调用函数时会优先用局部变量，此时局部变量会覆盖全局变量，而此时x还未赋值，就会弹出undifined;之后x被赋值为2，就会弹出2
+		alert(x);
+	}
+	test1();//undifined,2
+	function test3()
+	{
+		alert(x);
+		x=2;//未用var来声明x变量，此时的x也是全局变量，因此x=1会被调用
+		alert(x);
+	}
+	test3();//1,2
+	function test2(a)
+	{
+		alert(a);
+		var x=2;
+		alert(x);
+	}
+	test2(x);//1,2;x被作为参数传进去；
+</script>
+</head>
+<body>
+	
+</body>
+</html>

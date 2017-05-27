@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input class="btn1" type="button" value="获取数据1">
+		<input class="btn2" type="button" value="获取数据2">
+		<ul class="ul1" style="display: none;">
+			<li>dqw</li>
+			<li>rge</li>
+			<li>gerg</li>
+			<li>g4eg4</li>
+			<li>jyjjtr</li>
+		</ul>
+		<ul class="ul3"></ul>
+		<ul class="ul2"></ul>
+	</body>
+	<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	//$.each和$.fn.each
+		var jsonStu=[
+		                {
+		                "name":"丁一",
+		                "score":1
+		                },
+		                {
+		                "name":"马二",
+		                "score":2
+		                },
+		                {
+		                "name":"张三",
+		                "score":3
+		                },
+		                {
+		                "name":"李四",
+		                "score":4
+		                },
+		                {
+		                "name":"王五",
+		                "score":5
+		                }
+		            ];
+		        $(function(){
+		        	$(".btn1").click(function(){
+		        		$(".ul1 li").each(function(index,elem){
+		        			$(".ul3").append("<li>"+index+":"+$(this).text()+"</li>");
+		        			console.log(elem);
+		        		});
+		        		$.each($(".ul1 li"),function(index,data){
+		        			console.log(data);
+		        		})
+		        	});
+		        	//参数data表示所遍历的jsonStu对象
+		            $(".btn2").click(function(){
+		                $.each(jsonStu,function(index,data){
+		                    $(".ul2").append("<li>"+index+": 姓名:"+data.name+" 分数:"+data.score+"</li>")
+		                });
+		            });
+		        });
+		        //两种方法基本一样
+		</script>       
+		</html>
